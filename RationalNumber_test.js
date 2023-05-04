@@ -64,7 +64,26 @@ describe("RationalNumber", () => {
 		});
 	});
 
-	it("can have a minus sign only at the beginning of string", () => {
+	it("cannot end with a decimal separator", () => {
+		[
+			{
+				input: "0.",
+				output: false,
+			},
+			{
+				input: "-123.",
+				output: false,
+			},
+			{
+				input: "1234.",
+				output: false,
+			},
+		].forEach(({ input, output }) => {
+			assert.equal(isRationalNumber(input), output);
+		});
+	});
+
+	it("can have a minus sign only at the beginning", () => {
 		[
 			{
 				input: "-1",
@@ -81,5 +100,39 @@ describe("RationalNumber", () => {
 		].forEach(({ input, output }) => {
 			assert.equal(isRationalNumber(input), output);
 		});
+	});
+
+	it("cannot have right padded zeros", () => {
+		[
+			{
+				input: "00.1",
+				output: false,
+			},
+			{
+				input: "-00.1",
+				output: false,
+			},
+		].forEach(({ input, output }) => {
+			assert.equal(isRationalNumber(input), output);
+		});
+	});
+
+	it("must have a number after minus sign", () => {
+		[
+			{
+				input: "-.1",
+				output: false,
+			},
+			{
+				input: "-.",
+				output: false,
+			},
+		].forEach(({ input, output }) => {
+			assert.equal(isRationalNumber(input), output);
+		});
+	});
+
+	it("cannot be -0", () => {
+		assert.equal(isRationalNumber("-0"), false);
 	});
 });

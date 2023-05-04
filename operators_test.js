@@ -17,6 +17,10 @@ describe("add", () => {
 				input: { a: "0.1", b: "0.2" },
 				output: "0.3",
 			},
+			{
+				input: { a: "-0.1", b: "-0.2" },
+				output: "-0.3",
+			},
 		].forEach(({ input: { a, b }, output }) => {
 			assert.equal(add(a, b), output);
 		});

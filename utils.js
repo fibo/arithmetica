@@ -2,8 +2,8 @@ export const denominatorBase10ExponentsToCommonDenominator = (
 	denominatorBase10ExponentA,
 	denominatorBase10ExponentB
 ) => {
-	if (denominatorBase10ExponentA == denominatorBase10ExponentB) {
-		if (denominatorBase10ExponentA == 0) return 1;
+	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
+		if (denominatorBase10ExponentA === 0) return 1;
 		return Math.pow(10, denominatorBase10ExponentA);
 	}
 	return Math.pow(
@@ -13,14 +13,19 @@ export const denominatorBase10ExponentsToCommonDenominator = (
 };
 
 export const rationalNumberToFraction = (rationalNumber) => {
-	let [integer, mantissa] = rationalNumber.split(".");
+	const [integer, mantissa] = splitRationalNumber(rationalNumber);
 
-	// Remove right padded zeros from mantissa
-	// TODO
-
-	const denominatorBase10Exponent = mantissa?.length ?? 0;
+	const denominatorBase10Exponent = mantissa.length;
 
 	return denominatorBase10Exponent === 0
 		? [BigInt(integer), 0]
 		: [BigInt(integer + mantissa), denominatorBase10Exponent];
+};
+
+export const splitRationalNumber = (rationalNumber) => {
+	let [integer, mantissa] = rationalNumber.split(".");
+
+	if (mantissa === undefined) mantissa = "";
+
+	return [integer, mantissa];
 };

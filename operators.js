@@ -12,9 +12,15 @@ export const add = (a, b) => {
 		denominatorBase10ExponentB
 	);
 
-	if (commonDenominator == 1) return String(integerA + integerB);
+	if (commonDenominator === 1) return String(integerA + integerB);
 
-	return "0." + String(integerA + integerB);
+	const numerator = integerA + integerB;
+
+	if (numerator < 0) {
+		return "-" + "0." + String(-numerator);
+	} else {
+		return "0." + String(numerator);
+	}
 };
 
 export const sub = (a, b) => a - b;
