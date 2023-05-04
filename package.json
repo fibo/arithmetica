@@ -1,0 +1,28 @@
+{
+  "name": "arithmetica",
+  "version": "0.0.0",
+  "description": "is an implementation of arithmetic operators for Real numbers",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js"
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fibo/arithmetica.git"
+  },
+  "keywords": ["math"],
+  "author": {
+    "name": "Gianluca Casati",
+    "url": "https://fibo.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fibo/arithmetica/issues"
+  },
+  "homepage": "https://github.com/fibo/arithmetica#readme"
+}
