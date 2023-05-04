@@ -3,19 +3,37 @@ import { describe, it } from "node:test";
 import { rationalNumberToFraction } from "./utils.js";
 
 describe("rationalNumberToFraction", () => {
-	it("returns integer as BigInt and mantissa length as Number", () => {
+	it("returns numerator as BigInt and denominatorBase10Exponent as Number", () => {
 		[
 			{
 				input: "1",
 				output: {
-					integer: 1n,
-					exponent: 0,
+					numerator: 1n,
+					denominatorBase10Exponent: 0,
+				},
+			},
+			{
+				input: "1.2",
+				output: {
+					numerator: 12n,
+					denominatorBase10Exponent: 1,
+				},
+			},
+			{
+				input: "-1.23",
+				output: {
+					numerator: -123n,
+					denominatorBase10Exponent: 2,
 				},
 			},
 		].forEach(({ input, output }) => {
-			const [integer, exponent] = rationalNumberToFraction(input);
-			assert.equal(integer, output.integer);
-			assert.equal(exponent, output.exponent);
+			const [numerator, denominatorBase10Exponent] =
+				rationalNumberToFraction(input);
+			assert.equal(numerator, output.numerator);
+			assert.equal(
+				denominatorBase10Exponent,
+				output.denominatorBase10Exponent
+			);
 		});
 	});
 });

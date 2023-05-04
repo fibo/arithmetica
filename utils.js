@@ -11,12 +11,9 @@ export const rationalNumberToFraction = (rationalNumber) => {
 	// Remove right padded zeros from mantissa
 	// TODO
 
-	const base10Exponent = mantissa?.length ?? 0;
+	const denominatorBase10Exponent = mantissa?.length ?? 0;
 
-	return base10Exponent === 0
+	return denominatorBase10Exponent === 0
 		? [BigInt(integer), 0]
-		: [
-				BigInt(integer) * BigInt(Math.pow(10, base10Exponent)),
-				base10Exponent,
-		  ];
+		: [BigInt(integer + mantissa), denominatorBase10Exponent];
 };
