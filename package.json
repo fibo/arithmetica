@@ -1,7 +1,7 @@
 {
   "name": "arithmetica",
   "version": "0.0.0",
-  "description": "is an implementation of arithmetic operators for Real numbers",
+  "description": "is an implementation of arithmetic operators for Rational numbers",
   "type": "module",
   "exports": {
     ".": {

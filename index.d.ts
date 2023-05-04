@@ -1,3 +1,2 @@
 export * from "./operators.js";
-export * from "./RealNumber.js";
-
+export * from "./RationalNumber.js";

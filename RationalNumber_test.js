@@ -1,8 +1,8 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { isRealNumber } from "./RealNumber.js";
+import { isRationalNumber } from "./RationalNumber.js";
 
-describe("RealNumber", () => {
+describe("RationalNumber", () => {
 	it("is a string", () => {
 		[
 			{
@@ -22,7 +22,22 @@ describe("RealNumber", () => {
 				output: true,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRealNumber(input), output);
+			assert.equal(isRationalNumber(input), output);
+		});
+	});
+
+	it("can have a decimal part", () => {
+		[
+			{
+				input: "1.01",
+				output: true,
+			},
+			{
+				input: "1.0",
+				output: true,
+			},
+		].forEach(({ input, output }) => {
+			assert.equal(isRationalNumber(input), output);
 		});
 	});
 
@@ -41,7 +56,7 @@ describe("RealNumber", () => {
 				output: false,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRealNumber(input), output);
+			assert.equal(isRationalNumber(input), output);
 		});
 	});
 });

@@ -1,10 +1,9 @@
-import { RealNumber } from "./RealNumber.js";
-export type RealNumberBinaryOperator = (
-  a: RealNumber,
-  b: RealNumber
-) => RealNumber;
-export declare const add: RealNumberBinaryOperator;
-export declare const sub: RealNumberBinaryOperator;
-export declare const mul: RealNumberBinaryOperator;
-export declare const div: RealNumberBinaryOperator;
-
+import { RationalNumber } from "./RationalNumber.js";
+export type RationalNumberBinaryOperator = (
+	a: RationalNumber,
+	b: RationalNumber
+) => RationalNumber;
+export declare const add: RationalNumberBinaryOperator;
+export declare const sub: RationalNumberBinaryOperator;
+export declare const mul: RationalNumberBinaryOperator;
+export declare const div: RationalNumberBinaryOperator;

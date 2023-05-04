@@ -1,3 +1,3 @@
 # arithmetica
 
-is an implementation of arithmetic operators for Real numbers
+is an implementation of arithmetic operators for Rational numbers

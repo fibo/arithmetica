@@ -1,4 +1,4 @@
-export const isRealNumber = (arg) => {
+export const isRationalNumber = (arg) => {
 	if (typeof arg !== "string") return false;
 	if (arg.includes("-")) {
 		if (arg.charAt(0) !== "-") return false;
