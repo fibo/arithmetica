@@ -26,7 +26,7 @@ describe("RationalNumber", () => {
 		});
 	});
 
-	it("can have a decimal part", () => {
+	it("can have a decimal separator", () => {
 		[
 			{
 				input: "1.01",
@@ -35,6 +35,29 @@ describe("RationalNumber", () => {
 			{
 				input: "1.0",
 				output: true,
+			},
+			{
+				input: "-123.456789",
+				output: true,
+			},
+		].forEach(({ input, output }) => {
+			assert.equal(isRationalNumber(input), output);
+		});
+	});
+
+	it("cannot have more than one decimal separator", () => {
+		[
+			{
+				input: "-1..01",
+				output: false,
+			},
+			{
+				input: "1..0",
+				output: false,
+			},
+			{
+				input: "1.2.3",
+				output: false,
 			},
 		].forEach(({ input, output }) => {
 			assert.equal(isRationalNumber(input), output);
