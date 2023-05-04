@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js"
+      "import": "./index.js",
+      "types": "./index.d.ts"
     }
   },
   "scripts": {
@@ -15,7 +16,9 @@
     "type": "git",
     "url": "git+https://github.com/fibo/arithmetica.git"
   },
-  "keywords": ["math"],
+  "keywords": [
+    "math"
+  ],
   "author": {
     "name": "Gianluca Casati",
     "url": "https://fibo.github.io"
