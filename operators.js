@@ -1,12 +1,20 @@
-import { commonDenominator, rationalNumberToFraction } from "./utils.js";
+import {
+	denominatorBase10ExponentsToCommonDenominator,
+	rationalNumberToFraction,
+} from "./utils.js";
 
 export const add = (a, b) => {
-	const [integerA, exponentA] = rationalNumberToFraction(a);
-	const [integerB, exponentB] = rationalNumberToFraction(b);
-	const denominator = commonDenominator(exponentA, exponentB);
-	return exponentA + exponentB === 0
-		? String(integerA + integerB)
-		: String((integerA + integerB) / BigInt(denominator));
+	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
+
+	const commonDenominator = denominatorBase10ExponentsToCommonDenominator(
+		denominatorBase10ExponentA,
+		denominatorBase10ExponentB
+	);
+
+	if (commonDenominator == 1) return String(integerA + integerB);
+
+	return "0." + String(integerA + integerB);
 };
 
 export const sub = (a, b) => a - b;

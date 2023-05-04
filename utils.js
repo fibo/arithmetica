@@ -1,8 +1,15 @@
-export const commonDenominator = (exponentA, exponentB) => {
-	let denominator = "1";
-	while (denominator.length < Math.max(exponentA, exponentB)) {
-		denominator += "0";
+export const denominatorBase10ExponentsToCommonDenominator = (
+	denominatorBase10ExponentA,
+	denominatorBase10ExponentB
+) => {
+	if (denominatorBase10ExponentA == denominatorBase10ExponentB) {
+		if (denominatorBase10ExponentA == 0) return 1;
+		return Math.pow(10, denominatorBase10ExponentA);
 	}
+	return Math.pow(
+		10,
+		Math.max(denominatorBase10ExponentA, denominatorBase10ExponentB)
+	);
 };
 
 export const rationalNumberToFraction = (rationalNumber) => {
