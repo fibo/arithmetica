@@ -29,6 +29,10 @@ describe("add", () => {
 				input: { a: "1.2", b: "2.34" },
 				output: "3.54",
 			},
+			{
+				input: { a: "1.5", b: "1.5" },
+				output: "3",
+			},
 		].forEach(({ input: { a, b }, output }) => {
 			assert.equal(add(a, b), output);
 		});

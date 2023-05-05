@@ -1,15 +1,44 @@
-export const denominatorBase10ExponentsToCommonDenominator = (
-	denominatorBase10ExponentA,
-	denominatorBase10ExponentB
-) => {
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		if (denominatorBase10ExponentA === 0) return 1;
-		return Math.pow(10, denominatorBase10ExponentA);
+export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
+	const bigIntString = String(bigInt);
+	const bigIntStringLength = bigIntString.length;
+
+	if (denominatorBase10Exponent === 0) return bigIntString;
+
+	if (bigInt < 0) {
+		// Consider leading minus sign, for example `bigIntStringLength - 1`.
+		if (bigIntStringLength - 1 === denominatorBase10Exponent) {
+			return "-0." + bigIntString.slice(1);
+		} else if (bigIntStringLength - 1 < denominatorBase10Exponent) {
+		} else {
+			return removeRightPaddedZerosFromDecimalNumber(
+				"-" +
+					bigIntString.slice(
+						1,
+						bigIntStringLength - denominatorBase10Exponent
+					) +
+					"." +
+					bigIntString.slice(
+						bigIntStringLength - denominatorBase10Exponent
+					)
+			);
+		}
+	} else {
+		if (bigIntStringLength === denominatorBase10Exponent) {
+			return "0." + bigIntString;
+		} else if (bigIntStringLength < denominatorBase10Exponent) {
+		} else {
+			return removeRightPaddedZerosFromDecimalNumber(
+				bigIntString.slice(
+					0,
+					bigIntStringLength - denominatorBase10Exponent
+				) +
+					"." +
+					bigIntString.slice(
+						bigIntStringLength - denominatorBase10Exponent
+					)
+			);
+		}
 	}
-	return Math.pow(
-		10,
-		Math.max(denominatorBase10ExponentA, denominatorBase10ExponentB)
-	);
 };
 
 export const rationalNumberToFraction = (rationalNumber) => {
@@ -20,6 +49,30 @@ export const rationalNumberToFraction = (rationalNumber) => {
 	return denominatorBase10Exponent === 0
 		? [BigInt(integer), 0]
 		: [BigInt(integer + mantissa), denominatorBase10Exponent];
+};
+
+// This function is used internally, only for decimals.
+// Cases when `bigIntString` is `0` or any other integer are not handled.
+export const removeRightPaddedZerosFromDecimalNumber = (bigIntString) => {
+	const bigIntStringLength = bigIntString.length;
+	let i = bigIntStringLength - 1;
+	let letter;
+	while (true) {
+		letter = bigIntString.charAt(i);
+		if (letter === "0") {
+			i--;
+			continue;
+		}
+		break;
+	}
+	if (i === bigIntStringLength - 1) {
+		return bigIntString;
+	}
+	if (bigIntString.charAt(i) === ".") {
+		return bigIntString.slice(0, i);
+	} else {
+		return bigIntString.slice(0, i + 1);
+	}
 };
 
 export const splitRationalNumber = (rationalNumber) => {

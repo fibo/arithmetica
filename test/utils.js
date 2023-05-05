@@ -1,55 +1,82 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import {
-	denominatorBase10ExponentsToCommonDenominator,
+	fractionToRationalNumber,
 	rationalNumberToFraction,
+	removeRightPaddedZerosFromDecimalNumber,
 	splitRationalNumber,
 } from "../utils.js";
 
-describe("denominatorBase10ExponentsToCommonDenominator", () => {
-	it("returns a power of 10", () => {
+describe("fractionToRationalNumber", () => {
+	it("adds a decimalSeparator", () => {
 		[
 			{
 				input: {
-					denominatorBase10ExponentA: 0,
-					denominatorBase10ExponentB: 0,
+					bigInt: 42n,
+					denominatorBase10Exponent: 0,
 				},
-				output: 1,
+				output: "42",
 			},
 			{
 				input: {
-					denominatorBase10ExponentA: 0,
-					denominatorBase10ExponentB: 1,
+					bigInt: -42n,
+					denominatorBase10Exponent: 0,
 				},
-				output: 10,
+				output: "-42",
 			},
 			{
 				input: {
-					denominatorBase10ExponentA: 1,
-					denominatorBase10ExponentB: 1,
+					bigInt: 42n,
+					denominatorBase10Exponent: 1,
 				},
-				output: 10,
+				output: "4.2",
 			},
 			{
 				input: {
-					denominatorBase10ExponentA: 2,
-					denominatorBase10ExponentB: 3,
+					bigInt: -42n,
+					denominatorBase10Exponent: 1,
 				},
-				output: 1000,
+				output: "-4.2",
+			},
+			{
+				input: {
+					bigInt: 42n,
+					denominatorBase10Exponent: 2,
+				},
+				output: "0.42",
+			},
+			{
+				input: {
+					bigInt: 12345n,
+					denominatorBase10Exponent: 2,
+				},
+				output: "123.45",
+			},
+			{
+				input: {
+					bigInt: -12345n,
+					denominatorBase10Exponent: 2,
+				},
+				output: "-123.45",
+			},
+			{
+				input: {
+					bigInt: -42n,
+					denominatorBase10Exponent: 2,
+				},
+				output: "-0.42",
+			},
+			{
+				input: {
+					bigInt: 1010n,
+					denominatorBase10Exponent: 2,
+				},
+				output: "10.1",
 			},
 		].forEach(
-			({
-				input: {
-					denominatorBase10ExponentA,
-					denominatorBase10ExponentB,
-				},
-				output,
-			}) => {
+			({ input: { bigInt, denominatorBase10Exponent }, output }) => {
 				assert.equal(
-					denominatorBase10ExponentsToCommonDenominator(
-						denominatorBase10ExponentA,
-						denominatorBase10ExponentB
-					),
+					fractionToRationalNumber(bigInt, denominatorBase10Exponent),
 					output
 				);
 			}
@@ -102,6 +129,42 @@ describe("rationalNumberToFraction", () => {
 			assert.equal(
 				denominatorBase10Exponent,
 				output.denominatorBase10Exponent
+			);
+		});
+	});
+});
+
+describe("removeRightPaddedZerosFromDecimalNumber", () => {
+	it("works", () => {
+		[
+			{
+				input: "1.2",
+				output: "1.2",
+			},
+			{
+				input: "-1.2",
+				output: "-1.2",
+			},
+			{
+				input: "1.20",
+				output: "1.2",
+			},
+			{
+				input: "12.0",
+				output: "12",
+			},
+			{
+				input: "10.10",
+				output: "10.1",
+			},
+			{
+				input: "-10.10",
+				output: "-10.1",
+			},
+		].forEach(({ input, output }) => {
+			assert.equal(
+				removeRightPaddedZerosFromDecimalNumber(input),
+				output
 			);
 		});
 	});
