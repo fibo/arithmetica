@@ -78,12 +78,39 @@ export const div = (a, b) => {
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
 		if (reminder === 0n) {
-			return fractionToRationalNumber(
-				integerA / integerB,
-				0n
-			);
+			return String(integerA / integerB);
 		}  else {
 			return integerDivision(integerA, integerB);
+		}
+	}
+
+	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
+		if (reminder === 0n) {
+			return String(
+				10n ** (
+					denominatorBase10ExponentB - denominatorBase10ExponentA
+				) * integerA / integerB
+			);
+		}  else {
+			mul(
+				integerDivision(integerA, integerB),
+				String(10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA))
+			);
+		}
+	} else {
+		if (reminder === 0n) {
+			return fractionToRationalNumber(
+				integerA / integerB,
+				denominatorBase10ExponentA - denominatorBase10ExponentB
+			);
+		}  else {
+			let [integer, denominatorBase10Exponent] = rationalNumberToFraction(
+				integerDivision(integerA, integerB)
+			);
+			return fractionToRationalNumber(
+				integer,
+				denominatorBase10Exponent + denominatorBase10ExponentA - denominatorBase10ExponentB
+			)
 		}
 	}
 }
