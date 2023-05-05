@@ -17,7 +17,14 @@
     "url": "git+https://github.com/fibo/arithmetica.git"
   },
   "keywords": [
-    "math"
+    "math",
+    "arbitrary",
+    "precision",
+    "arithmetic",
+    "decimal",
+    "float",
+    "rational",
+    "number"
   ],
   "author": {
     "name": "Gianluca Casati",
