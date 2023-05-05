@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { isRationalNumber } from "./RationalNumber.js";
+import { isRationalNumber } from "../RationalNumber.js";
 
 describe("RationalNumber", () => {
 	it("is a string", () => {

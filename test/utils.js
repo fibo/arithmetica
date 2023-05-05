@@ -4,7 +4,7 @@ import {
 	denominatorBase10ExponentsToCommonDenominator,
 	rationalNumberToFraction,
 	splitRationalNumber,
-} from "./utils.js";
+} from "../utils.js";
 
 describe("denominatorBase10ExponentsToCommonDenominator", () => {
 	it("returns a power of 10", () => {
