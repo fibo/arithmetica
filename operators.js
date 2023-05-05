@@ -1,4 +1,12 @@
-import { fractionToRationalNumber, rationalNumberToFraction } from "./utils.js";
+import {
+	fractionToRationalNumber,
+	rationalNumberToFraction,
+} from "./utils.js";
+
+export const eq = (a, b) => {
+	if (a === b) return true;
+	return sub(a, b) === "0";
+}
 
 export const add = (a, b) => {
 	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);

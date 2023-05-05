@@ -16,13 +16,13 @@ import { add } from "arithmetica";
 
 console.log(add("0.1", "0.2")); // 0.3
 ```
-
 The following binary operators are available:
 
-- `add`: implements addition
-- `sub`: implements subtraction
-- `mul`: implements multiplication
-- `div`: implements division
+- `eq`: implements equality.
+- `add`: implements addition.
+- `sub`: implements subtraction.
+- `mul`: implements multiplication.
+- `div`: implements division.
 
 There is no runtime check on types,
 consumers are responsible to feed inputs that are actual `RationalNumber` types.
