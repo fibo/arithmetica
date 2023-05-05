@@ -52,7 +52,14 @@ export const sub = (a, b) => {
 	}
 }
 
+export const mul = (a, b) => {
+	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
 
-export const mul = (a, b) => a * b;
+	return fractionToRationalNumber(
+		integerA * integerB,
+		denominatorBase10ExponentA + denominatorBase10ExponentB
+	);
+}
 
 export const div = (a, b) => a / b;
