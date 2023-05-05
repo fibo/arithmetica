@@ -1,5 +1,6 @@
 export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
 	const bigIntString = String(bigInt);
+	if (bigIntString === "0") return "0";
 	const bigIntStringLength = bigIntString.length;
 	if (denominatorBase10Exponent === 0) return bigIntString;
 	if (bigInt < 0) {

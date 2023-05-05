@@ -82,6 +82,13 @@ describe("fractionToRationalNumber", () => {
 				},
 				output: "0.00001234",
 			},
+			{
+				input: {
+					bigInt: 0n,
+					denominatorBase10Exponent: 19,
+				},
+				output: "0",
+			},
 		].forEach(
 			({ input: { bigInt, denominatorBase10Exponent }, output }) => {
 				assert.equal(
