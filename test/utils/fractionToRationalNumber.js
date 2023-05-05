@@ -98,10 +98,7 @@ describe("fractionToRationalNumber", () => {
 			},
 		].forEach(
 			({ input: { bigInt, denominatorBase10Exponent }, output }) => {
-				assert.equal(
-					fractionToRationalNumber(bigInt, denominatorBase10Exponent),
-					output
-				);
+				assert.equal(fractionToRationalNumber(bigInt, denominatorBase10Exponent), output);
 			}
 		);
 	});

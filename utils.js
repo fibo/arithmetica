@@ -45,12 +45,25 @@ export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
 	}
 };
 
+export const integerDivision = (integerA, integerB) => {
+	let reminder = integerA % integerB;
+	if (reminder === 0n) return String(integerA / integerB);
+	let decimalPart = "";
+	let numerator;
+	while (reminder !== 0n) {
+		numerator = reminder * 10n;
+		decimalPart += String(numerator / integerB);
+		reminder = numerator % integerB;
+	}
+	return String(integerA / integerB) + "." + decimalPart;
+}
+
 export const rationalNumberToFraction = (rationalNumber) => {
-	let [integer, mantissa] = rationalNumber.split(".");
-	if (mantissa === undefined) {
+	let [integer, decimalPart] = rationalNumber.split(".");
+	if (decimalPart === undefined) {
 		return [BigInt(integer), 0n];
 	} else {
-		return [BigInt(integer + mantissa), BigInt(mantissa.length)];
+		return [BigInt(integer + decimalPart), BigInt(decimalPart.length)];
 	}
 };
 

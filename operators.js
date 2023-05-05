@@ -1,5 +1,6 @@
 import {
 	fractionToRationalNumber,
+	integerDivision,
 	rationalNumberToFraction,
 } from "./utils.js";
 
@@ -73,10 +74,16 @@ export const div = (a, b) => {
 	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
 	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
 
+	let reminder = integerA % integerB;
+
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return fractionToRationalNumber(
-			integerA / integerB,
-			0n
-		);
+		if (reminder === 0n) {
+			return fractionToRationalNumber(
+				integerA / integerB,
+				0n
+			);
+		}  else {
+			return integerDivision(integerA, integerB);
+		}
 	}
 }
