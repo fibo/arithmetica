@@ -24,8 +24,12 @@ The following binary operators are available:
 - `mul`: implements multiplication.
 - `div`: implements division.
 
-There is no runtime check on types,
-consumers are responsible to feed inputs that are actual `RationalNumber` types.
+There is no runtime check on types, consumers are responsible to feed inputs
+that are actual `RationalNumber` types using [`isRationalNumber` type-guard](#isrationalnumber).
+
+## API
+
+### `isRationalNumber(arg: unknown): arg is RationalNumber`
 
 An `isRationalNumber` type-guard is available.
 
@@ -47,6 +51,14 @@ function minusOne (a) {
   if (isRationalNumber(a)) return sub(a, "1");
   throw new TypeError(`Argument is not a RationalNumber ${a}`);
 }
+```
+
+### `rationalNumberToFloat(rationalNumber: RationalNumber, mantissaLength: number): number`
+
+Convert a `RationalNumber` to a floating point number.
+
+```js
+rationalNumberToFloat("42.0", 0); // 42
 ```
 
 ## License

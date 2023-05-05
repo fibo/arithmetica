@@ -3,4 +3,7 @@
  */
 export type RationalNumber = string;
 
-export declare const isRationalNumber: (arg: unknown) => arg is string;
+/**
+ * Check that given argument is a `RationalNumber`.
+ */
+export declare const isRationalNumber: (arg: unknown) => arg is RationalNumber;
