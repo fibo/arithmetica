@@ -1,6 +1,6 @@
 {
   "name": "arithmetica",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "is an implementation of arithmetic operators for Rational numbers",
   "type": "module",
   "exports": {
