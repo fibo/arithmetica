@@ -13,14 +13,14 @@ export const add = (a, b) => {
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
 		return fractionToRationalNumber(
-			integerA * BigInt(
-				Math.pow( 10, denominatorBase10ExponentB - denominatorBase10ExponentA)
+			integerA * (
+				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
 			) + integerB, denominatorBase10ExponentB
 		);
 	} else {
 		return fractionToRationalNumber(
-			integerA + integerB * BigInt(
-				Math.pow( 10, denominatorBase10ExponentA - denominatorBase10ExponentB)
+			integerA + integerB * 10n ** (
+				denominatorBase10ExponentA - denominatorBase10ExponentB
 			), denominatorBase10ExponentA
 		);
 	}
@@ -39,14 +39,14 @@ export const sub = (a, b) => {
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
 		return fractionToRationalNumber(
-			integerA * BigInt(
-				Math.pow( 10, denominatorBase10ExponentB - denominatorBase10ExponentA)
+			integerA * (
+				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
 			) - integerB, denominatorBase10ExponentB
 		);
 	} else {
 		return fractionToRationalNumber(
-			integerA - integerB * BigInt(
-				Math.pow( 10, denominatorBase10ExponentA - denominatorBase10ExponentB)
+			integerA - integerB * 10n ** (
+				denominatorBase10ExponentA - denominatorBase10ExponentB
 			), denominatorBase10ExponentA
 		);
 	}
