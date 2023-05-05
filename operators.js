@@ -61,4 +61,14 @@ export const mul = (a, b) => {
 	);
 }
 
-export const div = (a, b) => a / b;
+export const div = (a, b) => {
+	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
+
+	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
+		return fractionToRationalNumber(
+			integerA / integerB,
+			0n
+		);
+	}
+}
