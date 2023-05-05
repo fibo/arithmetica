@@ -8,9 +8,11 @@ export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
 		if (bigIntStringLength - 1n === denominatorBase10Exponent) {
 			return "-0." + bigIntString.slice(1);
 		} else if (bigIntStringLength - 1n < denominatorBase10Exponent) {
-			return "-0." + "0".repeat(
-				Number(denominatorBase10Exponent - bigIntStringLength - 1n)
-			) + bigIntString.slice(1);
+			return removeRightPaddedZerosFromDecimalNumber(
+				"-0." + "0".repeat(
+					Number(denominatorBase10Exponent - bigIntStringLength + 1n)
+				) + bigIntString.slice(1)
+			)
 		} else {
 			return removeRightPaddedZerosFromDecimalNumber(
 				"-" + bigIntString.slice(
@@ -25,9 +27,11 @@ export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
 		if (bigIntStringLength === denominatorBase10Exponent) {
 			return "0." + bigIntString;
 		} else if (bigIntStringLength < denominatorBase10Exponent) {
-			return "0." + "0".repeat(
-				Number(denominatorBase10Exponent - bigIntStringLength)
-			) + bigIntString;
+			return removeRightPaddedZerosFromDecimalNumber(
+				"0." + "0".repeat(
+					Number(denominatorBase10Exponent - bigIntStringLength)
+				) + bigIntString
+			)
 		} else {
 			return removeRightPaddedZerosFromDecimalNumber(
 				bigIntString.slice(
