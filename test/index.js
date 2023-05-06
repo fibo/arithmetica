@@ -1,6 +1,15 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { add, mul, div, eq, sub, isFloat, isRational } from "../index.js"
+import {
+	// operators
+	add, sub, mul, div, eq,
+	// type-guards
+	isFloat,
+	isRational,
+	// utils
+	floatToNumber,
+	rationalToNumber
+} from "../index.js"
 
 describe("arithmetica index", () => {
 	it("exports operators", () => {
@@ -14,5 +23,10 @@ describe("arithmetica index", () => {
 	it("exports type-guards", () => {
 		assert.ok(typeof isFloat === "function");
 		assert.ok(typeof isRational === "function");
+	});
+
+	it("exports utils", () => {
+		assert.ok(typeof floatToNumber === "function");
+		assert.ok(typeof rationalToNumber === "function");
 	});
 })

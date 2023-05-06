@@ -54,11 +54,16 @@ A `Float` is a string that expresses a decimal representation of a number, for e
 - "1.2"
 - "-0.42"
 
+Decimal separator is "." character.
 Exponential notation is not allowed.
 
 ### Rational
 
 A `Rational` includes every [`Float`](#float) plus *repeating decimals* that are decimal representation of a number whose digits are **periodic**.
+
+A _repeating decimal_ is represented by a string like:
+
+- "0._3": represents fraction `1/3`, that is 0.33333...
 
 ## Type guards
 
@@ -137,6 +142,17 @@ try {
 
 ## Utils
 
+### floatToNumber
+
+`floatToNumber(floatStr: Float, mantissaLength: number): number`
+
+Converts a `Float` to a `number`.
+
+```js
+floatToNumber("42.01", 0); // 42
+floatToNumber("1234.56789", 2); // 1234.57
+```
+
 ### rationalToNumber
 
 `rationalToNumber(rational: Rational, mantissaLength: number): number`
@@ -144,8 +160,8 @@ try {
 Converts a `Rational` to a `number`.
 
 ```js
-rationalToNumber("42.0", 0); // 42
-rationalToNumber("1234.56789", 2); // 1234.57
+rationalToNumber("0.10", 1); // 0.1
+rationalToNumber("0._3", 8); // 0.33333333
 ```
 
 ## License

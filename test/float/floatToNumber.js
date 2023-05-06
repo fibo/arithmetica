@@ -6,6 +6,10 @@ export const floatToNumberTest = {
 	message: "converts a `Float` to a `Number`",
 	data: [
 		{
+			input: { floatStr: "0.1", mantissaLength: 1 },
+			output: 0.1
+		},
+		{
 			input: { floatStr: "1", mantissaLength: 0 },
 			output: 1
 		},
