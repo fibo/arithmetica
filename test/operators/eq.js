@@ -10,7 +10,15 @@ describe("eq", () => {
 				output: true,
 			},
 			{
+				input: { a: "1", b: "2" },
+				output: false,
+			},
+			{
 				input: { a: "1.0", b: "1" },
+				output: true,
+			},
+			{
+				input: { a: "42", b: "42.0" },
 				output: true,
 			},
 			{
