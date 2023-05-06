@@ -1,5 +1,13 @@
 import { Rational } from "./Rational.js";
 
+/** Equality. */
+export declare const eq: (a: Rational, b: Rational) => boolean;
+
+export type RationalUnaryOperator = (a: Rational) => Rational;
+
+/** Negation. */
+export declare const neg: RationalUnaryOperator;
+
 export type RationalBinaryOperator = (
 	a: Rational,
 	b: Rational

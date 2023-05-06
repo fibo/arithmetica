@@ -1,11 +1,22 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { sub } from "../../rational/operators.js";
-import { subTest } from "../float/sub.js"
+import { subFloatTest } from "../float/sub.js"
+
+const subRationalTest = {
+	message: "implements Rational subtraction",
+	data: []
+};
 
 describe("sub", () => {
-	it(subTest.message, () => {
-		subTest.data.forEach(({ input: { a, b }, output }) => {
+	it(subRationalTest.message, () => {
+		subRationalTest.data.forEach(({ input: { a, b }, output }) => {
+			assert.equal(sub(a, b), output);
+		});
+	});
+
+	it(subFloatTest.message, () => {
+		subFloatTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(sub(a, b), output);
 		});
 	});

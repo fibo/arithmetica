@@ -1,12 +1,17 @@
 import { Float } from "./Float.js";
 
+/** Equality. */
+export declare const eq: (a: Float, b: Float) => boolean;
+
+export type FloatUnaryOperator = (a: Float) => Float;
+
+/** Negation. */
+export declare const neg: FloatUnaryOperator;
+
 export type FloatBinaryOperator = (
 	a: Float,
 	b: Float
 ) => Float;
-
-/** Equality. */
-export declare const eq: FloatBinaryOperator;
 
 /** Addition. */
 export declare const add: FloatBinaryOperator;

@@ -106,6 +106,17 @@ eq("1", "2"); // false
 eq("42", "42.0"); // true
 ```
 
+### neg
+
+`neg(a: Rational): Rational`
+
+Implements negation.
+
+```js
+neg("1"); // '-1'
+neg("-42"); // '42'
+```
+
 ### add
 
 `add(a: Rational, b: Rational): Rational`

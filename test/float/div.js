@@ -2,7 +2,7 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { div } from "../../float/operators.js";
 
-export const divThrowsRangeErrorTest = {
+export const divFloatThrowsRangeErrorTest = {
 	message: 'throws if second operand is "0"',
 	data: [
 		{
@@ -17,7 +17,7 @@ export const divThrowsRangeErrorTest = {
 	]
 };
 
-export const divTest = {
+export const divFloatTest = {
 	message: "implements division",
 	data: [
 		{
@@ -68,8 +68,8 @@ export const divTest = {
 };
 
 describe("div", () => {
-	it(divThrowsRangeErrorTest.message, () => {
-		divThrowsRangeErrorTest.data.forEach(({ input: { a, b }, error }) => {
+	it(divFloatThrowsRangeErrorTest.message, () => {
+		divFloatThrowsRangeErrorTest.data.forEach(({ input: { a, b }, error }) => {
 			assert.throws(
 				() => { div(a, b); },
 				error
@@ -77,8 +77,8 @@ describe("div", () => {
 		})
 	});
 
-	it(divTest.message, () => {
-		divTest.data.forEach(({ input: { a, b }, output }) => {
+	it(divFloatTest.message, () => {
+		divFloatTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(div(a, b), output);
 		});
 	});

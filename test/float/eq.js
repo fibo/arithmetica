@@ -2,7 +2,7 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { eq } from "../../float/operators.js";
 
-export const eqTest = {
+export const eqFloatTest = {
 	message: "implements equality",
 	data: [
 		{
@@ -18,6 +18,10 @@ export const eqTest = {
 			output: true,
 		},
 		{
+			input: { a: "123.4500", b: "123.45" },
+			output: true,
+		},
+		{
 			input: { a: "42", b: "42.0" },
 			output: true,
 		},
@@ -25,12 +29,16 @@ export const eqTest = {
 			input: { a: "-1.2", b: "-1.20" },
 			output: true,
 		},
+		{
+			input: { a: "1.000000000000001", b: "1.000" },
+			output: false,
+		},
 	]
 };
 
 describe("eq", () => {
-	it(eqTest.message, () => {
-		eqTest.data.forEach(({ input: { a, b }, output }) => {
+	it(eqFloatTest.message, () => {
+		eqFloatTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(eq(a, b), output);
 		});
 	});

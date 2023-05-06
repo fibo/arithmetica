@@ -2,7 +2,7 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { add } from "../../float/operators.js";
 
-export const addTest = {
+export const addFloatTest = {
 	message: "implements addition",
 	data: [
 		{
@@ -80,8 +80,8 @@ export const addTest = {
 };
 
 describe("add", () => {
-	it(addTest.message, () => {
-		addTest.data.forEach(({ input: { a, b }, output }) => {
+	it(addFloatTest.message, () => {
+		addFloatTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(add(a, b), output);
 		});
 	});

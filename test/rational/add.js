@@ -1,11 +1,22 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { add } from "../../rational/operators.js";
-import { addTest } from "../float/add.js"
+import { addFloatTest } from "../float/add.js"
+
+const addRationalTest = {
+	message: "implements Rational addition",
+	data: []
+};
 
 describe("add", () => {
-	it(addTest.message, () => {
-		addTest.data.forEach(({ input: { a, b }, output }) => {
+	it(addRationalTest.message, () => {
+		addRationalTest.data.forEach(({ input: { a, b }, output }) => {
+			assert.equal(add(a, b), output);
+		});
+	});
+
+	it(addFloatTest.message, () => {
+		addFloatTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(add(a, b), output);
 		});
 	});

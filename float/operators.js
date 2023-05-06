@@ -9,6 +9,11 @@ export const eq = (a, b) => {
 	return sub(a, b) === "0";
 }
 
+export const neg = (a) => {
+	if (a.charAt(0) === "-") return a.slice(1);
+	return "-" + a;
+}
+
 export const add = (a, b) => {
 	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
 	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);

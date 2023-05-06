@@ -4,6 +4,8 @@ import {
 } from "../float/utils.js";
 import { floatToBase10Fraction } from "../float/utils.js";
 
+export { neg } from "../float/operators.js";
+
 export const eq = (a, b) => {
 	if (a === b) return true;
 	return sub(a, b) === "0";
