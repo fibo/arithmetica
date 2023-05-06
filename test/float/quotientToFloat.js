@@ -1,12 +1,12 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { integerDivision } from "../../utils.js";
+import { quotientToFloat } from "../../float/utils.js";
 
-describe("integerDivision", () => {
+describe("quotientToFloat", () => {
 	it('throws if second operand is `0n`', () => {
 		assert.throws(
 			() => {
-				integerDivision(1n, 0n);
+				quotientToFloat(1n, 0n);
 			},
 			{
 				name: "RangeError",
@@ -50,7 +50,7 @@ describe("integerDivision", () => {
 			},
 		].forEach(
 			({ input: { integerA, integerB }, output }) => {
-				assert.equal(integerDivision(integerA, integerB), output);
+				assert.equal(quotientToFloat(integerA, integerB), output);
 			}
 		);
 	});

@@ -3,6 +3,7 @@
 > is an implementation of arithmetic operators for Rational numbers
 
 A [Rational](https://en.wikipedia.org/wiki/Rational_number) is a number that can be expressed as a fraction of two integers.
+It includes also [repeating decimals](https://en.wikipedia.org/wiki/Repeating_decimal) hence is a super-set of floating point numbers.
 
 ## Installation
 
@@ -11,6 +12,19 @@ With [npm](https://www.npmjs.com/) do
 ```sh
 npm install arithmetica
 ```
+
+This package is implemented with ECMAScript modules. CommonJS is not supported, nor bundle is provided.
+
+If you need a bundle, for example only with floating point operators (i.e. without repeating decimals)
+you can do something like.
+
+```sh
+git clone git@github.com:fibo/arithmetica.git
+cd arithmetica
+esbuild --bundle float/index.js --minify --outfile=arithmetica.js
+```
+
+It will produce a 1.6kb (minified, not gzipped) _arithmetica.js_ file.
 
 ## Usage
 
@@ -24,15 +38,57 @@ There is no runtime check on types: consumers are responsible to feed inputs
 that are actual `Rational` types, for instance using
 [`isRational` type-guard](#isrational).
 
-## API
+Notice that if you want only floating point operators, without _repeating decimals_ support, you can do
 
-### Rational
+```js
+import { add } from "arithmetica/float";
+```
 
-A `Rational` is a string that expresses a decimal representation of a number, for example:
+## Types
+
+### Float
+
+A `Float` is a string that expresses a decimal representation of a number, for example:
 
 - "0"
 - "1.2"
 - "-0.42"
+
+Exponential notation is not allowed.
+
+### Rational
+
+A `Rational` includes every [`Float`](#float) plus *repeating decimals* that are decimal representation of a number whose digits are **periodic**.
+
+## Type guards
+
+### isRational
+
+`isRational(arg: unknown): arg is Rational`
+
+Use `isRational` type-guard to check if some data belongs to `Rational` type.
+
+```ts
+import { Rational, isRational, sub } from "arithmetica";
+
+function minusOne (a: string): Rational {
+  if (isRational(a)) return sub(a, "1");
+  throw new TypeError(`Argument is not a Rational ${a}`);
+}
+```
+
+Of course it can be used also on an ECMAScript runtime.
+
+```js
+import { isRational, mul } from "arithmetica";
+
+function timesTen (a) {
+  if (isRational(a)) return mul(a, "10");
+  throw new TypeError("Argument is not a Rational");
+}
+```
+
+## Operators
 
 ### eq
 
@@ -79,37 +135,13 @@ try {
 }
 ```
 
-### isRational
-
-`isRational(arg: unknown): arg is Rational`
-
-Use `isRational` type-guard to check if some data belongs to `Rational` type.
-
-```ts
-import { Rational, isRational, sub } from "arithmetica";
-
-function minusOne (a: string): Rational {
-  if (isRational(a)) return sub(a, "1");
-  throw new TypeError(`Argument is not a Rational ${a}`);
-}
-```
-
-Of course it can be used also on an ECMAScript runtime.
-
-```js
-import { isRational, mul } from "arithmetica";
-
-function timesTen (a) {
-  if (isRational(a)) return mul(a, "10");
-  throw new TypeError("Argument is not a Rational");
-}
-```
+## Utils
 
 ### rationalToNumber
 
 `rationalToNumber(rational: Rational, mantissaLength: number): number`
 
-Converts a `Rational` to a [`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#number_type).
+Converts a `Rational` to a `number`.
 
 ```js
 rationalToNumber("42.0", 0); // 42

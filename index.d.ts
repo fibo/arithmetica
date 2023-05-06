@@ -1,4 +1,4 @@
-export * from "./Rational.js";
-export * from "./operators.js";
-export * from "./rationalToNumber.js";
+export * from "./float/Float.js";
+export * from "./rational/Rational.js";
+export * from "./rational/operators.js";
 // Do not export utils.

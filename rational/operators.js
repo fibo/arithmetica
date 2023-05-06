@@ -1,8 +1,8 @@
 import {
-	base10FractionToRational,
-	integerDivision,
-	rationalToFraction,
-} from "./utils.js";
+	base10FractionToFloat,
+	quotientToFloat,
+} from "../float/utils.js";
+import { floatToBase10Fraction } from "../float/utils.js";
 
 export const eq = (a, b) => {
 	if (a === b) return true;
@@ -10,24 +10,24 @@ export const eq = (a, b) => {
 }
 
 export const add = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
+	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return base10FractionToRational(
+		return base10FractionToFloat(
 			integerA + integerB,
 			denominatorBase10ExponentA
 		);
 	}
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		return base10FractionToRational(
+		return base10FractionToFloat(
 			integerA * (
 				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
 			) + integerB, denominatorBase10ExponentB
 		);
 	} else {
-		return base10FractionToRational(
+		return base10FractionToFloat(
 			integerA + integerB * 10n ** (
 				denominatorBase10ExponentA - denominatorBase10ExponentB
 			), denominatorBase10ExponentA
@@ -36,24 +36,24 @@ export const add = (a, b) => {
 };
 
 export const sub = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
+	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return base10FractionToRational(
+		return base10FractionToFloat(
 			integerA - integerB,
 			denominatorBase10ExponentA
 		);
 	}
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		return base10FractionToRational(
+		return base10FractionToFloat(
 			integerA * (
 				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
 			) - integerB, denominatorBase10ExponentB
 		);
 	} else {
-		return base10FractionToRational(
+		return base10FractionToFloat(
 			integerA - integerB * 10n ** (
 				denominatorBase10ExponentA - denominatorBase10ExponentB
 			), denominatorBase10ExponentA
@@ -62,17 +62,17 @@ export const sub = (a, b) => {
 }
 
 export const mul = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
-	return base10FractionToRational(
+	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	return base10FractionToFloat(
 		integerA * integerB,
 		denominatorBase10ExponentA + denominatorBase10ExponentB
 	);
 }
 
 export const div = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
+	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 
 	let reminder = integerA % integerB;
 
@@ -80,7 +80,7 @@ export const div = (a, b) => {
 		if (reminder === 0n) {
 			return String(integerA / integerB);
 		}  else {
-			return integerDivision(integerA, integerB);
+			return quotientToFloat(integerA, integerB);
 		}
 	}
 
@@ -93,21 +93,21 @@ export const div = (a, b) => {
 			);
 		}  else {
 			mul(
-				integerDivision(integerA, integerB),
+				quotientToFloat(integerA, integerB),
 				String(10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA))
 			);
 		}
 	} else {
 		if (reminder === 0n) {
-			return base10FractionToRational(
+			return base10FractionToFloat(
 				integerA / integerB,
 				denominatorBase10ExponentA - denominatorBase10ExponentB
 			);
 		}  else {
-			let [integer, denominatorBase10Exponent] = rationalToFraction(
-				integerDivision(integerA, integerB)
+			let [integer, denominatorBase10Exponent] = floatToBase10Fraction(
+				quotientToFloat(integerA, integerB)
 			);
-			return base10FractionToRational(
+			return base10FractionToFloat(
 				integer,
 				denominatorBase10Exponent + denominatorBase10ExponentA - denominatorBase10ExponentB
 			)

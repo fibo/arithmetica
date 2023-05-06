@@ -1,4 +1,4 @@
-export const base10FractionToRational = (bigInt, denominatorBase10Exponent) => {
+export const base10FractionToFloat = (bigInt, denominatorBase10Exponent) => {
 	const bigIntString = String(bigInt);
 	if (bigIntString === "0") return "0";
 	const bigIntStringLength = BigInt(bigIntString.length);
@@ -8,13 +8,13 @@ export const base10FractionToRational = (bigInt, denominatorBase10Exponent) => {
 		if (bigIntStringLength - 1n === denominatorBase10Exponent) {
 			return "-0." + bigIntString.slice(1);
 		} else if (bigIntStringLength - 1n < denominatorBase10Exponent) {
-			return removeRightPaddedZerosFromDecimal(
+			return removeRightPaddedZerosFromNonRepeatingDecimal(
 				"-0." + "0".repeat(
 					Number(denominatorBase10Exponent - bigIntStringLength + 1n)
 				) + bigIntString.slice(1)
 			)
 		} else {
-			return removeRightPaddedZerosFromDecimal(
+			return removeRightPaddedZerosFromNonRepeatingDecimal(
 				"-" + bigIntString.slice(
 						1,
 						Number(bigIntStringLength - denominatorBase10Exponent)
@@ -27,13 +27,13 @@ export const base10FractionToRational = (bigInt, denominatorBase10Exponent) => {
 		if (bigIntStringLength === denominatorBase10Exponent) {
 			return "0." + bigIntString;
 		} else if (bigIntStringLength < denominatorBase10Exponent) {
-			return removeRightPaddedZerosFromDecimal(
+			return removeRightPaddedZerosFromNonRepeatingDecimal(
 				"0." + "0".repeat(
 					Number(denominatorBase10Exponent - bigIntStringLength)
 				) + bigIntString
 			)
 		} else {
-			return removeRightPaddedZerosFromDecimal(
+			return removeRightPaddedZerosFromNonRepeatingDecimal(
 				bigIntString.slice(
 					0,
 					Number(bigIntStringLength - denominatorBase10Exponent)
@@ -45,7 +45,7 @@ export const base10FractionToRational = (bigInt, denominatorBase10Exponent) => {
 	}
 };
 
-export const integerDivision = (integerA, integerB) => {
+export const quotientToFloat = (integerA, integerB) => {
 	let reminder = integerA % integerB;
 	if (reminder === 0n) return String(integerA / integerB);
 	let decimalPart = "";
@@ -58,18 +58,15 @@ export const integerDivision = (integerA, integerB) => {
 	return String(integerA / integerB) + "." + decimalPart;
 }
 
-export const rationalToFraction = (rational) => {
-	let [integer, decimalPart] = rational.split(".");
-	if (decimalPart === undefined) {
-		return [BigInt(integer), 0n];
-	} else {
-		return [BigInt(integer + decimalPart), BigInt(decimalPart.length)];
-	}
+export const floatToBase10Fraction = (floatStr) => {
+	let [integer, mantissa] = floatStr.split(".");
+	if (mantissa === undefined) return [BigInt(integer), 0n];
+	return [BigInt(integer + mantissa), BigInt(mantissa.length)];
 };
 
-// This function is used internally, only for decimals.
+// This function is used internally, only for numbers with mantissa.
 // Cases when `bigIntString` is `0` or any other integer are not handled.
-export const removeRightPaddedZerosFromDecimal = (bigIntString) => {
+export const removeRightPaddedZerosFromNonRepeatingDecimal = (bigIntString) => {
 	const bigIntStringLength = bigIntString.length;
 	let i = bigIntStringLength - 1;
 	let letter;

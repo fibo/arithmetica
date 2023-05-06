@@ -1,8 +1,8 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { removeRightPaddedZerosFromDecimal } from "../../utils.js";
+import { removeRightPaddedZerosFromNonRepeatingDecimal } from "../../float/utils.js";
 
-describe("removeRightPaddedZerosFromDecimal", () => {
+describe("removeRightPaddedZerosFromNonRepeatingDecimal", () => {
 	it("works", () => {
 		[
 			{
@@ -31,7 +31,7 @@ describe("removeRightPaddedZerosFromDecimal", () => {
 			},
 		].forEach(({ input, output }) => {
 			assert.equal(
-				removeRightPaddedZerosFromDecimal(input),
+				removeRightPaddedZerosFromNonRepeatingDecimal(input),
 				output
 			);
 		});

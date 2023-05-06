@@ -1,4 +1,4 @@
-export const isRational = (arg) => {
+export const isFloat = (arg) => {
 	if (typeof arg !== "string") return false;
 
 	let letter;
@@ -43,4 +43,8 @@ export const isRational = (arg) => {
 		return false;
 
 	return true;
+};
+
+export const floatToNumber = (floatStr, mantissaLength) => {
+    return Number(Number(parseFloat(floatStr)).toFixed(mantissaLength));
 };
