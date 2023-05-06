@@ -39,7 +39,7 @@ Implements equality.
 
 ```js
 eq("1", "2"); // false
-eq("42", "42.0"); // false
+eq("42", "42.0"); // true
 ```
 
 ### add
