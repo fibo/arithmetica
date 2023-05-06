@@ -1,21 +1,21 @@
-import { RationalNumber } from "./RationalNumber.js";
+import { Rational } from "./Rational.js";
 
-export type RationalNumberBinaryOperator = (
-	a: RationalNumber,
-	b: RationalNumber
-) => RationalNumber;
+export type RationalBinaryOperator = (
+	a: Rational,
+	b: Rational
+) => Rational;
 
 /** Equality. */
-export declare const eq: RationalNumberBinaryOperator;
+export declare const eq: RationalBinaryOperator;
 
 /** Addition. */
-export declare const add: RationalNumberBinaryOperator;
+export declare const add: RationalBinaryOperator;
 
 /** Subtraction. */
-export declare const sub: RationalNumberBinaryOperator;
+export declare const sub: RationalBinaryOperator;
 
 /** Multiplication. */
-export declare const mul: RationalNumberBinaryOperator;
+export declare const mul: RationalBinaryOperator;
 
 /** Division. */
-export declare const div: RationalNumberBinaryOperator;
+export declare const div: RationalBinaryOperator;

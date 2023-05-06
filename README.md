@@ -2,12 +2,7 @@
 
 > is an implementation of arithmetic operators for Rational numbers
 
-A `RationalNumber` is any number that can be expressed by a fraction.
-It is represented by a string, for example:
-
-- "0"
-- "1.2"
-- "-0.42"
+A [Rational](https://en.wikipedia.org/wiki/Rational_number) is a number that can be expressed as a fraction of two integers.
 
 ## Installation
 
@@ -26,14 +21,22 @@ console.log(add("0.1", "0.2")); // '0.3'
 ```
 
 There is no runtime check on types: consumers are responsible to feed inputs
-that are actual `RationalNumber` types, for instance using
-[`isRationalNumber` type-guard](#isrationalnumber).
+that are actual `Rational` types, for instance using
+[`isRational` type-guard](#isrational).
 
 ## API
 
+### Rational
+
+A `Rational` is a string that expresses a decimal representation of a number, for example:
+
+- "0"
+- "1.2"
+- "-0.42"
+
 ### eq
 
-`eq(a: RationalNumber, b: RationalNumber): boolean`
+`eq(a: Rational, b: Rational): boolean`
 
 Implements equality.
 
@@ -44,25 +47,25 @@ eq("42", "42.0"); // true
 
 ### add
 
-`add(a: RationalNumber, b: RationalNumber): RationalNumber`
+`add(a: Rational, b: Rational): Rational`
 
 Implements addition.
 
 ### sub
 
-`sub(a: RationalNumber, b: RationalNumber): RationalNumber`
+`sub(a: Rational, b: Rational): Rational`
 
 Implements subtraction.
 
 ### mul
 
-`mul(a: RationalNumber, b: RationalNumber): RationalNumber`
+`mul(a: Rational, b: Rational): Rational`
 
 Implements multiplication.
 
 ### div
 
-`div(a: RationalNumber, b: RationalNumber): RationalNumber`
+`div(a: Rational, b: Rational): Rational`
 
 Implements division. It throws `RangeError` if denominator is zero.
 
@@ -76,41 +79,41 @@ try {
 }
 ```
 
-### isRationalNumber
+### isRational
 
-`isRationalNumber(arg: unknown): arg is RationalNumber`
+`isRational(arg: unknown): arg is Rational`
 
-Use `isRationalNumber` type-guard to check if some variable has `RationalNumber` data type.
+Use `isRational` type-guard to check if some data belongs to `Rational` type.
 
 ```ts
-import { isRationalNumber, sub } from "arithmetica";
+import { Rational, isRational, sub } from "arithmetica";
 
-function minusOne (a: string): RationalNumber {
-  if (isRationalNumber(a)) return sub(a, "1");
-  throw new TypeError(`Argument is not a RationalNumber ${a}`);
+function minusOne (a: string): Rational {
+  if (isRational(a)) return sub(a, "1");
+  throw new TypeError(`Argument is not a Rational ${a}`);
 }
 ```
 
 Of course it can be used also on an ECMAScript runtime.
 
 ```js
-import { isRationalNumber, mul } from "arithmetica";
+import { isRational, mul } from "arithmetica";
 
 function timesTen (a) {
-  if (isRationalNumber(a)) return mul(a, "10");
-  throw new TypeError(`Argument is not a RationalNumber ${a}`);
+  if (isRational(a)) return mul(a, "10");
+  throw new TypeError("Argument is not a Rational");
 }
 ```
 
-### rationalNumberToFloat
+### rationalToNumber
 
-`rationalNumberToFloat(rationalNumber: RationalNumber, mantissaLength: number): number`
+`rationalToNumber(rational: Rational, mantissaLength: number): number`
 
-Convert a `RationalNumber` to a floating point number.
+Converts a `Rational` to a [`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#number_type).
 
 ```js
-rationalNumberToFloat("42.0", 0); // 42
-rationalNumberToFloat("1234.56789", 2); // 1234.57
+rationalToNumber("42.0", 0); // 42
+rationalToNumber("1234.56789", 2); // 1234.57
 ```
 
 ## License

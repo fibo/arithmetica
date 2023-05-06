@@ -1,8 +1,8 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { isRationalNumber } from "../RationalNumber.js";
+import { isRational } from "../Rational.js";
 
-describe("RationalNumber", () => {
+describe("Rational", () => {
 	it("is a string", () => {
 		[
 			{
@@ -22,7 +22,7 @@ describe("RationalNumber", () => {
 				output: true,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
@@ -41,7 +41,7 @@ describe("RationalNumber", () => {
 				output: true,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
@@ -60,7 +60,7 @@ describe("RationalNumber", () => {
 				output: false,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
@@ -79,7 +79,7 @@ describe("RationalNumber", () => {
 				output: false,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
@@ -97,8 +97,24 @@ describe("RationalNumber", () => {
 				input: "1-",
 				output: false,
 			},
+			{
+				input: "-1.0-",
+				output: false,
+			},
+			{
+				input: "-1.23-4",
+				output: false,
+			},
+			{
+				input: "1.23-4",
+				output: false,
+			},
+			{
+				input: "123-4",
+				output: false,
+			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
@@ -113,7 +129,7 @@ describe("RationalNumber", () => {
 				output: false,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
@@ -128,11 +144,11 @@ describe("RationalNumber", () => {
 				output: false,
 			},
 		].forEach(({ input, output }) => {
-			assert.equal(isRationalNumber(input), output);
+			assert.equal(isRational(input), output);
 		});
 	});
 
 	it("cannot be -0", () => {
-		assert.equal(isRationalNumber("-0"), false);
+		assert.equal(isRational("-0"), false);
 	});
 });

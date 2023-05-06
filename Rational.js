@@ -1,4 +1,4 @@
-export const isRationalNumber = (arg) => {
+export const isRational = (arg) => {
 	if (typeof arg !== "string") return false;
 
 	let letter;

@@ -1,7 +1,7 @@
 import {
-	fractionToRationalNumber,
+	base10FractionToRational,
 	integerDivision,
-	rationalNumberToFraction,
+	rationalToFraction,
 } from "./utils.js";
 
 export const eq = (a, b) => {
@@ -10,24 +10,24 @@ export const eq = (a, b) => {
 }
 
 export const add = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
+	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return fractionToRationalNumber(
+		return base10FractionToRational(
 			integerA + integerB,
 			denominatorBase10ExponentA
 		);
 	}
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		return fractionToRationalNumber(
+		return base10FractionToRational(
 			integerA * (
 				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
 			) + integerB, denominatorBase10ExponentB
 		);
 	} else {
-		return fractionToRationalNumber(
+		return base10FractionToRational(
 			integerA + integerB * 10n ** (
 				denominatorBase10ExponentA - denominatorBase10ExponentB
 			), denominatorBase10ExponentA
@@ -36,24 +36,24 @@ export const add = (a, b) => {
 };
 
 export const sub = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
+	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return fractionToRationalNumber(
+		return base10FractionToRational(
 			integerA - integerB,
 			denominatorBase10ExponentA
 		);
 	}
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		return fractionToRationalNumber(
+		return base10FractionToRational(
 			integerA * (
 				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
 			) - integerB, denominatorBase10ExponentB
 		);
 	} else {
-		return fractionToRationalNumber(
+		return base10FractionToRational(
 			integerA - integerB * 10n ** (
 				denominatorBase10ExponentA - denominatorBase10ExponentB
 			), denominatorBase10ExponentA
@@ -62,17 +62,17 @@ export const sub = (a, b) => {
 }
 
 export const mul = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
-	return fractionToRationalNumber(
+	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
+	return base10FractionToRational(
 		integerA * integerB,
 		denominatorBase10ExponentA + denominatorBase10ExponentB
 	);
 }
 
 export const div = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = rationalNumberToFraction(a);
-	const [integerB, denominatorBase10ExponentB] = rationalNumberToFraction(b);
+	const [integerA, denominatorBase10ExponentA] = rationalToFraction(a);
+	const [integerB, denominatorBase10ExponentB] = rationalToFraction(b);
 
 	let reminder = integerA % integerB;
 
@@ -99,15 +99,15 @@ export const div = (a, b) => {
 		}
 	} else {
 		if (reminder === 0n) {
-			return fractionToRationalNumber(
+			return base10FractionToRational(
 				integerA / integerB,
 				denominatorBase10ExponentA - denominatorBase10ExponentB
 			);
 		}  else {
-			let [integer, denominatorBase10Exponent] = rationalNumberToFraction(
+			let [integer, denominatorBase10Exponent] = rationalToFraction(
 				integerDivision(integerA, integerB)
 			);
-			return fractionToRationalNumber(
+			return base10FractionToRational(
 				integer,
 				denominatorBase10Exponent + denominatorBase10ExponentA - denominatorBase10ExponentB
 			)

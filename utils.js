@@ -1,4 +1,4 @@
-export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
+export const base10FractionToRational = (bigInt, denominatorBase10Exponent) => {
 	const bigIntString = String(bigInt);
 	if (bigIntString === "0") return "0";
 	const bigIntStringLength = BigInt(bigIntString.length);
@@ -8,13 +8,13 @@ export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
 		if (bigIntStringLength - 1n === denominatorBase10Exponent) {
 			return "-0." + bigIntString.slice(1);
 		} else if (bigIntStringLength - 1n < denominatorBase10Exponent) {
-			return removeRightPaddedZerosFromDecimalNumber(
+			return removeRightPaddedZerosFromDecimal(
 				"-0." + "0".repeat(
 					Number(denominatorBase10Exponent - bigIntStringLength + 1n)
 				) + bigIntString.slice(1)
 			)
 		} else {
-			return removeRightPaddedZerosFromDecimalNumber(
+			return removeRightPaddedZerosFromDecimal(
 				"-" + bigIntString.slice(
 						1,
 						Number(bigIntStringLength - denominatorBase10Exponent)
@@ -27,13 +27,13 @@ export const fractionToRationalNumber = (bigInt, denominatorBase10Exponent) => {
 		if (bigIntStringLength === denominatorBase10Exponent) {
 			return "0." + bigIntString;
 		} else if (bigIntStringLength < denominatorBase10Exponent) {
-			return removeRightPaddedZerosFromDecimalNumber(
+			return removeRightPaddedZerosFromDecimal(
 				"0." + "0".repeat(
 					Number(denominatorBase10Exponent - bigIntStringLength)
 				) + bigIntString
 			)
 		} else {
-			return removeRightPaddedZerosFromDecimalNumber(
+			return removeRightPaddedZerosFromDecimal(
 				bigIntString.slice(
 					0,
 					Number(bigIntStringLength - denominatorBase10Exponent)
@@ -58,8 +58,8 @@ export const integerDivision = (integerA, integerB) => {
 	return String(integerA / integerB) + "." + decimalPart;
 }
 
-export const rationalNumberToFraction = (rationalNumber) => {
-	let [integer, decimalPart] = rationalNumber.split(".");
+export const rationalToFraction = (rational) => {
+	let [integer, decimalPart] = rational.split(".");
 	if (decimalPart === undefined) {
 		return [BigInt(integer), 0n];
 	} else {
@@ -69,7 +69,7 @@ export const rationalNumberToFraction = (rationalNumber) => {
 
 // This function is used internally, only for decimals.
 // Cases when `bigIntString` is `0` or any other integer are not handled.
-export const removeRightPaddedZerosFromDecimalNumber = (bigIntString) => {
+export const removeRightPaddedZerosFromDecimal = (bigIntString) => {
 	const bigIntStringLength = bigIntString.length;
 	let i = bigIntStringLength - 1;
 	let letter;

@@ -1,8 +1,8 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { rationalNumberToFraction } from "../../utils.js";
+import { rationalToFraction } from "../../utils.js";
 
-describe("rationalNumberToFraction", () => {
+describe("rationalToFraction", () => {
 	it("returns numerator as BigInt and denominatorBase10Exponent as Number", () => {
 		[
 			{
@@ -42,7 +42,7 @@ describe("rationalNumberToFraction", () => {
 			},
 		].forEach(({ input, output }) => {
 			const [numerator, denominatorBase10Exponent] =
-				rationalNumberToFraction(input);
+				rationalToFraction(input);
 			assert.equal(numerator, output.numerator);
 			assert.equal(
 				denominatorBase10Exponent,
