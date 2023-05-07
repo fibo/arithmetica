@@ -7,7 +7,7 @@ const repeatingDecimalToFractionTest = {
 	data: [
 		{
 			input: {
-				integerPart: "8",
+				integer: "8",
 				decimalFixedPart: "",
 				decimalRepeatingPart: "5"
 			},
@@ -23,14 +23,14 @@ describe("repeatingDecimalToFraction", () => {
 	it(repeatingDecimalToFractionTest.message, () => {
 		repeatingDecimalToFractionTest.data.forEach(({
 			input: {
-				integerPart,
+				integer,
 				decimalFixedPart,
 				decimalRepeatingPart
 			},
 			output
 		}) => {
 			const [numerator, denominator] = repeatingDecimalToFraction(
-				integerPart,
+				integer,
 				decimalFixedPart,
 				decimalRepeatingPart
 			);

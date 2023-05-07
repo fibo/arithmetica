@@ -6,6 +6,13 @@ export const rationalToBase10Fraction = (rational) => {
 	return [BigInt(integer + mantissa), BigInt(mantissa.length)];
 };
 
+export const splitRational = (rational) => {
+	let [integer, mantissa] = rational.split(".");
+	if (mantissa === undefined) return [integer, "", ""];
+	let [decimalFixedPart, decimalRepeatingPart] = mantissa.split("_");
+	return [integer, decimalFixedPart ?? "", decimalRepeatingPart ?? ""];
+};
+
 export const repeatingDecimalToFraction = () => {
 	return [77n, 9n];
-}
+};
