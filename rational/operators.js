@@ -32,6 +32,8 @@ export const add = (a, b) => {
 		decimalFixedPartB,
 		decimalRepeatingPartB
 	);
+
+	if (denominatorA === denominatorB) return divFloat(String(numeratorA + numeratorB), String(denominatorA));
 };
 
 export const sub = (a, b) => {
@@ -86,4 +88,5 @@ export const div = (a, b) => {
 		decimalFixedPartB,
 		decimalRepeatingPartB
 	);
+	if (denominatorA === denominatorB) return divFloat(String(numeratorA), String(numeratorB));
 }

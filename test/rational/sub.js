@@ -5,7 +5,16 @@ import { subFloatTest } from "#test/float/sub.js"
 
 const subRationalTest = {
 	message: "implements Rational subtraction",
-	data: []
+	data: [
+		// {
+		// 	input: { a: "0._1", b: "0._1" },
+		// 	output: "0",
+		// },
+		// {
+		// 	input: { a: "1", b: "0._1" },
+		// 	output: "0._8",
+		// },
+	]
 };
 
 describe("sub", () => {

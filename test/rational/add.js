@@ -5,7 +5,17 @@ import { addFloatTest } from "#test/float/add.js"
 
 const addRationalTest = {
 	message: "implements Rational addition",
-	data: []
+	data: [
+		{
+			input: { a: "0._1", b: "0._8" },
+			output: "1",
+		},
+		// TODO
+		// {
+		// 	input: { a: "0._1", b: "0._1" },
+		// 	output: "0._2",
+		// },
+	]
 };
 
 describe("add", () => {

@@ -5,7 +5,12 @@ import { mulFloatTest } from "#test/float/mul.js"
 
 const mulRationalTest = {
 	message: "implements Rational multiplication",
-	data: []
+	data: [
+		// {
+		// 	input: { a: "0._3", b: "3" },
+		// 	output: "1",
+		// },
+	]
 };
 
 describe("mul", () => {
@@ -21,6 +26,3 @@ describe("mul", () => {
 		});
 	});
 });
-
-
-

@@ -9,6 +9,10 @@ import {
 const divRationalTest = {
 	message: "implements Rational division",
 	data: [
+		{
+			input: { a: "0._1", b: "0._1" },
+			output: "1",
+		},
 		// TODO are these periodic numbers?
 		// {
 		// 	input: { a: "43534.5435", b: "0.054645" },
