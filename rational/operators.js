@@ -5,11 +5,9 @@ import {
 	div as divFloat,
 } from "../float/operators.js";
 import {
-	base10FractionToFloat,
-	quotientToFloat,
-} from "../float/utils.js";
-import { floatToBase10Fraction } from "../float/utils.js";
-import { splitRational } from "./utils.js";
+	splitRational,
+	splittedRationalToFraction,
+} from "./utils.js";
 
 export { neg } from "../float/operators.js";
 
@@ -19,29 +17,73 @@ export const eq = (a, b) => {
 }
 
 export const add = (a, b) => {
-	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
-	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
+	let [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	let [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
 	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return addFloat(a, b);
+
+	let [numeratorA, denominatorA] = splittedRationalToFraction(
+		integerA,
+		decimalFixedPartA,
+		decimalRepeatingPartA
+	);
+	let [numeratorB, denominatorB] = splittedRationalToFraction(
+		integerB,
+		decimalFixedPartB,
+		decimalRepeatingPartB
+	);
 };
 
 export const sub = (a, b) => {
-	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
-	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
+	let [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	let [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
 	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return subFloat(a, b);
+
+	let [numeratorA, denominatorA] = splittedRationalToFraction(
+		integerA,
+		decimalFixedPartA,
+		decimalRepeatingPartA
+	);
+	let [numeratorB, denominatorB] = splittedRationalToFraction(
+		integerB,
+		decimalFixedPartB,
+		decimalRepeatingPartB
+	);
 }
 
 export const mul = (a, b) => {
-	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
-	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
+	let [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	let [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
 	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return mulFloat(a, b);
+
+	let [numeratorA, denominatorA] = splittedRationalToFraction(
+		integerA,
+		decimalFixedPartA,
+		decimalRepeatingPartA
+	);
+	let [numeratorB, denominatorB] = splittedRationalToFraction(
+		integerB,
+		decimalFixedPartB,
+		decimalRepeatingPartB
+	);
 }
 
 export const div = (a, b) => {
-	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
-	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
+	let [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	let [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
 	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return divFloat(a, b);
+
+	let [numeratorA, denominatorA] = splittedRationalToFraction(
+		integerA,
+		decimalFixedPartA,
+		decimalRepeatingPartA
+	);
+	let [numeratorB, denominatorB] = splittedRationalToFraction(
+		integerB,
+		decimalFixedPartB,
+		decimalRepeatingPartB
+	);
 }

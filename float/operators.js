@@ -15,8 +15,8 @@ export const neg = (a) => {
 }
 
 export const add = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	let [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	let [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
 		return base10FractionToFloat(
@@ -41,8 +41,8 @@ export const add = (a, b) => {
 };
 
 export const sub = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	let [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	let [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 
 	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
 		return base10FractionToFloat(
@@ -67,8 +67,8 @@ export const sub = (a, b) => {
 }
 
 export const mul = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	let [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	let [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 	return base10FractionToFloat(
 		integerA * integerB,
 		denominatorBase10ExponentA + denominatorBase10ExponentB
@@ -76,8 +76,8 @@ export const mul = (a, b) => {
 }
 
 export const div = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	let [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
+	let [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
 
 	let reminder = integerA % integerB;
 
