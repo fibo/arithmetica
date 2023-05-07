@@ -5,3 +5,7 @@ export const rationalToBase10Fraction = (rational) => {
 	// let [fixed, periodic] = mantissa.split("_")
 	return [BigInt(integer + mantissa), BigInt(mantissa.length)];
 };
+
+export const repeatingDecimalToFraction = () => {
+	return [77n, 9n];
+}
