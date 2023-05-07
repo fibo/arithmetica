@@ -1,8 +1,15 @@
 import {
+	add as addFloat,
+	sub as subFloat,
+	mul as mulFloat,
+	div as divFloat,
+} from "../float/operators.js";
+import {
 	base10FractionToFloat,
 	quotientToFloat,
 } from "../float/utils.js";
 import { floatToBase10Fraction } from "../float/utils.js";
+import { splitRational } from "./utils.js";
 
 export { neg } from "../float/operators.js";
 
@@ -12,107 +19,29 @@ export const eq = (a, b) => {
 }
 
 export const add = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return base10FractionToFloat(
-			integerA + integerB,
-			denominatorBase10ExponentA
-		);
-	}
-
-	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		return base10FractionToFloat(
-			integerA * (
-				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
-			) + integerB, denominatorBase10ExponentB
-		);
-	} else {
-		return base10FractionToFloat(
-			integerA + integerB * 10n ** (
-				denominatorBase10ExponentA - denominatorBase10ExponentB
-			), denominatorBase10ExponentA
-		);
-	}
+	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return addFloat(a, b);
 };
 
 export const sub = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		return base10FractionToFloat(
-			integerA - integerB,
-			denominatorBase10ExponentA
-		);
-	}
-
-	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		return base10FractionToFloat(
-			integerA * (
-				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)
-			) - integerB, denominatorBase10ExponentB
-		);
-	} else {
-		return base10FractionToFloat(
-			integerA - integerB * 10n ** (
-				denominatorBase10ExponentA - denominatorBase10ExponentB
-			), denominatorBase10ExponentA
-		);
-	}
+	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return subFloat(a, b);
 }
 
 export const mul = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
-	return base10FractionToFloat(
-		integerA * integerB,
-		denominatorBase10ExponentA + denominatorBase10ExponentB
-	);
+	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
+
+	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return mulFloat(a, b);
 }
 
 export const div = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);
+	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
+	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);
 
-	let reminder = integerA % integerB;
-
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) {
-		if (reminder === 0n) {
-			return String(integerA / integerB);
-		}  else {
-			return quotientToFloat(integerA, integerB);
-		}
-	}
-
-	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
-		if (reminder === 0n) {
-			return String(
-				10n ** (
-					denominatorBase10ExponentB - denominatorBase10ExponentA
-				) * integerA / integerB
-			);
-		}  else {
-			mul(
-				quotientToFloat(integerA, integerB),
-				String(10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA))
-			);
-		}
-	} else {
-		if (reminder === 0n) {
-			return base10FractionToFloat(
-				integerA / integerB,
-				denominatorBase10ExponentA - denominatorBase10ExponentB
-			);
-		}  else {
-			let [integer, denominatorBase10Exponent] = floatToBase10Fraction(
-				quotientToFloat(integerA, integerB)
-			);
-			return base10FractionToFloat(
-				integer,
-				denominatorBase10Exponent + denominatorBase10ExponentA - denominatorBase10ExponentB
-			)
-		}
-	}
+	if (decimalRepeatingPartA === "" && decimalRepeatingPartB === "") return divFloat(a, b);
 }
