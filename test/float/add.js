@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { add } from "../../float/operators.js";
+import { add } from "#float/operators.js";
 
 export const addFloatTest = {
 	message: "implements addition",

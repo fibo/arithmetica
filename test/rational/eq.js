@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { eq } from "../../rational/operators.js";
-import { eqFloatTest } from "../float/eq.js"
+import { eq } from "#rational/operators.js";
+import { eqFloatTest } from "#test/float/eq.js"
 
 const eqRationalTest = {
 	message: "implements Rational equality",

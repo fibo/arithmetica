@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { neg } from "../../rational/operators.js";
-import { negFloatTest } from "../float/neg.js"
+import { neg } from "#rational/operators.js";
+import { negFloatTest } from "#test/float/neg.js"
 
 const negRationalTest = {
 	message: "implements Rational negation",

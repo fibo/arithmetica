@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { quotientToFloat } from "../../float/utils.js";
+import { quotientToFloat } from "#float/utils.js";
 
 const quotientToFloatThrowsTest = {
 	message: 'throws if second operand is `0n`',

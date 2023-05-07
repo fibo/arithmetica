@@ -13,6 +13,11 @@
       "types": "./float/index.d.ts"
     }
   },
+  "imports": {
+	  "#float/*": "./float/*",
+	  "#rational/*": "./rational/*",
+	  "#test/*": "./test/*"
+  },
   "scripts": {
     "test": "node --test"
   },

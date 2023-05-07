@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { eq } from "../../float/operators.js";
+import { eq } from "#float/operators.js";
 
 export const eqFloatTest = {
 	message: "implements equality",

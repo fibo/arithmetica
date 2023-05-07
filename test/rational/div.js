@@ -1,7 +1,10 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { div } from "../../rational/operators.js";
-import { divFloatTest, divFloatThrowsRangeErrorTest } from "../float/div.js"
+import { div } from "#rational/operators.js";
+import {
+	divFloatTest,
+	divFloatThrowsRangeErrorTest,
+} from "#test/float/div.js"
 
 const divRationalTest = {
 	message: "implements Rational division",

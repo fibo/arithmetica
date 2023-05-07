@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { isRational } from "../../rational/Rational.js";
+import { isRational } from "#rational/Rational.js";
 import {
 	canHaveDecimalSeparatorTest,
 	canHaveMinusSignOnlyAtBeginningTest,
@@ -9,7 +9,7 @@ import {
 	cannotHaveRightPaddedZerosTest,
 	isStringTest,
 	mustHaveNumberAfterMinusSignTest
-} from "../float/Float.js"
+} from "#test/float/Float.js"
 
 describe("Rational", () => {
 	it(isStringTest.message, () => {

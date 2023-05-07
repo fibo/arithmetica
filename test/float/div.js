@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { div } from "../../float/operators.js";
+import { div } from "#float/operators.js";
 
 export const divFloatThrowsRangeErrorTest = {
 	message: 'throws if second operand is "0"',

@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { floatToNumber } from "../../float/Float.js";
+import { floatToNumber } from "#float/Float.js";
 
 export const floatToNumberTest = {
 	message: "converts a `Float` to a `Number`",

@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { rationalToNumber } from "../../rational/Rational.js";
-import { floatToNumberTest } from "../float/floatToNumber.js";
+import { rationalToNumber } from "#rational/Rational.js";
+import { floatToNumberTest } from "#test/float/floatToNumber.js";
 
 const rationalToNumberTest = {
 	message: "converts a `Rational` to a `Number`",

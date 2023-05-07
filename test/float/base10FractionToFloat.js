@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { base10FractionToFloat } from "../../float/utils.js";
+import { base10FractionToFloat } from "#float/utils.js";
 
 const addsDecimalSeparatorTest = {
 	message: "adds a decimalSeparator",

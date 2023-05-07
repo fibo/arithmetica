@@ -7,7 +7,7 @@ import {
 	isFloat,
 	// utils
 	floatToNumber
-} from "../../float/index.js"
+} from "#float/index.js"
 
 describe("arithmetica/float index", () => {
 	it("exports operators", () => {

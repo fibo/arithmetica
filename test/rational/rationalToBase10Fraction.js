@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
-import { rationalToBase10Fraction } from "../../rational/utils.js";
+import { rationalToBase10Fraction } from "#rational/utils.js";
 
 const rationalToBase10FractionTest = {
 	message: "returns numerator and denominatorBase10Exponent",
