@@ -2,8 +2,8 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { base10FractionToFloat } from "#float/utils.js";
 
-const addsDecimalSeparatorTest = {
-	message: "adds a decimalSeparator",
+const base10FractionToFloatTest = {
+	message: "converts bigInt and denominatorBase10Exponent to Float",
 	data: [
 		{
 			input: {
@@ -100,8 +100,8 @@ const addsDecimalSeparatorTest = {
 };
 
 describe("base10FractionToFloat", () => {
-	it(addsDecimalSeparatorTest.message, () => {
-		addsDecimalSeparatorTest.data.forEach(
+	it(base10FractionToFloatTest.message, () => {
+		base10FractionToFloatTest.data.forEach(
 			({ input: { bigInt, denominatorBase10Exponent }, output }) => {
 				assert.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output);
 			}

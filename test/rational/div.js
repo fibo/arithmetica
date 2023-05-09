@@ -13,8 +13,11 @@ const divRationalTest = {
 			input: { a: "0._1", b: "0._1" },
 			output: "1",
 		},
-		// TODO are these periodic numbers?
-		// {
+		{
+			input: { a: "0._3", b: "0._1" },
+			output: "3",
+		},
+		// TODO are these periodic numbers? {
 		// 	input: { a: "43534.5435", b: "0.054645" },
 		// 	output: "796679.3576722481471314850398023606917375789185",
 		// },

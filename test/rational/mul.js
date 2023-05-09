@@ -7,6 +7,10 @@ const mulRationalTest = {
 	message: "implements Rational multiplication",
 	data: [
 		// {
+		// 	input: { a: "0._3", b: "0.3" },
+		// 	output: "0.1",
+		// },
+		// {
 		// 	input: { a: "0._3", b: "3" },
 		// 	output: "1",
 		// },

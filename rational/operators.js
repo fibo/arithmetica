@@ -5,6 +5,7 @@ import {
 	div as divFloat,
 } from "../float/operators.js";
 import {
+	fractionToRational,
 	splitRational,
 	splittedRationalToFraction,
 } from "./utils.js";
@@ -33,7 +34,11 @@ export const add = (a, b) => {
 		decimalRepeatingPartB
 	);
 
-	if (denominatorA === denominatorB) return divFloat(String(numeratorA + numeratorB), String(denominatorA));
+	if (denominatorA === denominatorB) {
+		return fractionToRational(numeratorA + numeratorB, denominatorA);
+	} else if (denominatorA < denominatorB) {
+	} else {
+	}
 };
 
 export const sub = (a, b) => {
@@ -52,6 +57,12 @@ export const sub = (a, b) => {
 		decimalFixedPartB,
 		decimalRepeatingPartB
 	);
+
+	if (denominatorA === denominatorB) {
+		return fractionToRational(numeratorA - numeratorB, denominatorA);
+	} else if (denominatorA < denominatorB) {
+	} else {
+	}
 }
 
 export const mul = (a, b) => {
@@ -70,6 +81,7 @@ export const mul = (a, b) => {
 		decimalFixedPartB,
 		decimalRepeatingPartB
 	);
+
 }
 
 export const div = (a, b) => {
@@ -88,5 +100,6 @@ export const div = (a, b) => {
 		decimalFixedPartB,
 		decimalRepeatingPartB
 	);
-	if (denominatorA === denominatorB) return divFloat(String(numeratorA), String(numeratorB));
+
+	if (denominatorA === denominatorB) return fractionToRational(numeratorA, numeratorB);
 }

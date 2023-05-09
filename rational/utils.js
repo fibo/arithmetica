@@ -1,3 +1,16 @@
+export const fractionToRational = (numerator, denominator) => {
+	let rational = String(numerator / denominator);
+	let reminder = numerator % denominator;
+	if (reminder === 0n) return rational;
+	rational += '.'
+	while (reminder !== 0n) {
+		numerator = reminder * 10n;
+		reminder = numerator % denominator;
+		rational += String(numerator / denominator);
+	}
+	return rational;
+}
+
 export const splitRational = (rational) => {
 	let [integer, mantissa] = rational.split(".");
 	if (mantissa === undefined) return [integer, "", ""];
