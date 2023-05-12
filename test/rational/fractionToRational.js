@@ -33,6 +33,48 @@ const fractionToRationalTest = {
 			},
 			output: "0",
 		},
+		{
+			input: {
+				numerator: 1n,
+				denominator: 9n,
+			},
+			output: "0._1",
+		},
+		{
+			input: {
+				numerator: -1n,
+				denominator: -9n,
+			},
+			output: "0._1",
+		},
+		{
+			input: {
+				numerator: -1n,
+				denominator: 9n,
+			},
+			output: "-0._1",
+		},
+		{
+			input: {
+				numerator: 1n,
+				denominator: -9n,
+			},
+			output: "-0._1",
+		},
+		{
+			input: {
+				numerator: 3n,
+				denominator: 7n,
+			},
+			output: "0._428571",
+		},
+		{
+			input: {
+				numerator: -5n,
+				denominator: 3n,
+			},
+			output: "-1._6",
+		},
 	],
 };
 

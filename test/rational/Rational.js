@@ -2,60 +2,54 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { isRational } from "#rational/Rational.js";
 import {
-	canHaveDecimalSeparatorTest,
-	canHaveMinusSignOnlyAtBeginningTest,
-	cannotBeMinusZeroTest,
-	cannotHaveMoreThanOneDecimalSeparatorTest,
-	cannotHaveRightPaddedZerosTest,
-	isStringTest,
-	mustHaveNumberAfterMinusSignTest
+	canHaveDecimalSeparatorTest as floatCanHaveDecimalSeparatorTest,
+	canHaveMinusSignOnlyAtBeginningTest as floatCanHaveMinusSignOnlyAtBeginningTest,
+	cannotBeMinusZeroTest as floatCannotBeMinusZeroTest,
+	cannotHaveMoreThanOneDecimalSeparatorTest as floatCannotHaveMoreThanOneDecimalSeparatorTest,
+	cannotHaveRightPaddedZerosTest as floatCannotHaveRightPaddedZerosTest,
+	isStringTest as floatIsStringTest,
+	mustHaveNumberAfterMinusSignTest as floatMustHaveNumberAfterMinusSignTest
 } from "#test/float/Float.js"
 
 describe("Rational", () => {
-	it(isStringTest.message, () => {
-		isStringTest.data.forEach(({ input, output }) => {
+	it(floatIsStringTest.message, () => {
+		floatIsStringTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(canHaveDecimalSeparatorTest.message, () => {
-		canHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
+	it(floatCanHaveDecimalSeparatorTest.message, () => {
+		floatCanHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(cannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
-		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(({ input, output }) => {
+	it(floatCannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
+		floatCannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(canHaveDecimalSeparatorTest.message, () => {
-		canHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
+	it(floatCanHaveMinusSignOnlyAtBeginningTest.message, () => {
+		floatCanHaveMinusSignOnlyAtBeginningTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(canHaveMinusSignOnlyAtBeginningTest.message, () => {
-		canHaveMinusSignOnlyAtBeginningTest.data.forEach(({ input, output }) => {
+	it(floatCannotHaveRightPaddedZerosTest.message, () => {
+		floatCannotHaveRightPaddedZerosTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(cannotHaveRightPaddedZerosTest.message, () => {
-		cannotHaveRightPaddedZerosTest.data.forEach(({ input, output }) => {
+	it(floatMustHaveNumberAfterMinusSignTest.message, () => {
+		floatMustHaveNumberAfterMinusSignTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(mustHaveNumberAfterMinusSignTest.message, () => {
-		mustHaveNumberAfterMinusSignTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output);
-		});
-	});
-
-	it(cannotBeMinusZeroTest.message, () => {
-		cannotBeMinusZeroTest.data.forEach(({ input, output }) => {
+	it(floatCannotBeMinusZeroTest.message, () => {
+		floatCannotBeMinusZeroTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});

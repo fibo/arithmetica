@@ -5,7 +5,16 @@ import { negFloatTest } from "#test/float/neg.js"
 
 const negRationalTest = {
 	message: "implements Rational negation",
-	data: []
+	data: [
+		{
+			input: "0.12_34",
+			output: "-0.12_34"
+		},
+		{
+			input: "-0.12_34",
+			output: "0.12_34"
+		},
+	]
 };
 
 describe("neg", () => {

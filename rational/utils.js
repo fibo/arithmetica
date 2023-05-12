@@ -1,9 +1,22 @@
 import { floatToBase10Fraction } from "../float/utils.js";
 
 export const fractionToRational = (numerator, denominator) => {
-	let integerPart = String(numerator / denominator);
+	if (numerator === 0n) return "0";
 	let reminder = numerator % denominator;
-	if (reminder === 0n) return integerPart;
+	if (reminder === 0n) return String(numerator / denominator);
+	let isNegative = false;
+	if (numerator > 0 && denominator < 0) {
+		isNegative = true;
+		denominator = -denominator;
+	}
+	if (numerator < 0) {
+		numerator = -numerator;
+		reminder = -reminder;
+		if (denominator > 0) isNegative = true;
+		if (denominator < 0) denominator = -denominator;
+	}
+	let integerPart = String(numerator / denominator);
+	if (isNegative) integerPart = "-" + integerPart;
 	let decimalPart = "";
 	let digit;
 	let i; // index of first repeating decimal

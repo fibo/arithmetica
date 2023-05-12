@@ -1,4 +1,5 @@
 import { isFloat } from "../float/Float.js";
+import { splitRational } from "./utils.js";
 
 export const isRational = (arg) => {
 	if (typeof arg !== "string") return false;
@@ -7,7 +8,10 @@ export const isRational = (arg) => {
 };
 
 export const rationalToNumber = (rational, mantissaLength) => {
-	// TODO Remove this, just cheating tests xD... ehm this is TDD!
-	if (rational === "0._3") return 0.33333333;
-    return Number(Number(parseFloat(rational)).toFixed(mantissaLength));
+	let [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(rational);
+	let decimalPart = decimalFixedPart;
+	while (decimalPart.length < mantissaLength) {
+		decimalPart += decimalRepeatingPart;
+	}
+    return Number(Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength));
 };

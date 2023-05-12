@@ -24,6 +24,10 @@ const quotientToFloatTest = {
 			output: "0.5"
 		},
 		{
+			input: { integerA: 8n, integerB: 16n },
+			output: "0.5"
+		},
+		{
 			input: { integerA: 2n, integerB: 2n },
 			output: "1"
 		},

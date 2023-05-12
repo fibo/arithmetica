@@ -25,6 +25,10 @@ export const divFloatTest = {
 			output: "1",
 		},
 		{
+			input: { a: "8", b: "16" },
+			output: "0.5",
+		},
+		{
 			input: { a: "-10", b: "2" },
 			output: "-5",
 		},

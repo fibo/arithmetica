@@ -14,6 +14,30 @@ export const mulFloatTest = {
 			output: "0",
 		},
 		{
+			input: { a: "0", b: "-12" },
+			output: "0",
+		},
+		{
+			input: { a: "-12", b: "0" },
+			output: "0",
+		},
+		{
+			input: { a: "1.0", b: "0.0" },
+			output: "0",
+		},
+		{
+			input: { a: "1", b: "42" },
+			output: "42",
+		},
+		{
+			input: { a: "1", b: "42" },
+			output: "42",
+		},
+		{
+			input: { a: "1.0", b: "42" },
+			output: "42",
+		},
+		{
 			input: { a: "0.1", b: "0.2" },
 			output: "0.02",
 		},

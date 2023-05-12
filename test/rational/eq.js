@@ -15,7 +15,15 @@ const eqRationalTest = {
 			output: false,
 		},
 		{
+			input: { a: "-2", b: "-1._9" },
+			output: true,
+		},
+		{
 			input: { a: "0", b: "0" },
+			output: true,
+		},
+		{
+			input: { a: "1", b: "1._0" },
 			output: true,
 		},
 		{
