@@ -34,11 +34,7 @@ export const add = (a, b) => {
 		decimalRepeatingPartB
 	);
 
-	if (denominatorA === denominatorB) {
-		return fractionToRational(numeratorA + numeratorB, denominatorA);
-	} else if (denominatorA < denominatorB) {
-	} else {
-	}
+	return fractionToRational(numeratorA * denominatorB + numeratorB * denominatorA, denominatorA * denominatorB);
 };
 
 export const sub = (a, b) => {
@@ -58,11 +54,7 @@ export const sub = (a, b) => {
 		decimalRepeatingPartB
 	);
 
-	if (denominatorA === denominatorB) {
-		return fractionToRational(numeratorA - numeratorB, denominatorA);
-	} else if (denominatorA < denominatorB) {
-	} else {
-	}
+	return fractionToRational(numeratorA * denominatorB - numeratorB * denominatorA, denominatorA * denominatorB);
 }
 
 export const mul = (a, b) => {
@@ -82,6 +74,7 @@ export const mul = (a, b) => {
 		decimalRepeatingPartB
 	);
 
+	return fractionToRational(numeratorA * numeratorB,  denominatorA * denominatorB);
 }
 
 export const div = (a, b) => {

@@ -7,6 +7,10 @@ const rationalToNumberTest = {
 	message: "converts a `Rational` to a `Number`",
 	data: [
 		{
+			input: { rational: "0.1", mantissaLength: 1 },
+			output: 0.1
+		},
+		{
 			input: { rational: "0._3", mantissaLength: 8 },
 			output: 0.33333333
 		},

@@ -10,31 +10,39 @@ const fractionToRationalTest = {
 				numerator: 1n,
 				denominator: 1n,
 			},
-			output: '1',
+			output: "1",
 		},
 		{
 			input: {
 				numerator: 8n,
 				denominator: -2n,
 			},
-			output: '-4',
+			output: "-4",
 		},
 		{
 			input: {
 				numerator: 5n,
 				denominator: 10n,
 			},
-			output: '0.5',
+			output: "0.5",
 		},
-	]
+		{
+			input: {
+				numerator: 0n,
+				denominator: 1n,
+			},
+			output: "0",
+		},
+	],
 };
 
 describe("fractionToRational", () => {
 	it(fractionToRationalTest.message, () => {
-		fractionToRationalTest.data.forEach(({ input: { numerator, denominator }, output }) => {
-			const rational = fractionToRational(numerator, denominator);
-			assert.equal(rational, output);
-		});
+		fractionToRationalTest.data.forEach(
+			({ input: { numerator, denominator }, output }) => {
+				const rational = fractionToRational(numerator, denominator);
+				assert.equal(rational, output);
+			}
+		);
 	});
 });
-
