@@ -31,31 +31,40 @@ It will produce a 1.6kb (minified, not gzipped) _arithmetica.js_ file.
 ```js
 import { add } from "arithmetica";
 
-console.log(add("0.1", "0.2")); // '0.3'
+add("1", "2"); // '3'
+
+// Here 0._3 represents 0.3333333333333333...
+add("0._3", "1")); // '1._3'
 ```
 
-There is no runtime check on types: consumers are responsible to feed inputs
-that are actual `Rational` types, for instance using
-[`isRational` type-guard](#isrational).
+**NOTA BENE**: there is no runtime check on types: consumers are responsible to feed inputs
+that are actual `Rational` types, for instance using [`isRational` type-guard](#isrational).
 
-Notice that if you want only floating point operators, without _repeating decimals_ support, you can do
+If you want only floating point operators, without _repeating decimals_ support, you can do
 
 ```js
 import { add } from "arithmetica/float";
+
+add("0.1", "0.2"); // '0.3'
 ```
 
 ## Types
 
 ### Float
 
-A `Float` is a string that expresses a decimal representation of a number, for example:
+A `Float` is a string that expresses a decimal representation of a number.
+
+Decimal separator is "." character.
+Exponential notation is not allowed.
+Integer part can be omitted.
+
+For example:
 
 - "0"
 - "1.2"
 - "-0.42"
+- ".123"
 
-Decimal separator is "." character.
-Exponential notation is not allowed.
 
 ### Rational
 
@@ -98,9 +107,10 @@ function timesTen (a) {
 
 ### eq
 
+> Implements equality.
+
 `eq(a: Rational, b: Rational): boolean`
 
-Implements equality.
 
 ```js
 eq("1", "2"); // false
@@ -109,9 +119,9 @@ eq("42", "42.0"); // true
 
 ### neg
 
-`neg(a: Rational): Rational`
+> Implements negation.
 
-Implements negation.
+`neg(a: Rational): Rational`
 
 ```js
 neg("1"); // '-1'
@@ -120,27 +130,29 @@ neg("-42"); // '42'
 
 ### add
 
-`add(a: Rational, b: Rational): Rational`
+> Implements addition.
 
-Implements addition.
+`add(a: Rational, b: Rational): Rational`
 
 ### sub
 
-`sub(a: Rational, b: Rational): Rational`
+> Implements subtraction.
 
-Implements subtraction.
+`sub(a: Rational, b: Rational): Rational`
 
 ### mul
 
-`mul(a: Rational, b: Rational): Rational`
+> Implements multiplication.
 
-Implements multiplication.
+`mul(a: Rational, b: Rational): Rational`
 
 ### div
 
+> Implements division.
+
 `div(a: Rational, b: Rational): Rational`
 
-Implements division. It throws `RangeError` if denominator is zero.
+It throws `RangeError` if denominator is zero.
 
 ```js
 div("-10", "2"); // '-5'
@@ -156,9 +168,9 @@ try {
 
 ### floatToNumber
 
-`floatToNumber(floatStr: Float, mantissaLength: number): number`
+> Converts a `Float` to a `number`.
 
-Converts a `Float` to a `number`.
+`floatToNumber(floatStr: Float, mantissaLength?: number): number`
 
 ```js
 floatToNumber("42.01", 0); // 42
@@ -167,9 +179,10 @@ floatToNumber("1234.56789", 2); // 1234.57
 
 ### rationalToNumber
 
+> Converts a `Rational` to a `number`.
+
 `rationalToNumber(rational: Rational, mantissaLength?: number): number`
 
-Converts a `Rational` to a `number`.
 Notice that `mantissaLength` argument is optional:
 it set the number of digits of the decimal part, max is 16.
 Output is rounded.

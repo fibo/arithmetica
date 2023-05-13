@@ -150,6 +150,36 @@ export const cannotBeMinusZeroTest = {
 	],
 };
 
+export const canOmitIntegerPartTest = {
+	message: "can omit integer part",
+	data: [
+		{
+			input: ".1",
+			output: true,
+		},
+		{
+			input: ".123",
+			output: true,
+		},
+		{
+			input: ".0",
+			output: true,
+		},
+		{
+			input: ".",
+			output: false,
+		},
+		{
+			input: "-.1",
+			output: false,
+		},
+		{
+			input: ".-1",
+			output: false,
+		},
+	],
+};
+
 describe("Float", () => {
 	it(isStringTest.message, () => {
 		isStringTest.data.forEach(({ input, output }) => {

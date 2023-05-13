@@ -4,6 +4,7 @@ import { isRational } from "#rational/Rational.js";
 import {
 	canHaveDecimalSeparatorTest as floatCanHaveDecimalSeparatorTest,
 	canHaveMinusSignOnlyAtBeginningTest as floatCanHaveMinusSignOnlyAtBeginningTest,
+	canOmitIntegerPartTest as floatCanOmitIntegerPartTest,
 	cannotBeMinusZeroTest as floatCannotBeMinusZeroTest,
 	cannotHaveMoreThanOneDecimalSeparatorTest as floatCannotHaveMoreThanOneDecimalSeparatorTest,
 	cannotHaveRightPaddedZerosTest as floatCannotHaveRightPaddedZerosTest,
@@ -17,7 +18,23 @@ const canHaveDecimalRepeatingPartTest = {
 		{
 			input: "1._1",
 			output: true
-		}
+		},
+		{
+			input: "._1",
+			output: true
+		},
+		{
+			input: "0.12_34",
+			output: true
+		},
+		{
+			input: ".12_34",
+			output: true
+		},
+		{
+			input: "1.2_3",
+			output: true
+		},
 	]
 };
 
@@ -44,6 +61,14 @@ describe("Rational", () => {
 
 	it(floatCanHaveMinusSignOnlyAtBeginningTest.message, () => {
 		floatCanHaveMinusSignOnlyAtBeginningTest.data.forEach(
+			({ input, output }) => {
+				assert.equal(isRational(input), output);
+			}
+		);
+	});
+
+	it(floatCanOmitIntegerPartTest.message, () => {
+		floatCanOmitIntegerPartTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isRational(input), output);
 			}

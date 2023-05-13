@@ -3,8 +3,14 @@ import { splitRational } from "./utils.js";
 
 export const isRational = (arg) => {
 	if (typeof arg !== "string") return false;
-	if (isFloat(arg)) return true;
-	return false;
+	let [_, __, decimalRepeatingPart] = splitRational(arg);
+	if (decimalRepeatingPart === "") return isFloat(arg)
+	try {
+		if (BigInt(decimalRepeatingPart) < 0) return false
+		return true;
+	} catch (ignore) {
+		return false;
+	}
 };
 
 export const rationalToNumber = (rational, mantissaLength = 16) => {
