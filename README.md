@@ -105,8 +105,7 @@ function timesTen (a) {
 
 ## Operators
 
-Every operator imported from `arithmetica/float` has the same signature as its corresponding operator,
-but of course with type `Float` instead of a `Rational`.
+Every operator imported from `arithmetica/float` has the same signature as its homonym operator imported from `arithmetica`, but of course with type `Float` instead of a `Rational` in its signature.
 
 ### eq
 
@@ -115,6 +114,8 @@ but of course with type `Float` instead of a `Rational`.
 `eq(a: Rational, b: Rational): boolean`
 
 ```js
+import { eq } from "arithmetica";
+
 eq("1", "2"); // false
 eq("42", "42.0"); // true
 ```
@@ -138,6 +139,8 @@ eq("42", "42.0"); // true
 `neg(a: Rational): Rational`
 
 ```js
+import { neg } from "arithmetica";
+
 neg("1"); // '-1'
 neg("-42"); // '42'
 ```
@@ -157,6 +160,8 @@ neg("-42"); // '42'
 It throws `RangeError` if denominator is zero.
 
 ```js
+import { div } from "arithmetica";
+
 div("-10", "2"); // '-5'
 
 try {
@@ -173,11 +178,26 @@ try {
 `inv(a: Rational): Rational`
 
 ```js
+import { inv } from "arithmetica";
+
 inv("2"); // '0.5'
-neg("1._1"); // '9'
+inv("1._1"); // '9'
 ```
 
 ## Utils
+
+### coerceToFloat
+
+> Coerces to `Float`.
+
+`coerceToFloat(arg: unknown): Float`
+
+```js
+import { coerceToFloat } from "arithmetica/float";
+
+coerceToFloat(0); // '0'
+coerceToFloat(-1.23); // '-1.23'
+```
 
 ### floatToNumber
 
@@ -186,8 +206,23 @@ neg("1._1"); // '9'
 `floatToNumber(floatStr: Float, mantissaLength?: number): number`
 
 ```js
+import { floatToNumber } from "arithmetica/float";
+
 floatToNumber("42.01", 0); // 42
 floatToNumber("1234.56789", 2); // 1234.57
+```
+
+### coerceToRational
+
+> Coerces to `Rational`.
+
+`coerceToRational(arg: unknown): Rational`
+
+```js
+import { coerceToRational } from "arithmetica";
+
+coerceToRational(42); // '42'
+coerceToRational(-1n); // '-1'
 ```
 
 ### rationalToNumber
@@ -201,6 +236,8 @@ it set the number of digits of the decimal part, max is 16.
 Output is rounded.
 
 ```js
+import { rationalToNumber } from "arithmetica";
+
 rationalToNumber("0.10"); // 0.1
 rationalToNumber("0._3", 8); // 0.33333333
 rationalToNumber("0.456", 2); // 0.46

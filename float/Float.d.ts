@@ -4,6 +4,11 @@
 export type Float = string;
 
 /**
+ * Coerces to `Float`.
+ */
+export declare const coerceToFloat: (arg: unknown) => Float;
+
+/**
  * Check that given argument is a `Float`.
  */
 export declare const isFloat: (arg: unknown) => arg is Float;

@@ -5,6 +5,11 @@
 export type Rational = string;
 
 /**
+ * Coerces to `Rational`.
+ */
+export declare const coerceToRational: (arg: unknown) => Rational;
+
+/**
  * Check that given argument is a `Rational`.
  */
 export declare const isRational: (arg: unknown) => arg is Rational;

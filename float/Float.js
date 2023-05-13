@@ -48,3 +48,18 @@ export const isFloat = (arg) => {
 export const floatToNumber = (floatStr, mantissaLength) => {
 	return Number(Number(parseFloat(floatStr)).toFixed(mantissaLength));
 };
+
+export const coerceToFloat = (arg) => {
+	let value = arg;
+	if (isFloat(value)) return value;
+	if (
+		arg !== null &&
+		typeof arg === "object" &&
+		typeof arg.valueOf === "function"
+	)
+		value = arg.valueOf();
+	if (typeof value === "bigint") return value.toString();
+	if (typeof value === "number" && !isNaN(value) && Number.isFinite(value))
+		return value.toString();
+	throw new Error("Cannot coerce");
+};

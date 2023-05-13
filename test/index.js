@@ -12,7 +12,7 @@ import {
 	isFloat,
 	isRational,
 	// utils
-	floatToNumber,
+	coerceToRational,
 	rationalToNumber,
 } from "../index.js";
 
@@ -32,7 +32,7 @@ describe("arithmetica index", () => {
 	});
 
 	it("exports utils", () => {
-		assert.ok(typeof floatToNumber === "function");
+		assert.ok(typeof coerceToRational === "function");
 		assert.ok(typeof rationalToNumber === "function");
 	});
 });
