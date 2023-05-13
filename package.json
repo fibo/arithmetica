@@ -1,6 +1,6 @@
 {
   "name": "arithmetica",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "is an implementation of arithmetic operators for Rational numbers",
   "type": "module",
   "exports": {
@@ -14,9 +14,9 @@
     }
   },
   "imports": {
-	  "#float/*": "./float/*",
-	  "#rational/*": "./rational/*",
-	  "#test/*": "./test/*"
+    "#float/*": "./float/*",
+    "#rational/*": "./rational/*",
+    "#test/*": "./test/*"
   },
   "scripts": {
     "test": "node --test"
