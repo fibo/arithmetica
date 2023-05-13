@@ -17,6 +17,8 @@ export const eq = (a, b) => {
 	return sub(a, b) === "0";
 };
 
+export const inv = (a) => div("1", a);
+
 export const add = (a, b) => {
 	let [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a);
 	let [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b);

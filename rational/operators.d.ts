@@ -3,24 +3,20 @@ import { Rational } from "./Rational.js";
 /** Equality. */
 export declare const eq: (a: Rational, b: Rational) => boolean;
 
-export type RationalUnaryOperator = (a: Rational) => Rational;
-
 /** Negation. */
-export declare const neg: RationalUnaryOperator;
+export declare const neg: (a: Rational) => Rational;
 
-export type RationalBinaryOperator = (a: Rational, b: Rational) => Rational;
-
-/** Equality. */
-export declare const eq: RationalBinaryOperator;
+/** Inversion. */
+export declare const inv: (a: Rational) => Rational;
 
 /** Addition. */
-export declare const add: RationalBinaryOperator;
+export declare const add: (a: Rational, b: Rational) => Rational;
 
 /** Subtraction. */
-export declare const sub: RationalBinaryOperator;
+export declare const sub: (a: Rational, b: Rational) => Rational;
 
 /** Multiplication. */
-export declare const mul: RationalBinaryOperator;
+export declare const mul: (a: Rational, b: Rational) => Rational;
 
 /** Division. */
-export declare const div: RationalBinaryOperator;
+export declare const div: (a: Rational, b: Rational) => Rational;

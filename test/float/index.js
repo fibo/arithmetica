@@ -3,11 +3,12 @@ import { describe, it } from "node:test";
 import {
 	// operators
 	add,
-	sub,
-	mul,
 	div,
 	eq,
+	inv,
+	mul,
 	neg,
+	sub,
 	// type-guards
 	isFloat,
 	// utils
@@ -18,6 +19,7 @@ describe("arithmetica/float index", () => {
 	it("exports operators", () => {
 		assert.ok(typeof eq === "function");
 		assert.ok(typeof neg === "function");
+		assert.ok(typeof inv === "function");
 		assert.ok(typeof add === "function");
 		assert.ok(typeof div === "function");
 		assert.ok(typeof mul === "function");

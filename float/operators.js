@@ -14,6 +14,8 @@ export const neg = (a) => {
 	return "-" + a;
 };
 
+export const inv = (a) => div("1", a);
+
 export const add = (a, b) => {
 	let [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);
 	let [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b);

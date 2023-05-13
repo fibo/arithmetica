@@ -105,27 +105,18 @@ function timesTen (a) {
 
 ## Operators
 
+Every operator imported from `arithmetica/float` has the same signature as its corresponding operator,
+but of course with type `Float` instead of a `Rational`.
+
 ### eq
 
 > Implements equality.
 
 `eq(a: Rational, b: Rational): boolean`
 
-
 ```js
 eq("1", "2"); // false
 eq("42", "42.0"); // true
-```
-
-### neg
-
-> Implements negation.
-
-`neg(a: Rational): Rational`
-
-```js
-neg("1"); // '-1'
-neg("-42"); // '42'
 ```
 
 ### add
@@ -139,6 +130,17 @@ neg("-42"); // '42'
 > Implements subtraction.
 
 `sub(a: Rational, b: Rational): Rational`
+
+### neg
+
+> Implements negation.
+
+`neg(a: Rational): Rational`
+
+```js
+neg("1"); // '-1'
+neg("-42"); // '42'
+```
 
 ### mul
 
@@ -162,6 +164,17 @@ try {
 } catch (err) {
   console.error(err); // RangeError: Division by zero
 }
+```
+
+### neg
+
+> Implements inversion.
+
+`inv(a: Rational): Rational`
+
+```js
+inv("2"); // '0.5'
+neg("1._1"); // '9'
 ```
 
 ## Utils

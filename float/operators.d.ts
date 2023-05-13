@@ -3,21 +3,20 @@ import { Float } from "./Float.js";
 /** Equality. */
 export declare const eq: (a: Float, b: Float) => boolean;
 
-export type FloatUnaryOperator = (a: Float) => Float;
-
 /** Negation. */
-export declare const neg: FloatUnaryOperator;
+export declare const neg: (a: Float) => Float;
 
-export type FloatBinaryOperator = (a: Float, b: Float) => Float;
+/** Inversion. */
+export declare const inv: (a: Float) => Float;
 
 /** Addition. */
-export declare const add: FloatBinaryOperator;
+export declare const add: (a: Float, b: Float) => Float;
 
 /** Subtraction. */
-export declare const sub: FloatBinaryOperator;
+export declare const sub: (a: Float, b: Float) => Float;
 
 /** Multiplication. */
-export declare const mul: FloatBinaryOperator;
+export declare const mul: (a: Float, b: Float) => Float;
 
 /** Division. */
-export declare const div: FloatBinaryOperator;
+export declare const div: (a: Float, b: Float) => Float;
