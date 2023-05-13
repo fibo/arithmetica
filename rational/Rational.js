@@ -7,14 +7,12 @@ export const isRational = (arg) => {
 	return false;
 };
 
-export const rationalToNumber = (rational, mantissaLength) => {
-	let [integer, decimalFixedPart, decimalRepeatingPart] =
-		splitRational(rational);
+export const rationalToNumber = (rational, mantissaLength = 16) => {
+	let [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(rational);
 	let decimalPart = decimalFixedPart;
-	while (decimalPart.length < mantissaLength) {
+	if (decimalRepeatingPart !== "") while (true) {
 		decimalPart += decimalRepeatingPart;
+		if (decimalPart.length >= mantissaLength) break;
 	}
-	return Number(
-		Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength)
-	);
+	return Number(Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength));
 };

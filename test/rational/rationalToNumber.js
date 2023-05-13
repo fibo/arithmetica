@@ -7,6 +7,14 @@ const rationalToNumberTest = {
 	message: "converts a `Rational` to a `Number`",
 	data: [
 		{
+			input: { rational: "0.1", mantissaLength: 1 },
+			output: 0.1,
+		},
+		{
+			input: { rational: "0.456", mantissaLength: 2 },
+			output: 0.46,
+		},
+		{
 			input: { rational: "0._3", mantissaLength: 8 },
 			output: 0.33333333,
 		},
@@ -49,7 +57,28 @@ const rationalToNumberTest = {
 	],
 };
 
+const rationalToNumberMantissaLengthIsOptionalTest = {
+	message: "`mantissaLength` is optional",
+	data: [
+		{
+			input: "0.1",
+			output: 0.1,
+		},
+	],
+};
+
 describe("rationalToNumber", () => {
+	it(floatToNumberTest.message, () => {
+		floatToNumberTest.data.forEach(
+			({ input: { floatStr, mantissaLength }, output }) => {
+				assert.equal(
+					rationalToNumber(floatStr, mantissaLength),
+					output
+				);
+			}
+		);
+	});
+
 	it(rationalToNumberTest.message, () => {
 		rationalToNumberTest.data.forEach(
 			({ input: { rational, mantissaLength }, output }) => {
@@ -61,13 +90,10 @@ describe("rationalToNumber", () => {
 		);
 	});
 
-	it(floatToNumberTest.message, () => {
-		floatToNumberTest.data.forEach(
-			({ input: { floatStr, mantissaLength }, output }) => {
-				assert.equal(
-					rationalToNumber(floatStr, mantissaLength),
-					output
-				);
+	it(rationalToNumberMantissaLengthIsOptionalTest.message, () => {
+		rationalToNumberMantissaLengthIsOptionalTest.data.forEach(
+			({ input, output }) => {
+				assert.equal(rationalToNumber(input,8), output);
 			}
 		);
 	});

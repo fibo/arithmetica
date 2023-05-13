@@ -12,5 +12,5 @@ export declare const isRational: (arg: unknown) => arg is Rational;
 /** Converts a `Rational` to a `Number`. */
 export declare const rationalToNumber: (
 	rational: Rational,
-	mantissaLength: number
+	mantissaLength?: number
 ) => number;

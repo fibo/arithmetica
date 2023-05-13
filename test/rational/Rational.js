@@ -11,6 +11,16 @@ import {
 	mustHaveNumberAfterMinusSignTest as floatMustHaveNumberAfterMinusSignTest,
 } from "#test/float/Float.js";
 
+const canHaveDecimalRepeatingPartTest = {
+	message: "can have decimal repeating part",
+	data: [
+		{
+			input: "1._1",
+			output: true
+		}
+	]
+};
+
 describe("Rational", () => {
 	it(floatIsStringTest.message, () => {
 		floatIsStringTest.data.forEach(({ input, output }) => {
@@ -58,6 +68,12 @@ describe("Rational", () => {
 
 	it(floatCannotBeMinusZeroTest.message, () => {
 		floatCannotBeMinusZeroTest.data.forEach(({ input, output }) => {
+			assert.equal(isRational(input), output);
+		});
+	});
+
+	it(canHaveDecimalRepeatingPartTest.message, () => {
+		canHaveDecimalRepeatingPartTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});

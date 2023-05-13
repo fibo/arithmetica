@@ -64,6 +64,7 @@ A `Rational` includes every [`Float`](#float) plus *repeating decimals* that are
 A _repeating decimal_ is represented by a string like:
 
 - "0._3": represents fraction `1/3`, that is 0.33333...
+- "0.123_456": represents number 0.123456456456456456456456...
 
 ## Type guards
 
@@ -142,10 +143,10 @@ Implements multiplication.
 Implements division. It throws `RangeError` if denominator is zero.
 
 ```js
-console.log(div("-10", "2")); // '-5'
+div("-10", "2"); // '-5'
 
 try {
-  console.log(div("2", "0");
+  div("2", "0");
 } catch (err) {
   console.error(err); // RangeError: Division by zero
 }
@@ -166,13 +167,17 @@ floatToNumber("1234.56789", 2); // 1234.57
 
 ### rationalToNumber
 
-`rationalToNumber(rational: Rational, mantissaLength: number): number`
+`rationalToNumber(rational: Rational, mantissaLength?: number): number`
 
 Converts a `Rational` to a `number`.
+Notice that `mantissaLength` argument is optional:
+it set the number of digits of the decimal part, max is 16.
+Output is rounded.
 
 ```js
-rationalToNumber("0.10", 1); // 0.1
+rationalToNumber("0.10"); // 0.1
 rationalToNumber("0._3", 8); // 0.33333333
+rationalToNumber("0.456", 2); // 0.46
 ```
 
 ## License
