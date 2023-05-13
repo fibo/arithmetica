@@ -8,10 +8,7 @@ export type RationalUnaryOperator = (a: Rational) => Rational;
 /** Negation. */
 export declare const neg: RationalUnaryOperator;
 
-export type RationalBinaryOperator = (
-	a: Rational,
-	b: Rational
-) => Rational;
+export type RationalBinaryOperator = (a: Rational, b: Rational) => Rational;
 
 /** Equality. */
 export declare const eq: RationalBinaryOperator;

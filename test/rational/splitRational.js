@@ -10,7 +10,7 @@ const splitRationalTest = {
 			output: {
 				integer: "1",
 				decimalFixedPart: "2",
-				decimalRepeatingPart: "3"
+				decimalRepeatingPart: "3",
 			},
 		},
 		{
@@ -18,7 +18,7 @@ const splitRationalTest = {
 			output: {
 				integer: "8",
 				decimalFixedPart: "",
-				decimalRepeatingPart: "5"
+				decimalRepeatingPart: "5",
 			},
 		},
 		{
@@ -26,20 +26,17 @@ const splitRationalTest = {
 			output: {
 				integer: "-1",
 				decimalFixedPart: "2",
-				decimalRepeatingPart: "3"
+				decimalRepeatingPart: "3",
 			},
 		},
-	]
+	],
 };
 
 describe("splitRational", () => {
 	it(splitRationalTest.message, () => {
 		splitRationalTest.data.forEach(({ input, output }) => {
-			const [
-				integer,
-				decimalFixedPart,
-				decimalRepeatingPart
-			] = splitRational(input);
+			const [integer, decimalFixedPart, decimalRepeatingPart] =
+				splitRational(input);
 			assert.equal(integer, output.integer);
 			assert.equal(decimalFixedPart, output.decimalFixedPart);
 			assert.equal(decimalRepeatingPart, output.decimalRepeatingPart);

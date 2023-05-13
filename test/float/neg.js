@@ -13,7 +13,7 @@ export const negFloatTest = {
 			input: "-42",
 			output: "42",
 		},
-	]
+	],
 };
 
 describe("neg", () => {
@@ -23,4 +23,3 @@ describe("neg", () => {
 		});
 	});
 });
-

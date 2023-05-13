@@ -89,7 +89,7 @@ export const mulFloatTest = {
 			input: { a: "1.0", b: "4" },
 			output: "4",
 		},
-	]
+	],
 };
 
 describe("mul", () => {

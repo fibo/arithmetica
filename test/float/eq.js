@@ -33,7 +33,7 @@ export const eqFloatTest = {
 			input: { a: "1.000000000000001", b: "1.000" },
 			output: false,
 		},
-	]
+	],
 };
 
 describe("eq", () => {
@@ -43,5 +43,3 @@ describe("eq", () => {
 		});
 	});
 });
-
-

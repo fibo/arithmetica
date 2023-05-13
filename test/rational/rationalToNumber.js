@@ -8,57 +8,67 @@ const rationalToNumberTest = {
 	data: [
 		{
 			input: { rational: "0._3", mantissaLength: 8 },
-			output: 0.33333333
+			output: 0.33333333,
 		},
 		{
 			input: { rational: "-0._3", mantissaLength: 8 },
-			output: -0.33333333
+			output: -0.33333333,
 		},
 		{
 			input: { rational: "0.1_2", mantissaLength: 4 },
-			output: 0.1222
+			output: 0.1222,
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 1 },
-			output: 0.1
+			output: 0.1,
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 2 },
-			output: 0.12
+			output: 0.12,
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 3 },
-			output: 0.123
+			output: 0.123,
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 4 },
-			output: 0.1234
+			output: 0.1234,
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 5 },
-			output: 0.12343
+			output: 0.12343,
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 6 },
-			output: 0.123434
+			output: 0.123434,
 		},
 		{
 			input: { rational: "0.1_23", mantissaLength: 6 },
-			output: 0.123232
+			output: 0.123232,
 		},
-	]
+	],
 };
 
 describe("rationalToNumber", () => {
 	it(rationalToNumberTest.message, () => {
-		rationalToNumberTest.data.forEach(({ input: { rational, mantissaLength }, output }) => {
-			assert.equal(rationalToNumber(rational, mantissaLength), output)
-		});
+		rationalToNumberTest.data.forEach(
+			({ input: { rational, mantissaLength }, output }) => {
+				assert.equal(
+					rationalToNumber(rational, mantissaLength),
+					output
+				);
+			}
+		);
 	});
 
 	it(floatToNumberTest.message, () => {
-		floatToNumberTest.data.forEach(({ input: { floatStr, mantissaLength }, output }) => {
-			assert.equal(rationalToNumber(floatStr, mantissaLength), output)
-		});
+		floatToNumberTest.data.forEach(
+			({ input: { floatStr, mantissaLength }, output }) => {
+				assert.equal(
+					rationalToNumber(floatStr, mantissaLength),
+					output
+				);
+			}
+		);
 	});
-})
+});

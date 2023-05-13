@@ -2,13 +2,18 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import {
 	// operators
-	add, sub, mul, div, eq, neg,
+	add,
+	sub,
+	mul,
+	div,
+	eq,
+	neg,
 	// type-guards
 	isFloat,
 	isRational,
 	// utils
 	floatToNumber,
-	rationalToNumber
+	rationalToNumber,
 } from "../index.js";
 
 describe("arithmetica index", () => {
@@ -30,4 +35,4 @@ describe("arithmetica index", () => {
 		assert.ok(typeof floatToNumber === "function");
 		assert.ok(typeof rationalToNumber === "function");
 	});
-})
+});

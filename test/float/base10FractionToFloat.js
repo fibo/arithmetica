@@ -96,14 +96,17 @@ const base10FractionToFloatTest = {
 			},
 			output: "-0.0021188724960776",
 		},
-	]
+	],
 };
 
 describe("base10FractionToFloat", () => {
 	it(base10FractionToFloatTest.message, () => {
 		base10FractionToFloatTest.data.forEach(
 			({ input: { bigInt, denominatorBase10Exponent }, output }) => {
-				assert.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output);
+				assert.equal(
+					base10FractionToFloat(bigInt, denominatorBase10Exponent),
+					output
+				);
 			}
 		);
 	});

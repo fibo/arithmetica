@@ -46,5 +46,5 @@ export const isFloat = (arg) => {
 };
 
 export const floatToNumber = (floatStr, mantissaLength) => {
-    return Number(Number(parseFloat(floatStr)).toFixed(mantissaLength));
+	return Number(Number(parseFloat(floatStr)).toFixed(mantissaLength));
 };

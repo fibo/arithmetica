@@ -21,8 +21,8 @@ export const isStringTest = {
 			input: "1",
 			output: true,
 		},
-	]
-}
+	],
+};
 
 export const canHaveDecimalSeparatorTest = {
 	message: "can have a decimal separator",
@@ -39,7 +39,7 @@ export const canHaveDecimalSeparatorTest = {
 			input: "-123.456789",
 			output: true,
 		},
-	]
+	],
 };
 
 export const canHaveMinusSignOnlyAtBeginningTest = {
@@ -73,7 +73,7 @@ export const canHaveMinusSignOnlyAtBeginningTest = {
 			input: "123-4",
 			output: false,
 		},
-	]
+	],
 };
 
 export const cannotHaveMoreThanOneDecimalSeparatorTest = {
@@ -91,7 +91,7 @@ export const cannotHaveMoreThanOneDecimalSeparatorTest = {
 			input: "1.2.3",
 			output: false,
 		},
-	]
+	],
 };
 
 export const cannotEndWithDecimalSeparatorTest = {
@@ -109,8 +109,8 @@ export const cannotEndWithDecimalSeparatorTest = {
 			input: "1234.",
 			output: false,
 		},
-	]
-}
+	],
+};
 
 export const cannotHaveRightPaddedZerosTest = {
 	message: "cannot have right padded zeros",
@@ -123,8 +123,8 @@ export const cannotHaveRightPaddedZerosTest = {
 			input: "-00.1",
 			output: false,
 		},
-	]
-}
+	],
+};
 
 export const mustHaveNumberAfterMinusSignTest = {
 	message: "must have a number after minus sign",
@@ -137,18 +137,18 @@ export const mustHaveNumberAfterMinusSignTest = {
 			input: "-.",
 			output: false,
 		},
-	]
-}
+	],
+};
 
 export const cannotBeMinusZeroTest = {
 	message: "cannot be -0",
 	data: [
 		{
 			input: "-0",
-			output: false
-		}
-	]
-}
+			output: false,
+		},
+	],
+};
 
 describe("Float", () => {
 	it(isStringTest.message, () => {
@@ -164,9 +164,11 @@ describe("Float", () => {
 	});
 
 	it(cannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
-		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output);
-		});
+		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(
+			({ input, output }) => {
+				assert.equal(isFloat(input), output);
+			}
+		);
 	});
 
 	it(canHaveDecimalSeparatorTest.message, () => {
@@ -176,9 +178,11 @@ describe("Float", () => {
 	});
 
 	it(canHaveMinusSignOnlyAtBeginningTest.message, () => {
-		canHaveMinusSignOnlyAtBeginningTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output);
-		});
+		canHaveMinusSignOnlyAtBeginningTest.data.forEach(
+			({ input, output }) => {
+				assert.equal(isFloat(input), output);
+			}
+		);
 	});
 
 	it(cannotHaveRightPaddedZerosTest.message, () => {

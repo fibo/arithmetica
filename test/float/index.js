@@ -2,12 +2,17 @@ import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import {
 	// operators
-	add, sub, mul, div, eq, neg,
+	add,
+	sub,
+	mul,
+	div,
+	eq,
+	neg,
 	// type-guards
 	isFloat,
 	// utils
-	floatToNumber
-} from "#float/index.js"
+	floatToNumber,
+} from "#float/index.js";
 
 describe("arithmetica/float index", () => {
 	it("exports operators", () => {
@@ -26,4 +31,4 @@ describe("arithmetica/float index", () => {
 	it("exports utils", () => {
 		assert.ok(typeof floatToNumber === "function");
 	});
-})
+});

@@ -1,10 +1,7 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { div } from "#rational/operators.js";
-import {
-	divFloatTest,
-	divFloatThrowsRangeErrorTest,
-} from "#test/float/div.js"
+import { divFloatTest, divFloatThrowsRangeErrorTest } from "#test/float/div.js";
 
 const divRationalTest = {
 	message: "implements Rational division",
@@ -25,7 +22,7 @@ const divRationalTest = {
 			input: { a: "1", b: "6.1915" },
 			output: "0.1615117499798110312525236210934345473633",
 		},
-	]
+	],
 };
 
 describe("div", () => {
@@ -36,12 +33,13 @@ describe("div", () => {
 	});
 
 	it(divFloatThrowsRangeErrorTest.message, () => {
-		divFloatThrowsRangeErrorTest.data.forEach(({ input: { a, b }, error }) => {
-			assert.throws(
-				() => { div(a, b); },
-				error
-			)
-		})
+		divFloatThrowsRangeErrorTest.data.forEach(
+			({ input: { a, b }, error }) => {
+				assert.throws(() => {
+					div(a, b);
+				}, error);
+			}
+		);
 	});
 
 	it(divFloatTest.message, () => {
@@ -50,5 +48,3 @@ describe("div", () => {
 		});
 	});
 });
-
-

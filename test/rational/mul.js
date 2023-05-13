@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { mul } from "#rational/operators.js";
-import { mulFloatTest } from "#test/float/mul.js"
+import { mulFloatTest } from "#test/float/mul.js";
 
 const mulRationalTest = {
 	message: "implements Rational multiplication",
@@ -83,7 +83,7 @@ const mulRationalTest = {
 			input: { a: "1", b: "-0.12_34" },
 			output: "-0.12_34",
 		},
-	]
+	],
 };
 
 describe("mul", () => {

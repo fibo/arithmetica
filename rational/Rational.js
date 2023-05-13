@@ -8,10 +8,13 @@ export const isRational = (arg) => {
 };
 
 export const rationalToNumber = (rational, mantissaLength) => {
-	let [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(rational);
+	let [integer, decimalFixedPart, decimalRepeatingPart] =
+		splitRational(rational);
 	let decimalPart = decimalFixedPart;
 	while (decimalPart.length < mantissaLength) {
 		decimalPart += decimalRepeatingPart;
 	}
-    return Number(Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength));
+	return Number(
+		Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength)
+	);
 };

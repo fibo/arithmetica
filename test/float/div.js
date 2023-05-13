@@ -8,13 +8,13 @@ export const divFloatThrowsRangeErrorTest = {
 		{
 			input: {
 				a: "1",
-				b: "0"
+				b: "0",
 			},
 			error: {
 				name: "RangeError",
-			}
-		}
-	]
+			},
+		},
+	],
 };
 
 export const divFloatTest = {
@@ -68,17 +68,18 @@ export const divFloatTest = {
 			input: { a: "98463.7", b: "51.2" },
 			output: "1923.119140625",
 		},
-	]
+	],
 };
 
 describe("div", () => {
 	it(divFloatThrowsRangeErrorTest.message, () => {
-		divFloatThrowsRangeErrorTest.data.forEach(({ input: { a, b }, error }) => {
-			assert.throws(
-				() => { div(a, b); },
-				error
-			)
-		})
+		divFloatThrowsRangeErrorTest.data.forEach(
+			({ input: { a, b }, error }) => {
+				assert.throws(() => {
+					div(a, b);
+				}, error);
+			}
+		);
 	});
 
 	it(divFloatTest.message, () => {
@@ -87,4 +88,3 @@ describe("div", () => {
 		});
 	});
 });
-

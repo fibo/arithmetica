@@ -8,10 +8,7 @@ export type FloatUnaryOperator = (a: Float) => Float;
 /** Negation. */
 export declare const neg: FloatUnaryOperator;
 
-export type FloatBinaryOperator = (
-	a: Float,
-	b: Float
-) => Float;
+export type FloatBinaryOperator = (a: Float, b: Float) => Float;
 
 /** Addition. */
 export declare const add: FloatBinaryOperator;

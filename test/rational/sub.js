@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { describe, it } from "node:test";
 import { sub } from "#rational/operators.js";
-import { subFloatTest } from "#test/float/sub.js"
+import { subFloatTest } from "#test/float/sub.js";
 
 const subRationalTest = {
 	message: "implements Rational subtraction",
@@ -14,7 +14,7 @@ const subRationalTest = {
 			input: { a: "1", b: "0._1" },
 			output: "0._8",
 		},
-	]
+	],
 };
 
 describe("sub", () => {

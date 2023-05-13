@@ -29,16 +29,18 @@ const removeRightPaddedZerosFromNonRepeatingDecimalTest = {
 			input: "-10.10",
 			output: "-10.1",
 		},
-	]
+	],
 };
 
 describe("removeRightPaddedZerosFromNonRepeatingDecimal", () => {
 	it(removeRightPaddedZerosFromNonRepeatingDecimalTest.message, () => {
-		removeRightPaddedZerosFromNonRepeatingDecimalTest.data.forEach(({ input, output }) => {
-			assert.equal(
-				removeRightPaddedZerosFromNonRepeatingDecimal(input),
-				output
-			);
-		});
+		removeRightPaddedZerosFromNonRepeatingDecimalTest.data.forEach(
+			({ input, output }) => {
+				assert.equal(
+					removeRightPaddedZerosFromNonRepeatingDecimal(input),
+					output
+				);
+			}
+		);
 	});
 });

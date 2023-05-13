@@ -9,16 +9,23 @@ export const base10FractionToFloat = (bigInt, denominatorBase10Exponent) => {
 			return "-0." + bigIntString.slice(1);
 		} else if (bigIntStringLength - 1n < denominatorBase10Exponent) {
 			return removeRightPaddedZerosFromNonRepeatingDecimal(
-				"-0." + "0".repeat(
-					Number(denominatorBase10Exponent - bigIntStringLength + 1n)
-				) + bigIntString.slice(1)
-			)
+				"-0." +
+					"0".repeat(
+						Number(
+							denominatorBase10Exponent - bigIntStringLength + 1n
+						)
+					) +
+					bigIntString.slice(1)
+			);
 		} else {
 			return removeRightPaddedZerosFromNonRepeatingDecimal(
-				"-" + bigIntString.slice(
+				"-" +
+					bigIntString.slice(
 						1,
 						Number(bigIntStringLength - denominatorBase10Exponent)
-					) + "." + bigIntString.slice(
+					) +
+					"." +
+					bigIntString.slice(
 						Number(bigIntStringLength - denominatorBase10Exponent)
 					)
 			);
@@ -28,18 +35,22 @@ export const base10FractionToFloat = (bigInt, denominatorBase10Exponent) => {
 			return "0." + bigIntString;
 		} else if (bigIntStringLength < denominatorBase10Exponent) {
 			return removeRightPaddedZerosFromNonRepeatingDecimal(
-				"0." + "0".repeat(
-					Number(denominatorBase10Exponent - bigIntStringLength)
-				) + bigIntString
-			)
+				"0." +
+					"0".repeat(
+						Number(denominatorBase10Exponent - bigIntStringLength)
+					) +
+					bigIntString
+			);
 		} else {
 			return removeRightPaddedZerosFromNonRepeatingDecimal(
 				bigIntString.slice(
 					0,
 					Number(bigIntStringLength - denominatorBase10Exponent)
-				) + "." + bigIntString.slice(
-					Number(bigIntStringLength - denominatorBase10Exponent)
-				)
+				) +
+					"." +
+					bigIntString.slice(
+						Number(bigIntStringLength - denominatorBase10Exponent)
+					)
 			);
 		}
 	}
@@ -56,7 +67,7 @@ export const quotientToFloat = (integerA, integerB) => {
 		reminder = numerator % integerB;
 	}
 	return String(integerA / integerB) + "." + decimalPart;
-}
+};
 
 export const floatToBase10Fraction = (floatStr) => {
 	let [integer, mantissa] = floatStr.split(".");
