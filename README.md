@@ -126,11 +126,27 @@ eq("42", "42.0"); // true
 
 `add(a: Rational, b: Rational): Rational`
 
+```js
+import { add } from "arithmetica";
+
+add("1", "2"); // '3'
+add("0._1", "0._1"); // '0._2' i.e. 0.2222222...
+add("0._1", "0._8"); // "1"
+```
+
 ### sub
 
 > Implements subtraction.
 
 `sub(a: Rational, b: Rational): Rational`
+
+```js
+import { sub } from "arithmetica";
+
+sub("1", "2"); // '-1'
+sub("0._1", "0._1"); // '0'
+sub("1", "0._1"); // "0._8"
+```
 
 ### neg
 
@@ -171,7 +187,7 @@ try {
 }
 ```
 
-### neg
+### inv
 
 > Implements inversion.
 
