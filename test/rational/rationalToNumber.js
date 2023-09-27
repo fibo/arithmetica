@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { rationalToNumber } from "#rational/Rational.js";
 import { floatToNumberTest } from "#test/float/floatToNumber.js";
 
@@ -8,53 +8,53 @@ const rationalToNumberTest = {
 	data: [
 		{
 			input: { rational: "0.1", mantissaLength: 1 },
-			output: 0.1,
+			output: 0.1
 		},
 		{
 			input: { rational: "0.456", mantissaLength: 2 },
-			output: 0.46,
+			output: 0.46
 		},
 		{
 			input: { rational: "0._3", mantissaLength: 8 },
-			output: 0.33333333,
+			output: 0.33333333
 		},
 		{
 			input: { rational: "-0._3", mantissaLength: 8 },
-			output: -0.33333333,
+			output: -0.33333333
 		},
 		{
 			input: { rational: "0.1_2", mantissaLength: 4 },
-			output: 0.1222,
+			output: 0.1222
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 1 },
-			output: 0.1,
+			output: 0.1
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 2 },
-			output: 0.12,
+			output: 0.12
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 3 },
-			output: 0.123,
+			output: 0.123
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 4 },
-			output: 0.1234,
+			output: 0.1234
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 5 },
-			output: 0.12343,
+			output: 0.12343
 		},
 		{
 			input: { rational: "0.12_34", mantissaLength: 6 },
-			output: 0.123434,
+			output: 0.123434
 		},
 		{
 			input: { rational: "0.1_23", mantissaLength: 6 },
-			output: 0.123232,
-		},
-	],
+			output: 0.123232
+		}
+	]
 };
 
 const rationalToNumberMantissaLengthIsOptionalTest = {
@@ -62,13 +62,13 @@ const rationalToNumberMantissaLengthIsOptionalTest = {
 	data: [
 		{
 			input: "0.1",
-			output: 0.1,
-		},
-	],
+			output: 0.1
+		}
+	]
 };
 
 describe("rationalToNumber", () => {
-	it(floatToNumberTest.message, () => {
+	test(floatToNumberTest.message, () => {
 		floatToNumberTest.data.forEach(
 			({ input: { floatStr, mantissaLength }, output }) => {
 				assert.equal(
@@ -79,7 +79,7 @@ describe("rationalToNumber", () => {
 		);
 	});
 
-	it(rationalToNumberTest.message, () => {
+	test(rationalToNumberTest.message, () => {
 		rationalToNumberTest.data.forEach(
 			({ input: { rational, mantissaLength }, output }) => {
 				assert.equal(
@@ -90,10 +90,10 @@ describe("rationalToNumber", () => {
 		);
 	});
 
-	it(rationalToNumberMantissaLengthIsOptionalTest.message, () => {
+	test(rationalToNumberMantissaLengthIsOptionalTest.message, () => {
 		rationalToNumberMantissaLengthIsOptionalTest.data.forEach(
 			({ input, output }) => {
-				assert.equal(rationalToNumber(input,8), output);
+				assert.equal(rationalToNumber(input, 8), output);
 			}
 		);
 	});

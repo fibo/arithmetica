@@ -2,12 +2,12 @@ import {
 	add as addFloat,
 	sub as subFloat,
 	mul as mulFloat,
-	div as divFloat,
+	div as divFloat
 } from "../float/operators.js";
 import {
 	fractionToRational,
 	splitRational,
-	splittedRationalToFraction,
+	splittedRationalToFraction
 } from "./utils.js";
 
 export { neg } from "../float/operators.js";
@@ -111,4 +111,12 @@ export const div = (a, b) => {
 
 	if (denominatorA === denominatorB)
 		return fractionToRational(numeratorA, numeratorB);
+
+	if (numeratorA === 1n && denominatorA === 1n)
+		return fractionToRational(denominatorB, numeratorB);
+
+	return fractionToRational(
+		mul(numeratorA, denominatorB),
+		mul(denominatorA, numeratorB)
+	);
 };

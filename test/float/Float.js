@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { isFloat } from "#float/Float.js";
 
 export const isStringTest = {
@@ -7,21 +7,21 @@ export const isStringTest = {
 	data: [
 		{
 			input: undefined,
-			output: false,
+			output: false
 		},
 		{
 			input: 42,
-			output: false,
+			output: false
 		},
 		{
 			input: NaN,
-			output: false,
+			output: false
 		},
 		{
 			input: "1",
-			output: true,
-		},
-	],
+			output: true
+		}
+	]
 };
 
 export const canHaveDecimalSeparatorTest = {
@@ -29,17 +29,17 @@ export const canHaveDecimalSeparatorTest = {
 	data: [
 		{
 			input: "1.01",
-			output: true,
+			output: true
 		},
 		{
 			input: "1.0",
-			output: true,
+			output: true
 		},
 		{
 			input: "-123.456789",
-			output: true,
-		},
-	],
+			output: true
+		}
+	]
 };
 
 export const canHaveMinusSignOnlyAtBeginningTest = {
@@ -47,33 +47,33 @@ export const canHaveMinusSignOnlyAtBeginningTest = {
 	data: [
 		{
 			input: "-1",
-			output: true,
+			output: true
 		},
 		{
 			input: "-2.0",
-			output: true,
+			output: true
 		},
 		{
 			input: "1-",
-			output: false,
+			output: false
 		},
 		{
 			input: "-1.0-",
-			output: false,
+			output: false
 		},
 		{
 			input: "-1.23-4",
-			output: false,
+			output: false
 		},
 		{
 			input: "1.23-4",
-			output: false,
+			output: false
 		},
 		{
 			input: "123-4",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 export const cannotHaveMoreThanOneDecimalSeparatorTest = {
@@ -81,17 +81,17 @@ export const cannotHaveMoreThanOneDecimalSeparatorTest = {
 	data: [
 		{
 			input: "-1..01",
-			output: false,
+			output: false
 		},
 		{
 			input: "1..0",
-			output: false,
+			output: false
 		},
 		{
 			input: "1.2.3",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 export const cannotEndWithDecimalSeparatorTest = {
@@ -99,17 +99,17 @@ export const cannotEndWithDecimalSeparatorTest = {
 	data: [
 		{
 			input: "0.",
-			output: false,
+			output: false
 		},
 		{
 			input: "-123.",
-			output: false,
+			output: false
 		},
 		{
 			input: "1234.",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 export const cannotHaveRightPaddedZerosTest = {
@@ -117,13 +117,13 @@ export const cannotHaveRightPaddedZerosTest = {
 	data: [
 		{
 			input: "00.1",
-			output: false,
+			output: false
 		},
 		{
 			input: "-00.1",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 export const mustHaveNumberAfterMinusSignTest = {
@@ -131,13 +131,13 @@ export const mustHaveNumberAfterMinusSignTest = {
 	data: [
 		{
 			input: "-.1",
-			output: false,
+			output: false
 		},
 		{
 			input: "-.",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 export const cannotBeMinusZeroTest = {
@@ -145,9 +145,9 @@ export const cannotBeMinusZeroTest = {
 	data: [
 		{
 			input: "-0",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 export const canOmitIntegerPartTest = {
@@ -155,45 +155,45 @@ export const canOmitIntegerPartTest = {
 	data: [
 		{
 			input: ".1",
-			output: true,
+			output: true
 		},
 		{
 			input: ".123",
-			output: true,
+			output: true
 		},
 		{
 			input: ".0",
-			output: true,
+			output: true
 		},
 		{
 			input: ".",
-			output: false,
+			output: false
 		},
 		{
 			input: "-.1",
-			output: false,
+			output: false
 		},
 		{
 			input: ".-1",
-			output: false,
-		},
-	],
+			output: false
+		}
+	]
 };
 
 describe("Float", () => {
-	it(isStringTest.message, () => {
+	test(isStringTest.message, () => {
 		isStringTest.data.forEach(({ input, output }) => {
 			assert.equal(isFloat(input), output);
 		});
 	});
 
-	it(canHaveDecimalSeparatorTest.message, () => {
+	test(canHaveDecimalSeparatorTest.message, () => {
 		canHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
 			assert.equal(isFloat(input), output);
 		});
 	});
 
-	it(cannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
+	test(cannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
 		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isFloat(input), output);
@@ -201,13 +201,13 @@ describe("Float", () => {
 		);
 	});
 
-	it(canHaveDecimalSeparatorTest.message, () => {
+	test(canHaveDecimalSeparatorTest.message, () => {
 		canHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
 			assert.equal(isFloat(input), output);
 		});
 	});
 
-	it(canHaveMinusSignOnlyAtBeginningTest.message, () => {
+	test(canHaveMinusSignOnlyAtBeginningTest.message, () => {
 		canHaveMinusSignOnlyAtBeginningTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isFloat(input), output);
@@ -215,19 +215,19 @@ describe("Float", () => {
 		);
 	});
 
-	it(cannotHaveRightPaddedZerosTest.message, () => {
+	test(cannotHaveRightPaddedZerosTest.message, () => {
 		cannotHaveRightPaddedZerosTest.data.forEach(({ input, output }) => {
 			assert.equal(isFloat(input), output);
 		});
 	});
 
-	it(mustHaveNumberAfterMinusSignTest.message, () => {
+	test(mustHaveNumberAfterMinusSignTest.message, () => {
 		mustHaveNumberAfterMinusSignTest.data.forEach(({ input, output }) => {
 			assert.equal(isFloat(input), output);
 		});
 	});
 
-	it(cannotBeMinusZeroTest.message, () => {
+	test(cannotBeMinusZeroTest.message, () => {
 		cannotBeMinusZeroTest.data.forEach(({ input, output }) => {
 			assert.equal(isFloat(input), output);
 		});

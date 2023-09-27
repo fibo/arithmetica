@@ -24,7 +24,14 @@ export const fractionToRational = (numerator, denominator) => {
 		numerator = reminder * 10n;
 		digit = String(numerator / denominator);
 		i = decimalPart.indexOf(digit);
-		if (i > -1) return integerPart + "." + decimalPart.slice(0, i) + "_" + decimalPart.slice(i);
+		if (i > -1)
+			return (
+				integerPart +
+				"." +
+				decimalPart.slice(0, i) +
+				"_" +
+				decimalPart.slice(i)
+			);
 		decimalPart += digit;
 		reminder = numerator % denominator;
 		if (reminder === 0n) return integerPart + "." + decimalPart;
@@ -53,9 +60,12 @@ export const splittedRationalToFraction = (
 			return [BigInt(integer), 1n];
 		}
 	}
-	let numerator = BigInt(integer + decimalFixedPart + decimalRepeatingPart) - BigInt(integer + decimalFixedPart);
+	let numerator =
+		BigInt(integer + decimalFixedPart + decimalRepeatingPart) -
+		BigInt(integer + decimalFixedPart);
 	let denominator = BigInt(
-		"9".repeat(decimalRepeatingPart.length) + "0".repeat(decimalFixedPart.length)
+		"9".repeat(decimalRepeatingPart.length) +
+			"0".repeat(decimalFixedPart.length)
 	);
 	return [numerator, denominator];
 };

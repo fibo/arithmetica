@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { splittedRationalToFraction } from "#rational/utils.js";
 
 const splittedRationalToFractionTest = {
@@ -10,77 +10,77 @@ const splittedRationalToFractionTest = {
 			input: {
 				integer: "0",
 				decimalFixedPart: "",
-				decimalRepeatingPart: "1",
+				decimalRepeatingPart: "1"
 			},
 			output: {
 				numerator: 1n,
-				denominator: 9n,
-			},
+				denominator: 9n
+			}
 		},
 		{
 			input: {
 				integer: "0",
 				decimalFixedPart: "3",
-				decimalRepeatingPart: "",
+				decimalRepeatingPart: ""
 			},
 			output: {
 				numerator: 3n,
-				denominator: 10n,
-			},
+				denominator: 10n
+			}
 		},
 		{
 			input: {
 				integer: "0",
 				decimalFixedPart: "",
-				decimalRepeatingPart: "3",
+				decimalRepeatingPart: "3"
 			},
 			output: {
 				numerator: 3n,
-				denominator: 9n,
-			},
+				denominator: 9n
+			}
 		},
 		{
 			input: {
 				integer: "8",
 				decimalFixedPart: "",
-				decimalRepeatingPart: "5",
+				decimalRepeatingPart: "5"
 			},
 			output: {
 				numerator: 77n,
-				denominator: 9n,
-			},
+				denominator: 9n
+			}
 		},
 		{
 			input: {
 				integer: "8",
 				decimalFixedPart: "4",
-				decimalRepeatingPart: "35",
+				decimalRepeatingPart: "35"
 			},
 			output: {
 				numerator: 8351n,
-				denominator: 990n,
-			},
+				denominator: 990n
+			}
 		},
 		{
 			input: {
 				integer: "42",
 				decimalFixedPart: "",
-				decimalRepeatingPart: "",
+				decimalRepeatingPart: ""
 			},
 			output: {
 				numerator: 42n,
-				denominator: 1n,
-			},
-		},
-	],
+				denominator: 1n
+			}
+		}
+	]
 };
 
 describe("splittedRationalToFraction", () => {
-	it(splittedRationalToFractionTest.message, () => {
+	test(splittedRationalToFractionTest.message, () => {
 		splittedRationalToFractionTest.data.forEach(
 			({
 				input: { integer, decimalFixedPart, decimalRepeatingPart },
-				output,
+				output
 			}) => {
 				const [numerator, denominator] = splittedRationalToFraction(
 					integer,

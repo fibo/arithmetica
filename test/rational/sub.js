@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { sub } from "#rational/operators.js";
 import { subFloatTest } from "#test/float/sub.js";
 
@@ -8,23 +8,23 @@ const subRationalTest = {
 	data: [
 		{
 			input: { a: "0._1", b: "0._1" },
-			output: "0",
+			output: "0"
 		},
 		{
 			input: { a: "1", b: "0._1" },
-			output: "0._8",
-		},
-	],
+			output: "0._8"
+		}
+	]
 };
 
 describe("sub", () => {
-	it(subRationalTest.message, () => {
+	test(subRationalTest.message, () => {
 		subRationalTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(sub(a, b), output);
 		});
 	});
 
-	it(subFloatTest.message, () => {
+	test(subFloatTest.message, () => {
 		subFloatTest.data.forEach(({ input: { a, b }, output }) => {
 			assert.equal(sub(a, b), output);
 		});

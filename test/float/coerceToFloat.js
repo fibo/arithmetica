@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { coerceToFloat } from "#float/Float.js";
 
 export const coerceToFloatThrowsErrorTest = {
@@ -8,10 +8,10 @@ export const coerceToFloatThrowsErrorTest = {
 		{
 			input: Infinity,
 			error: {
-				name: "Error",
-			},
-		},
-	],
+				name: "Error"
+			}
+		}
+	]
 };
 
 export const coerceToFloatTest = {
@@ -19,25 +19,25 @@ export const coerceToFloatTest = {
 	data: [
 		{
 			input: 0,
-			output: "0",
+			output: "0"
 		},
 		{
 			input: -1.23,
-			output: "-1.23",
+			output: "-1.23"
 		},
 		{
 			input: 42,
-			output: "42",
+			output: "42"
 		},
 		{
 			input: -2n,
-			output: "-2",
-		},
-	],
+			output: "-2"
+		}
+	]
 };
 
 describe("coerceToFloat", () => {
-	it(coerceToFloatThrowsErrorTest.message, () => {
+	test(coerceToFloatThrowsErrorTest.message, () => {
 		coerceToFloatThrowsErrorTest.data.forEach(({ input, error }) => {
 			assert.throws(() => {
 				coerceToFloat(input);
@@ -45,7 +45,7 @@ describe("coerceToFloat", () => {
 		});
 	});
 
-	it(coerceToFloatTest.message, () => {
+	test(coerceToFloatTest.message, () => {
 		coerceToFloatTest.data.forEach(({ input, output }) => {
 			assert.equal(coerceToFloat(input), output);
 		});

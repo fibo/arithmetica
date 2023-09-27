@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { splitRational } from "#rational/utils.js";
 
 const splitRationalTest = {
@@ -10,30 +10,30 @@ const splitRationalTest = {
 			output: {
 				integer: "1",
 				decimalFixedPart: "2",
-				decimalRepeatingPart: "3",
-			},
+				decimalRepeatingPart: "3"
+			}
 		},
 		{
 			input: "8._5",
 			output: {
 				integer: "8",
 				decimalFixedPart: "",
-				decimalRepeatingPart: "5",
-			},
+				decimalRepeatingPart: "5"
+			}
 		},
 		{
 			input: "-1.2_3",
 			output: {
 				integer: "-1",
 				decimalFixedPart: "2",
-				decimalRepeatingPart: "3",
-			},
-		},
-	],
+				decimalRepeatingPart: "3"
+			}
+		}
+	]
 };
 
 describe("splitRational", () => {
-	it(splitRationalTest.message, () => {
+	test(splitRationalTest.message, () => {
 		splitRationalTest.data.forEach(({ input, output }) => {
 			const [integer, decimalFixedPart, decimalRepeatingPart] =
 				splitRational(input);

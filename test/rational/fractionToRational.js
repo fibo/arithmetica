@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { fractionToRational } from "#rational/utils.js";
 
 const fractionToRationalTest = {
@@ -8,78 +8,78 @@ const fractionToRationalTest = {
 		{
 			input: {
 				numerator: 1n,
-				denominator: 1n,
+				denominator: 1n
 			},
-			output: "1",
+			output: "1"
 		},
 		{
 			input: {
 				numerator: 8n,
-				denominator: -2n,
+				denominator: -2n
 			},
-			output: "-4",
+			output: "-4"
 		},
 		{
 			input: {
 				numerator: 5n,
-				denominator: 10n,
+				denominator: 10n
 			},
-			output: "0.5",
+			output: "0.5"
 		},
 		{
 			input: {
 				numerator: 0n,
-				denominator: 1n,
+				denominator: 1n
 			},
-			output: "0",
+			output: "0"
 		},
 		{
 			input: {
 				numerator: 1n,
-				denominator: 9n,
+				denominator: 9n
 			},
-			output: "0._1",
+			output: "0._1"
 		},
 		{
 			input: {
 				numerator: -1n,
-				denominator: -9n,
+				denominator: -9n
 			},
-			output: "0._1",
+			output: "0._1"
 		},
 		{
 			input: {
 				numerator: -1n,
-				denominator: 9n,
+				denominator: 9n
 			},
-			output: "-0._1",
+			output: "-0._1"
 		},
 		{
 			input: {
 				numerator: 1n,
-				denominator: -9n,
+				denominator: -9n
 			},
-			output: "-0._1",
+			output: "-0._1"
 		},
 		{
 			input: {
 				numerator: 3n,
-				denominator: 7n,
+				denominator: 7n
 			},
-			output: "0._428571",
+			output: "0._428571"
 		},
 		{
 			input: {
 				numerator: -5n,
-				denominator: 3n,
+				denominator: 3n
 			},
-			output: "-1._6",
-		},
-	],
+			output: "-1._6"
+		}
+	]
 };
 
 describe("fractionToRational", () => {
-	it(fractionToRationalTest.message, () => {
+	test(fractionToRationalTest.message, () => {
 		fractionToRationalTest.data.forEach(
 			({ input: { numerator, denominator }, output }) => {
 				const rational = fractionToRational(numerator, denominator);

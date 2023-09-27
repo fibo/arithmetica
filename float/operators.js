@@ -1,7 +1,7 @@
 import {
 	base10FractionToFloat,
 	floatToBase10Fraction,
-	quotientToFloat,
+	quotientToFloat
 } from "./utils.js";
 
 export const eq = (a, b) => {
@@ -29,9 +29,10 @@ export const add = (a, b) => {
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
 		return base10FractionToFloat(
-			integerA * 10n ** (
-				denominatorBase10ExponentB - denominatorBase10ExponentA
-			) + integerB,
+			integerA *
+				10n **
+					(denominatorBase10ExponentB - denominatorBase10ExponentA) +
+				integerB,
 			denominatorBase10ExponentB
 		);
 	} else {
@@ -59,16 +60,19 @@ export const sub = (a, b) => {
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
 		return base10FractionToFloat(
-			integerA * 10n ** (
-				denominatorBase10ExponentB - denominatorBase10ExponentA
-			) - integerB,
+			integerA *
+				10n **
+					(denominatorBase10ExponentB - denominatorBase10ExponentA) -
+				integerB,
 			denominatorBase10ExponentB
 		);
 	} else {
 		return base10FractionToFloat(
-			integerA - integerB * 10n ** (
-				denominatorBase10ExponentA - denominatorBase10ExponentB
-			),
+			integerA -
+				integerB *
+					10n **
+						(denominatorBase10ExponentA -
+							denominatorBase10ExponentB),
 			denominatorBase10ExponentA
 		);
 	}
@@ -99,15 +103,20 @@ export const div = (a, b) => {
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB) {
 		if (reminder === 0n) {
-			return String((
-				10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA) * integerA
-			) / integerB);
+			return String(
+				(10n **
+					(denominatorBase10ExponentB - denominatorBase10ExponentA) *
+					integerA) /
+					integerB
+			);
 		} else {
 			mul(
 				quotientToFloat(integerA, integerB),
-				String(10n ** (
-					denominatorBase10ExponentB - denominatorBase10ExponentA
-				))
+				String(
+					10n **
+						(denominatorBase10ExponentB -
+							denominatorBase10ExponentA)
+				)
 			);
 		}
 	} else {
@@ -122,7 +131,9 @@ export const div = (a, b) => {
 			);
 			return base10FractionToFloat(
 				integer,
-				denominatorBase10Exponent + denominatorBase10ExponentA - denominatorBase10ExponentB
+				denominatorBase10Exponent +
+					denominatorBase10ExponentA -
+					denominatorBase10ExponentB
 			);
 		}
 	}

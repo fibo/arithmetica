@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import {
 	// operators
 	add,
@@ -12,11 +12,11 @@ import {
 	// type-guards
 	isFloat,
 	// utils
-	floatToNumber,
+	floatToNumber
 } from "#float/index.js";
 
 describe("arithmetica/float index", () => {
-	it("exports operators", () => {
+	test("exports operators", () => {
 		assert.ok(typeof eq === "function");
 		assert.ok(typeof neg === "function");
 		assert.ok(typeof inv === "function");
@@ -26,11 +26,11 @@ describe("arithmetica/float index", () => {
 		assert.ok(typeof sub === "function");
 	});
 
-	it("exports type-guards", () => {
+	test("exports type-guards", () => {
 		assert.ok(typeof isFloat === "function");
 	});
 
-	it("exports utils", () => {
+	test("exports utils", () => {
 		assert.ok(typeof floatToNumber === "function");
 	});
 });

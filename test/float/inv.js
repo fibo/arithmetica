@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { inv } from "#float/operators.js";
 
 export const invFloatThrowsRangeErrorTest = {
@@ -8,38 +8,36 @@ export const invFloatThrowsRangeErrorTest = {
 		{
 			input: "0",
 			error: {
-				name: "RangeError",
-			},
-		},
-	],
+				name: "RangeError"
+			}
+		}
+	]
 };
 
 export const invFloatTest = {
-	message: "implements inversion",
+	message: "implements Float inversion",
 	data: [
 		{
 			input: "1",
-			output: "1",
+			output: "1"
 		},
 		{
 			input: "2",
-			output: "0.5",
-		},
-	],
+			output: "0.5"
+		}
+	]
 };
 
 describe("inv", () => {
-	it(invFloatThrowsRangeErrorTest.message, () => {
-		invFloatThrowsRangeErrorTest.data.forEach(
-			({ input: { a, b }, error }) => {
-				assert.throws(() => {
-					div(a, b);
-				}, error);
-			}
-		);
+	test(invFloatThrowsRangeErrorTest.message, () => {
+		invFloatThrowsRangeErrorTest.data.forEach(({ input, error }) => {
+			assert.throws(() => {
+				inv(input);
+			}, error);
+		});
 	});
 
-	it(invFloatTest.message, () => {
+	test(invFloatTest.message, () => {
 		invFloatTest.data.forEach(({ input, output }) => {
 			assert.equal(inv(input), output);
 		});

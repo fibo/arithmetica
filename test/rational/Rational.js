@@ -1,5 +1,5 @@
 import { strict as assert } from "node:assert";
-import { describe, it } from "node:test";
+import { describe, test } from "node:test";
 import { isRational } from "#rational/Rational.js";
 import {
 	canHaveDecimalSeparatorTest as floatCanHaveDecimalSeparatorTest,
@@ -9,7 +9,7 @@ import {
 	cannotHaveMoreThanOneDecimalSeparatorTest as floatCannotHaveMoreThanOneDecimalSeparatorTest,
 	cannotHaveRightPaddedZerosTest as floatCannotHaveRightPaddedZerosTest,
 	isStringTest as floatIsStringTest,
-	mustHaveNumberAfterMinusSignTest as floatMustHaveNumberAfterMinusSignTest,
+	mustHaveNumberAfterMinusSignTest as floatMustHaveNumberAfterMinusSignTest
 } from "#test/float/Float.js";
 
 const canHaveDecimalRepeatingPartTest = {
@@ -34,24 +34,24 @@ const canHaveDecimalRepeatingPartTest = {
 		{
 			input: "1.2_3",
 			output: true
-		},
+		}
 	]
 };
 
 describe("Rational", () => {
-	it(floatIsStringTest.message, () => {
+	test(floatIsStringTest.message, () => {
 		floatIsStringTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(floatCanHaveDecimalSeparatorTest.message, () => {
+	test(floatCanHaveDecimalSeparatorTest.message, () => {
 		floatCanHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(floatCannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
+	test(floatCannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
 		floatCannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isRational(input), output);
@@ -59,7 +59,7 @@ describe("Rational", () => {
 		);
 	});
 
-	it(floatCanHaveMinusSignOnlyAtBeginningTest.message, () => {
+	test(floatCanHaveMinusSignOnlyAtBeginningTest.message, () => {
 		floatCanHaveMinusSignOnlyAtBeginningTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isRational(input), output);
@@ -67,15 +67,13 @@ describe("Rational", () => {
 		);
 	});
 
-	it(floatCanOmitIntegerPartTest.message, () => {
-		floatCanOmitIntegerPartTest.data.forEach(
-			({ input, output }) => {
-				assert.equal(isRational(input), output);
-			}
-		);
+	test(floatCanOmitIntegerPartTest.message, () => {
+		floatCanOmitIntegerPartTest.data.forEach(({ input, output }) => {
+			assert.equal(isRational(input), output);
+		});
 	});
 
-	it(floatCannotHaveRightPaddedZerosTest.message, () => {
+	test(floatCannotHaveRightPaddedZerosTest.message, () => {
 		floatCannotHaveRightPaddedZerosTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isRational(input), output);
@@ -83,7 +81,7 @@ describe("Rational", () => {
 		);
 	});
 
-	it(floatMustHaveNumberAfterMinusSignTest.message, () => {
+	test(floatMustHaveNumberAfterMinusSignTest.message, () => {
 		floatMustHaveNumberAfterMinusSignTest.data.forEach(
 			({ input, output }) => {
 				assert.equal(isRational(input), output);
@@ -91,13 +89,13 @@ describe("Rational", () => {
 		);
 	});
 
-	it(floatCannotBeMinusZeroTest.message, () => {
+	test(floatCannotBeMinusZeroTest.message, () => {
 		floatCannotBeMinusZeroTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});
 	});
 
-	it(canHaveDecimalRepeatingPartTest.message, () => {
+	test(canHaveDecimalRepeatingPartTest.message, () => {
 		canHaveDecimalRepeatingPartTest.data.forEach(({ input, output }) => {
 			assert.equal(isRational(input), output);
 		});

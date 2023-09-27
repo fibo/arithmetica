@@ -13,7 +13,7 @@ import {
 	isRational,
 	// utils
 	coerceToRational,
-	rationalToNumber,
+	rationalToNumber
 } from "../index.js";
 
 describe("arithmetica index", () => {
