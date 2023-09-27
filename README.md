@@ -77,6 +77,32 @@ A _repeating decimal_ is represented by a string like:
 
 ## Type guards
 
+### isFloat
+
+`isFloat(arg: unknown): arg is Float`
+
+Use `isFloat` type-guard to check if some data belongs to `Float` type.
+
+```ts
+import { Float, isFloat, sub } from "arithmetica/float";
+
+function minusOne (a: string): Float {
+  if (isFloat(a)) return sub(a, "1");
+  throw new TypeError(`Argument is not a Float ${a}`);
+}
+```
+
+Of course it can be used also on an ECMAScript runtime.
+
+```js
+import { isFloat, mul } from "arithmetica/float";
+
+function timesTen (a) {
+  if (isFloat(a)) return mul(a, "10");
+  throw new TypeError("Argument is not a Float");
+}
+```
+
 ### isRational
 
 `isRational(arg: unknown): arg is Rational`
@@ -84,22 +110,11 @@ A _repeating decimal_ is represented by a string like:
 Use `isRational` type-guard to check if some data belongs to `Rational` type.
 
 ```ts
-import { Rational, isRational, sub } from "arithmetica";
+import { Rational, isRational, add } from "arithmetica";
 
-function minusOne (a: string): Rational {
-  if (isRational(a)) return sub(a, "1");
+function plusOneThird (a: string): Rational {
+  if (isRational(a)) return add(a, "0._3");
   throw new TypeError(`Argument is not a Rational ${a}`);
-}
-```
-
-Of course it can be used also on an ECMAScript runtime.
-
-```js
-import { isRational, mul } from "arithmetica";
-
-function timesTen (a) {
-  if (isRational(a)) return mul(a, "10");
-  throw new TypeError("Argument is not a Rational");
 }
 ```
 
