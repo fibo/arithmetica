@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { sub } from "#float/operators.js";
 
 export const subFloatTest = {
-	message: "implements Float subtraction",
+	message: "implements Float subtraction operator",
 	data: [
 		{
 			input: { a: "1", b: "1" },

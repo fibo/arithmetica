@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { base10FractionToFloat } from "#float/utils.js";
 
 const base10FractionToFloatTest = {
-	message: "converts bigInt and denominatorBase10Exponent to Float",
+	message: "converts `bigInt` and `denominatorBase10Exponent` to Float",
 	data: [
 		{
 			input: {

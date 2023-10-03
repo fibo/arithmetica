@@ -20,3 +20,9 @@ export declare const mul: (a: Rational, b: Rational) => Rational;
 
 /** Division. */
 export declare const div: (a: Rational, b: Rational) => Rational;
+
+/** Less than. */
+export declare const lt: (a: Rational, b: Rational) => boolean;
+
+/** Greater than. */
+export declare const gt: (a: Rational, b: Rational) => boolean;

@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { add } from "#float/operators.js";
 
 export const addFloatTest = {
-	message: "implements Float addition",
+	message: "implements Float addition operator",
 	data: [
 		{
 			input: { a: "1", b: "1" },

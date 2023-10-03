@@ -4,7 +4,7 @@ import { rationalToNumber } from "#rational/Rational.js";
 import { floatToNumberTest } from "#test/float/floatToNumber.js";
 
 const rationalToNumberTest = {
-	message: "converts a `Rational` to a `Number`",
+	message: "converts a Rational to a Number",
 	data: [
 		{
 			input: { rational: "0.1", mantissaLength: 1 },

@@ -20,3 +20,9 @@ export declare const mul: (a: Float, b: Float) => Float;
 
 /** Division. */
 export declare const div: (a: Float, b: Float) => Float;
+
+/** Less than. */
+export declare const lt: (a: Float, b: Float) => boolean;
+
+/** Greater than. */
+export declare const gt: (a: Float, b: Float) => boolean;

@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { neg } from "#float/operators.js";
 
 export const negFloatTest = {
-	message: "implements Float negation",
+	message: "implements Float negation operator",
 	data: [
 		{
 			input: "1",
@@ -12,6 +12,10 @@ export const negFloatTest = {
 		{
 			input: "-42",
 			output: "42"
+		},
+		{
+			input: "-1.23",
+			output: "1.23"
 		}
 	]
 };

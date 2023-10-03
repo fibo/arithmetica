@@ -124,7 +124,7 @@ Every operator imported from `arithmetica/float` has the same signature as its h
 
 ### eq
 
-> Implements equality.
+> Implements _equality_ operator.
 
 `eq(a: Rational, b: Rational): boolean`
 
@@ -137,7 +137,7 @@ eq("42", "42.0"); // true
 
 ### add
 
-> Implements addition.
+> Implements _addition_ operator.
 
 `add(a: Rational, b: Rational): Rational`
 
@@ -151,7 +151,7 @@ add("0._1", "0._8"); // "1"
 
 ### sub
 
-> Implements subtraction.
+> Implements _subtraction_ operator.
 
 `sub(a: Rational, b: Rational): Rational`
 
@@ -165,7 +165,7 @@ sub("1", "0._1"); // "0._8"
 
 ### neg
 
-> Implements negation.
+> Implements _negation_ operator.
 
 `neg(a: Rational): Rational`
 
@@ -178,13 +178,20 @@ neg("-42"); // '42'
 
 ### mul
 
-> Implements multiplication.
+> Implements _multiplication_ operator.
 
 `mul(a: Rational, b: Rational): Rational`
 
+```js
+import { mul } from "arithmetica";
+
+mul("2", "-3"); // '-6'
+mul("0._3", "0.3"); // '0.1'
+```
+
 ### div
 
-> Implements division.
+> Implements _division_ operator.
 
 `div(a: Rational, b: Rational): Rational`
 
@@ -204,7 +211,7 @@ try {
 
 ### inv
 
-> Implements inversion.
+> Implements _inversion_ operator.
 
 `inv(a: Rational): Rational`
 
@@ -213,6 +220,31 @@ import { inv } from "arithmetica";
 
 inv("2"); // '0.5'
 inv("1._1"); // '9'
+```
+
+### lt
+
+> Implements _less then_ operator.
+
+`lt(a: Rational, b: Rational): boolean`
+
+```js
+import { lt } from "arithmetica";
+
+lt("-2", "1"); // true
+```
+
+### gt
+
+> Implements _greater then_ operator.
+
+`gt(a: Rational, b: Rational): boolean`
+
+```js
+import { gt } from "arithmetica";
+
+gt("-2", "1"); // false
+gt("42", "24"); // true
 ```
 
 ## Utils

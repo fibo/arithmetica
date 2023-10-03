@@ -12,11 +12,11 @@ import {
 	lt,
 	gt,
 	// type-guards
-	isFloat,
+	isRational,
 	// utils
-	coerceToFloat,
-	floatToNumber
-} from "arithmetica/float";
+	coerceToRational,
+	rationalToNumber
+} from "arithmetica";
 
 describe("arithmetica index", () => {
 	test("exports operators", () => {
@@ -32,11 +32,12 @@ describe("arithmetica index", () => {
 	});
 
 	test("exports type-guards", () => {
-		assert.ok(typeof isFloat === "function");
+		assert.ok(typeof isRational === "function");
 	});
 
 	test("exports utils", () => {
-		assert.ok(typeof coerceToFloat === "function");
-		assert.ok(typeof floatToNumber === "function");
+		assert.ok(typeof coerceToRational === "function");
+		assert.ok(typeof rationalToNumber === "function");
 	});
 });
+

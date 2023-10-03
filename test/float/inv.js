@@ -15,7 +15,7 @@ export const invFloatThrowsRangeErrorTest = {
 };
 
 export const invFloatTest = {
-	message: "implements Float inversion",
+	message: "implements Float inversion operator",
 	data: [
 		{
 			input: "1",

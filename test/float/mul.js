@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { mul } from "#float/operators.js";
 
 export const mulFloatTest = {
-	message: "implements Float multiplication",
+	message: "implements Float multiplication operator",
 	data: [
 		{
 			input: { a: "1", b: "1" },
@@ -44,6 +44,10 @@ export const mulFloatTest = {
 		{
 			input: { a: "-0.1", b: "-0.2" },
 			output: "0.02"
+		},
+		{
+			input: { a: "2", b: "-3" },
+			output: "-6"
 		},
 		{
 			input: { a: "1.23", b: "4.56" },

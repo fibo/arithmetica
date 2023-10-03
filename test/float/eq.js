@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { eq } from "#float/operators.js";
 
 export const eqFloatTest = {
-	message: "implements Float equality",
+	message: "implements Float equality operator",
 	data: [
 		{
 			input: { a: "1", b: "1" },

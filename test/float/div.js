@@ -18,7 +18,7 @@ export const divFloatThrowsRangeErrorTest = {
 };
 
 export const divFloatTest = {
-	message: "implements Float division",
+	message: "implements Float division operator",
 	data: [
 		{
 			input: { a: "1", b: "1" },

@@ -8,6 +8,39 @@ const splittedRationalToFractionTest = {
 	data: [
 		{
 			input: {
+				integer: "2",
+				decimalFixedPart: "",
+				decimalRepeatingPart: ""
+			},
+			output: {
+				numerator: 2n,
+				denominator: 1n
+			}
+		},
+		{
+			input: {
+				integer: "-1",
+				decimalFixedPart: "",
+				decimalRepeatingPart: ""
+			},
+			output: {
+				numerator: -1n,
+				denominator: 1n
+			}
+		},
+		{
+			input: {
+				integer: "-2",
+				decimalFixedPart: "5",
+				decimalRepeatingPart: ""
+			},
+			output: {
+				numerator: -25n,
+				denominator: 10n
+			}
+		},
+		{
+			input: {
 				integer: "0",
 				decimalFixedPart: "",
 				decimalRepeatingPart: "1"
