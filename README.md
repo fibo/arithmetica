@@ -5,6 +5,33 @@
 A [Rational](https://en.wikipedia.org/wiki/Rational_number) is a number that can be expressed as a fraction of two integers.
 It includes also [repeating decimals](https://en.wikipedia.org/wiki/Repeating_decimal) hence is a super-set of floating point numbers.
 
+**ToC**
+
+- [Installation](#installation)
+- [Usage](#usage)
+- Types:
+  - [Float](#float)
+  - [Rational](#rational)
+- Type guards:
+  - [isFloat](#isfloat)
+  - [isRational](#isrational)
+- Operators:
+  - [eq](#eq)
+  - [add](#add)
+  - [sub](#sub)
+  - [neg](#neg)
+  - [mul](#mul)
+  - [div](#div)
+  - [inv](#inv)
+  - [lt](#lt)
+  - [gt](#gt)
+- Utils:
+  - [coerceToFloat](#coercetofloat)
+  - [floatToNumber](#floattonumber)
+  - [coerceToRational](#coercetorational)
+  - [rationalToNumber](#rationaltonumber)
+- [License](#license)
+
 ## Installation
 
 With [npm](https://www.npmjs.com/) do
@@ -37,7 +64,7 @@ add("1", "2"); // '3'
 add("0._3", "1")); // '1._3'
 ```
 
-**NOTA BENE**: there is no runtime check on types: consumers are responsible to feed inputs
+**NOTA BENE**: there is no runtime check on types! Consumers are responsible to feed inputs
 that are actual `Rational` types, for instance using [`isRational` type-guard](#isrational).
 
 If you want only floating point operators, without _repeating decimals_ support, you can do
