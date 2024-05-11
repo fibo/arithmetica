@@ -16,15 +16,15 @@ It includes also [repeating decimals](https://en.wikipedia.org/wiki/Repeating_de
   - [isFloat](#isfloat)
   - [isRational](#isrational)
 - Operators:
-  - [eq](#eq)
-  - [add](#add)
-  - [sub](#sub)
-  - [neg](#neg)
-  - [mul](#mul)
-  - [div](#div)
-  - [inv](#inv)
-  - [lt](#lt)
-  - [gt](#gt)
+  - [eq](#eq): equality
+  - [add](#add): addition
+  - [sub](#sub): subtraction
+  - [neg](#neg): negation
+  - [mul](#mul): multiplication
+  - [div](#div): division
+  - [inv](#inv): inversion
+  - [lt](#lt): less than
+  - [gt](#gt): greater than
 - Utils:
   - [coerceToFloat](#coercetofloat)
   - [floatToNumber](#floattonumber)
@@ -40,18 +40,9 @@ With [npm](https://www.npmjs.com/) do
 npm install arithmetica
 ```
 
-This package is implemented with ECMAScript modules. CommonJS is not supported, nor bundle is provided.
+This package is implemented with ECMAScript modules. CommonJS is not supported.
 
-If you need a bundle, for example only with floating point operators (i.e. without repeating decimals)
-you can do something like.
-
-```sh
-git clone git@github.com:fibo/arithmetica.git
-cd arithmetica
-esbuild --bundle float/index.js --minify --outfile=arithmetica.js
-```
-
-It will produce a 1.6kb (minified, not gzipped) _arithmetica.js_ file.
+No dependencies are used at all.
 
 ## Usage
 
@@ -81,9 +72,9 @@ add("0.1", "0.2"); // '0.3'
 
 A `Float` is a string that expresses a decimal representation of a number.
 
-Decimal separator is "." character.
-Exponential notation is not allowed.
-Integer part can be omitted.
+- Decimal separator is "." character.
+- Exponential notation is not allowed.
+- Integer part can be omitted.
 
 For example:
 
@@ -173,7 +164,7 @@ import { add } from "arithmetica";
 
 add("1", "2"); // '3'
 add("0._1", "0._1"); // '0._2' i.e. 0.2222222...
-add("0._1", "0._8"); // "1"
+add("0._1", "0._8"); // '1'
 ```
 
 ### sub
@@ -187,7 +178,7 @@ import { sub } from "arithmetica";
 
 sub("1", "2"); // '-1'
 sub("0._1", "0._1"); // '0'
-sub("1", "0._1"); // "0._8"
+sub("1", "0._1"); // '0._8'
 ```
 
 ### neg
