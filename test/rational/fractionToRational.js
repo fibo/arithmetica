@@ -80,11 +80,9 @@ const fractionToRationalTest = {
 
 describe("fractionToRational", () => {
 	test(fractionToRationalTest.message, () => {
-		fractionToRationalTest.data.forEach(
-			({ input: { numerator, denominator }, output }) => {
-				const rational = fractionToRational(numerator, denominator);
-				assert.equal(rational, output);
-			}
-		);
+		fractionToRationalTest.data.forEach(({ input: { numerator, denominator }, output }) => {
+			const rational = fractionToRational(numerator, denominator);
+			assert.equal(rational, output);
+		});
 	});
 });

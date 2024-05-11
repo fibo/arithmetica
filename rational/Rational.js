@@ -8,27 +8,20 @@ export const isRational = (arg) => {
 	try {
 		if (BigInt(decimalRepeatingPart) < 0) return false;
 		return true;
-	} catch (ignore) {
+	} catch (_) {
 		return false;
 	}
 };
 
 export const rationalToNumber = (rational, mantissaLength = 16) => {
-	let [integer, decimalFixedPart, decimalRepeatingPart] =
-		splitRational(rational);
+	let [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(rational);
 	let decimalPart = decimalFixedPart;
 	if (decimalRepeatingPart !== "")
 		while (true) {
 			decimalPart += decimalRepeatingPart;
 			if (decimalPart.length >= mantissaLength) break;
 		}
-	return Number(
-		Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength)
-	);
+	return Number(Number(parseFloat(integer + "." + decimalPart)).toFixed(mantissaLength));
 };
 
-export const coerceToRational = (arg) => {
-	let value = arg;
-	if (isRational(value)) return value;
-	return coerceToFloat(value);
-};
+export const coerceToRational = (arg) => (isRational(arg) ? arg : coerceToFloat(arg));

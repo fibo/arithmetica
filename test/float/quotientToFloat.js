@@ -64,10 +64,8 @@ describe("quotientToFloat", () => {
 	});
 
 	test(quotientToFloatTest.message, () => {
-		quotientToFloatTest.data.forEach(
-			({ input: { integerA, integerB }, output }) => {
-				assert.equal(quotientToFloat(integerA, integerB), output);
-			}
-		);
+		quotientToFloatTest.data.forEach(({ input: { integerA, integerB }, output }) => {
+			assert.equal(quotientToFloat(integerA, integerB), output);
+		});
 	});
 });

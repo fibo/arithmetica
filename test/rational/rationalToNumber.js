@@ -69,32 +69,20 @@ const rationalToNumberMantissaLengthIsOptionalTest = {
 
 describe("rationalToNumber", () => {
 	test(floatToNumberTest.message, () => {
-		floatToNumberTest.data.forEach(
-			({ input: { floatStr, mantissaLength }, output }) => {
-				assert.equal(
-					rationalToNumber(floatStr, mantissaLength),
-					output
-				);
-			}
-		);
+		floatToNumberTest.data.forEach(({ input: { floatStr, mantissaLength }, output }) => {
+			assert.equal(rationalToNumber(floatStr, mantissaLength), output);
+		});
 	});
 
 	test(rationalToNumberTest.message, () => {
-		rationalToNumberTest.data.forEach(
-			({ input: { rational, mantissaLength }, output }) => {
-				assert.equal(
-					rationalToNumber(rational, mantissaLength),
-					output
-				);
-			}
-		);
+		rationalToNumberTest.data.forEach(({ input: { rational, mantissaLength }, output }) => {
+			assert.equal(rationalToNumber(rational, mantissaLength), output);
+		});
 	});
 
 	test(rationalToNumberMantissaLengthIsOptionalTest.message, () => {
-		rationalToNumberMantissaLengthIsOptionalTest.data.forEach(
-			({ input, output }) => {
-				assert.equal(rationalToNumber(input, 8), output);
-			}
-		);
+		rationalToNumberMantissaLengthIsOptionalTest.data.forEach(({ input, output }) => {
+			assert.equal(rationalToNumber(input, 8), output);
+		});
 	});
 });

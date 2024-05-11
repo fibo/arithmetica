@@ -34,13 +34,8 @@ const removeRightPaddedZerosFromNonRepeatingDecimalTest = {
 
 describe("removeRightPaddedZerosFromNonRepeatingDecimal", () => {
 	test(removeRightPaddedZerosFromNonRepeatingDecimalTest.message, () => {
-		removeRightPaddedZerosFromNonRepeatingDecimalTest.data.forEach(
-			({ input, output }) => {
-				assert.equal(
-					removeRightPaddedZerosFromNonRepeatingDecimal(input),
-					output
-				);
-			}
-		);
+		removeRightPaddedZerosFromNonRepeatingDecimalTest.data.forEach(({ input, output }) => {
+			assert.equal(removeRightPaddedZerosFromNonRepeatingDecimal(input), output);
+		});
 	});
 });

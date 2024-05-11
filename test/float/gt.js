@@ -16,7 +16,7 @@ export const gtFloatTest = {
 		{
 			input: { a: "42", b: "24" },
 			output: true
-		},
+		}
 	]
 };
 
@@ -27,4 +27,3 @@ describe("gt", () => {
 		});
 	});
 });
-

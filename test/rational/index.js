@@ -40,4 +40,3 @@ describe("arithmetica index", () => {
 		assert.ok(typeof rationalToNumber === "function");
 	});
 });
-

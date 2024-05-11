@@ -101,13 +101,8 @@ const base10FractionToFloatTest = {
 
 describe("base10FractionToFloat", () => {
 	test(base10FractionToFloatTest.message, () => {
-		base10FractionToFloatTest.data.forEach(
-			({ input: { bigInt, denominatorBase10Exponent }, output }) => {
-				assert.equal(
-					base10FractionToFloat(bigInt, denominatorBase10Exponent),
-					output
-				);
-			}
-		);
+		base10FractionToFloatTest.data.forEach(({ input: { bigInt, denominatorBase10Exponent }, output }) => {
+			assert.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output);
+		});
 	});
 });

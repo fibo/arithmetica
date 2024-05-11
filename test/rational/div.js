@@ -33,13 +33,11 @@ describe("div", () => {
 	});
 
 	test(divFloatThrowsRangeErrorTest.message, () => {
-		divFloatThrowsRangeErrorTest.data.forEach(
-			({ input: { a, b }, error }) => {
-				assert.throws(() => {
-					div(a, b);
-				}, error);
-			}
-		);
+		divFloatThrowsRangeErrorTest.data.forEach(({ input: { a, b }, error }) => {
+			assert.throws(() => {
+				div(a, b);
+			}, error);
+		});
 	});
 
 	test(divFloatTest.message, () => {

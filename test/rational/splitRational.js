@@ -35,8 +35,7 @@ const splitRationalTest = {
 describe("splitRational", () => {
 	test(splitRationalTest.message, () => {
 		splitRationalTest.data.forEach(({ input, output }) => {
-			const [integer, decimalFixedPart, decimalRepeatingPart] =
-				splitRational(input);
+			const [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(input);
 			assert.equal(integer, output.integer);
 			assert.equal(decimalFixedPart, output.decimalFixedPart);
 			assert.equal(decimalRepeatingPart, output.decimalRepeatingPart);

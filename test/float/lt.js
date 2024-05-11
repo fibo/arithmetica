@@ -16,7 +16,7 @@ export const ltFloatTest = {
 		{
 			input: { a: "2.5", b: "-5.2" },
 			output: false
-		},
+		}
 	]
 };
 
@@ -27,4 +27,3 @@ describe("lt", () => {
 		});
 	});
 });
-

@@ -30,10 +30,8 @@ export const floatToNumberTest = {
 
 describe("floatToNumber", () => {
 	test(floatToNumberTest.message, () => {
-		floatToNumberTest.data.forEach(
-			({ input: { floatStr, mantissaLength }, output }) => {
-				assert.equal(floatToNumber(floatStr, mantissaLength), output);
-			}
-		);
+		floatToNumberTest.data.forEach(({ input: { floatStr, mantissaLength }, output }) => {
+			assert.equal(floatToNumber(floatStr, mantissaLength), output);
+		});
 	});
 });

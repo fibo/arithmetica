@@ -194,11 +194,9 @@ describe("Float", () => {
 	});
 
 	test(cannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
-		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(
-			({ input, output }) => {
-				assert.equal(isFloat(input), output);
-			}
-		);
+		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(({ input, output }) => {
+			assert.equal(isFloat(input), output);
+		});
 	});
 
 	test(canHaveDecimalSeparatorTest.message, () => {
@@ -208,11 +206,9 @@ describe("Float", () => {
 	});
 
 	test(canHaveMinusSignOnlyAtBeginningTest.message, () => {
-		canHaveMinusSignOnlyAtBeginningTest.data.forEach(
-			({ input, output }) => {
-				assert.equal(isFloat(input), output);
-			}
-		);
+		canHaveMinusSignOnlyAtBeginningTest.data.forEach(({ input, output }) => {
+			assert.equal(isFloat(input), output);
+		});
 	});
 
 	test(cannotHaveRightPaddedZerosTest.message, () => {

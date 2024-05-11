@@ -3,8 +3,7 @@ import { describe, test } from "node:test";
 import { splittedRationalToFraction } from "#rational/utils.js";
 
 const splittedRationalToFractionTest = {
-	message:
-		"returns numerator and denominator of fraction that generates repeating decimal",
+	message: "returns numerator and denominator of fraction that generates repeating decimal",
 	data: [
 		{
 			input: {
@@ -110,19 +109,10 @@ const splittedRationalToFractionTest = {
 
 describe("splittedRationalToFraction", () => {
 	test(splittedRationalToFractionTest.message, () => {
-		splittedRationalToFractionTest.data.forEach(
-			({
-				input: { integer, decimalFixedPart, decimalRepeatingPart },
-				output
-			}) => {
-				const [numerator, denominator] = splittedRationalToFraction(
-					integer,
-					decimalFixedPart,
-					decimalRepeatingPart
-				);
-				assert.equal(numerator, output.numerator);
-				assert.equal(denominator, output.denominator);
-			}
-		);
+		splittedRationalToFractionTest.data.forEach(({ input: { integer, decimalFixedPart, decimalRepeatingPart }, output }) => {
+			const [numerator, denominator] = splittedRationalToFraction(integer, decimalFixedPart, decimalRepeatingPart);
+			assert.equal(numerator, output.numerator);
+			assert.equal(denominator, output.denominator);
+		});
 	});
 });
