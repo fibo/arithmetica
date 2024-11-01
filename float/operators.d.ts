@@ -1,4 +1,4 @@
-import { Float } from "./Float.js";
+import { Float } from './Float.js';
 
 /** Equality. */
 export declare const eq: (a: Float, b: Float) => boolean;

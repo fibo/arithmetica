@@ -47,12 +47,12 @@ No dependencies are used at all.
 ## Usage
 
 ```js
-import { add } from "arithmetica";
+import { add } from 'arithmetica';
 
-add("1", "2"); // '3'
+add('1', '2'); // '3'
 
 // Here 0._3 represents 0.3333333333333333...
-add("0._3", "1")); // '1._3'
+add('0._3', '1')); // '1._3'
 ```
 
 **NOTA BENE**: there is no runtime check on types! Consumers are responsible to feed inputs
@@ -61,9 +61,9 @@ that are actual `Rational` types, for instance using [`isRational` type-guard](#
 If you want only floating point operators, without _repeating decimals_ support, you can do
 
 ```js
-import { add } from "arithmetica/float";
+import { add } from 'arithmetica/float';
 
-add("0.1", "0.2"); // '0.3'
+add('0.1', '0.2'); // '0.3'
 ```
 
 ## Types
@@ -72,16 +72,16 @@ add("0.1", "0.2"); // '0.3'
 
 A `Float` is a string that expresses a decimal representation of a number.
 
-- Decimal separator is "." character.
+- Decimal separator is `.` character.
 - Exponential notation is not allowed.
 - Integer part can be omitted.
 
 For example:
 
-- "0"
-- "1.2"
-- "-0.42"
-- ".123"
+- '0'
+- '1.2'
+- '-0.42'
+- '.123'
 
 
 ### Rational
@@ -90,8 +90,8 @@ A `Rational` includes every [`Float`](#float) plus *repeating decimals* that are
 
 A _repeating decimal_ is represented by a string like:
 
-- "0._3": represents fraction `1/3`, that is 0.33333...
-- "0.123_456": represents number 0.123456456456456456456456...
+- '0._3': represents fraction `1/3`, that is 0.33333...
+- '0.123_456': represents number 0.123456456456456456456456...
 
 ## Type guards
 
@@ -102,10 +102,10 @@ A _repeating decimal_ is represented by a string like:
 Use `isFloat` type-guard to check if some data belongs to `Float` type.
 
 ```ts
-import { Float, isFloat, sub } from "arithmetica/float";
+import { Float, isFloat, sub } from 'arithmetica/float';
 
 function minusOne (a: string): Float {
-  if (isFloat(a)) return sub(a, "1");
+  if (isFloat(a)) return sub(a, '1');
   throw new TypeError(`Argument is not a Float ${a}`);
 }
 ```
@@ -113,11 +113,11 @@ function minusOne (a: string): Float {
 Of course it can be used also on an ECMAScript runtime.
 
 ```js
-import { isFloat, mul } from "arithmetica/float";
+import { isFloat, mul } from 'arithmetica/float';
 
 function timesTen (a) {
-  if (isFloat(a)) return mul(a, "10");
-  throw new TypeError("Argument is not a Float");
+  if (isFloat(a)) return mul(a, '10');
+  throw new TypeError('Argument is not a Float');
 }
 ```
 
@@ -128,10 +128,10 @@ function timesTen (a) {
 Use `isRational` type-guard to check if some data belongs to `Rational` type.
 
 ```ts
-import { Rational, isRational, add } from "arithmetica";
+import { Rational, isRational, add } from 'arithmetica';
 
 function plusOneThird (a: string): Rational {
-  if (isRational(a)) return add(a, "0._3");
+  if (isRational(a)) return add(a, '0._3');
   throw new TypeError(`Argument is not a Rational ${a}`);
 }
 ```
@@ -147,10 +147,10 @@ Every operator imported from `arithmetica/float` has the same signature as its h
 `eq(a: Rational, b: Rational): boolean`
 
 ```js
-import { eq } from "arithmetica";
+import { eq } from 'arithmetica';
 
-eq("1", "2"); // false
-eq("42", "42.0"); // true
+eq('1', '2'); // false
+eq('42', '42.0'); // true
 ```
 
 ### add
@@ -160,11 +160,11 @@ eq("42", "42.0"); // true
 `add(a: Rational, b: Rational): Rational`
 
 ```js
-import { add } from "arithmetica";
+import { add } from 'arithmetica';
 
-add("1", "2"); // '3'
-add("0._1", "0._1"); // '0._2' i.e. 0.2222222...
-add("0._1", "0._8"); // '1'
+add('1', '2'); // '3'
+add('0._1', '0._1'); // '0._2' i.e. 0.2222222...
+add('0._1', '0._8'); // '1'
 ```
 
 ### sub
@@ -174,11 +174,11 @@ add("0._1", "0._8"); // '1'
 `sub(a: Rational, b: Rational): Rational`
 
 ```js
-import { sub } from "arithmetica";
+import { sub } from 'arithmetica';
 
-sub("1", "2"); // '-1'
-sub("0._1", "0._1"); // '0'
-sub("1", "0._1"); // '0._8'
+sub('1', '2'); // '-1'
+sub('0._1', '0._1'); // '0'
+sub('1', '0._1'); // '0._8'
 ```
 
 ### neg
@@ -188,10 +188,10 @@ sub("1", "0._1"); // '0._8'
 `neg(a: Rational): Rational`
 
 ```js
-import { neg } from "arithmetica";
+import { neg } from 'arithmetica';
 
-neg("1"); // '-1'
-neg("-42"); // '42'
+neg('1'); // '-1'
+neg('-42'); // '42'
 ```
 
 ### mul
@@ -201,10 +201,10 @@ neg("-42"); // '42'
 `mul(a: Rational, b: Rational): Rational`
 
 ```js
-import { mul } from "arithmetica";
+import { mul } from 'arithmetica';
 
-mul("2", "-3"); // '-6'
-mul("0._3", "0.3"); // '0.1'
+mul('2', '-3'); // '-6'
+mul('0._3', '0.3'); // '0.1'
 ```
 
 ### div
@@ -216,12 +216,12 @@ mul("0._3", "0.3"); // '0.1'
 It throws `RangeError` if denominator is zero.
 
 ```js
-import { div } from "arithmetica";
+import { div } from 'arithmetica';
 
-div("-10", "2"); // '-5'
+div('-10', '2'); // '-5'
 
 try {
-  div("2", "0");
+  div('2', '0');
 } catch (err) {
   console.error(err); // RangeError: Division by zero
 }
@@ -234,10 +234,10 @@ try {
 `inv(a: Rational): Rational`
 
 ```js
-import { inv } from "arithmetica";
+import { inv } from 'arithmetica';
 
-inv("2"); // '0.5'
-inv("1._1"); // '9'
+inv('2'); // '0.5'
+inv('1._1'); // '9'
 ```
 
 ### lt
@@ -247,9 +247,9 @@ inv("1._1"); // '9'
 `lt(a: Rational, b: Rational): boolean`
 
 ```js
-import { lt } from "arithmetica";
+import { lt } from 'arithmetica';
 
-lt("-2", "1"); // true
+lt('-2', '1'); // true
 ```
 
 ### gt
@@ -259,10 +259,10 @@ lt("-2", "1"); // true
 `gt(a: Rational, b: Rational): boolean`
 
 ```js
-import { gt } from "arithmetica";
+import { gt } from 'arithmetica';
 
-gt("-2", "1"); // false
-gt("42", "24"); // true
+gt('-2', '1'); // false
+gt('42', '24'); // true
 ```
 
 ## Utils
@@ -274,7 +274,7 @@ gt("42", "24"); // true
 `coerceToFloat(arg: unknown): Float`
 
 ```js
-import { coerceToFloat } from "arithmetica/float";
+import { coerceToFloat } from 'arithmetica/float';
 
 coerceToFloat(0); // '0'
 coerceToFloat(-1.23); // '-1.23'
@@ -287,10 +287,10 @@ coerceToFloat(-1.23); // '-1.23'
 `floatToNumber(floatStr: Float, mantissaLength?: number): number`
 
 ```js
-import { floatToNumber } from "arithmetica/float";
+import { floatToNumber } from 'arithmetica/float';
 
-floatToNumber("42.01", 0); // 42
-floatToNumber("1234.56789", 2); // 1234.57
+floatToNumber('42.01', 0); // 42
+floatToNumber('1234.56789', 2); // 1234.57
 ```
 
 ### coerceToRational
@@ -300,7 +300,7 @@ floatToNumber("1234.56789", 2); // 1234.57
 `coerceToRational(arg: unknown): Rational`
 
 ```js
-import { coerceToRational } from "arithmetica";
+import { coerceToRational } from 'arithmetica';
 
 coerceToRational(42); // '42'
 coerceToRational(-1n); // '-1'
@@ -317,11 +317,11 @@ it set the number of digits of the decimal part, max is 16.
 Output is rounded.
 
 ```js
-import { rationalToNumber } from "arithmetica";
+import { rationalToNumber } from 'arithmetica';
 
-rationalToNumber("0.10"); // 0.1
-rationalToNumber("0._3", 8); // 0.33333333
-rationalToNumber("0.456", 2); // 0.46
+rationalToNumber('0.10'); // 0.1
+rationalToNumber('0._3', 8); // 0.33333333
+rationalToNumber('0.456', 2); // 0.46
 ```
 
 ## License

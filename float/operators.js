@@ -1,10 +1,10 @@
-import { base10FractionToFloat, floatToBase10Fraction, quotientToFloat } from "./utils.js";
+import { base10FractionToFloat, floatToBase10Fraction, quotientToFloat } from './utils.js';
 
-export const eq = (a, b) => (a === b ? true : sub(a, b) === "0");
+export const eq = (a, b) => (a === b ? true : sub(a, b) === '0');
 
-export const neg = (a) => (a.charAt(0) === "-" ? a.slice(1) : "-" + a);
+export const neg = (a) => (a.charAt(0) === '-' ? a.slice(1) : '-' + a);
 
-export const inv = (a) => div("1", a);
+export const inv = (a) => div('1', a);
 
 export const add = (a, b) => {
 	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a);

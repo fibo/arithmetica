@@ -1,4 +1,4 @@
-import { Rational } from "./Rational.js";
+import { Rational } from './Rational.js';
 
 /** Equality. */
 export declare const eq: (a: Rational, b: Rational) => boolean;
