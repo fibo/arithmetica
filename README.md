@@ -58,13 +58,15 @@ add('0._3', '1')); // '1._3'
 **NOTA BENE**: there is no runtime check on types! Consumers are responsible to feed inputs
 that are actual `Rational` types, for instance using [`isRational` type-guard](#isrational).
 
-If you want only floating point operators, without _repeating decimals_ support, you can do
+If you do not need _repeating decimals_ you can import only floating point operators with something like
 
 ```js
 import { add } from 'arithmetica/float';
 
 add('0.1', '0.2'); // '0.3'
 ```
+
+The size of a bundle minified with _esbuild_ including only `arithmetica/float` is 1.9kb only.
 
 ## Types
 
