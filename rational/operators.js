@@ -57,7 +57,7 @@ export const div = (a, b) => {
 
 	if (numeratorA === 1n && denominatorA === 1n) return fractionToRational(denominatorB, numeratorB);
 
-	return fractionToRational(mul(numeratorA, denominatorB), mul(denominatorA, numeratorB));
+	return fractionToRational(numeratorA * denominatorB, denominatorA * numeratorB);
 };
 
 export const lt = (a, b) => {

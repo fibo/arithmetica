@@ -10,6 +10,10 @@ const splitRationalTest = {
 			output: { integer: '1', decimalFixedPart: '2', decimalRepeatingPart: '3' }
 		},
 		{
+			input: '1._2',
+			output: { integer: '1', decimalFixedPart: '', decimalRepeatingPart: '2' }
+		},
+		{
 			input: '8._5',
 			output: { integer: '8', decimalFixedPart: '', decimalRepeatingPart: '5' }
 		},

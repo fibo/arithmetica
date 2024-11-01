@@ -17,8 +17,7 @@ export const fractionToRational = (numerator, denominator) => {
 	}
 	let integerPart = String(numerator / denominator);
 	if (isNegative) integerPart = '-' + integerPart;
-	let decimalPart = '';
-	let digit;
+	let digit, decimalPart = '';
 	let i; // index of first repeating decimal
 	while (true) {
 		numerator = reminder * 10n;

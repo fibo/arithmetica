@@ -8,20 +8,20 @@ const divRationalTest = {
 	data: [
 		{ input: { a: '0._1', b: '0._1' }, output: '1' },
 		{ input: { a: '0._3', b: '0._1' }, output: '3' },
-		{
-			input: { a: '43534.5435', b: '0.054645' },
-			output: '796679.3576722481471314850398023606917375789185'
-		},
-		{
-			input: { a: '1', b: '6.1915' },
-			output: '0.1615117499798110312525236210934345473633'
-		},
+		{ input: { a: '0.6', b: '1._2' }, output: '0.4_90' },
 	]
 }
 
 describe('div', () => {
-	test(divRationalTest.message, () => {
+	test(divFloatTest.message, () => {
 		divFloatTest.data.forEach(({ input: { a, b }, output }) => {
+			assert.equal(div(a, b), output)
+		})
+	})
+
+	test(divRationalTest.message, () => {
+		divRationalTest.data.forEach(({ input: { a, b }, output }) => {
+			console.log(a,b,output)
 			assert.equal(div(a, b), output)
 		})
 	})
