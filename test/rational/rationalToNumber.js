@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { rationalToNumber } from '#rational/Rational.js'
+import { rationalToNumber } from '#src/rational.js'
 import { floatToNumberTest } from '#test/float/floatToNumber.js'
 
 const rationalToNumberTest = {

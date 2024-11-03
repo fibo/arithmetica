@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { splittedRationalToFraction } from '#rational/utils.js'
+import { splittedRationalToFraction } from '#src/rational.js'
 
 const splittedRationalToFractionTest = {
 	message: 'returns numerator and denominator of fraction that generates repeating decimal',

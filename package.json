@@ -5,17 +5,16 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "types": "./index.d.ts"
+      "import": "./rational.js",
+      "types": "./rational.d.ts"
     },
     "./float": {
-      "import": "./float/index.js",
-      "types": "./float/index.d.ts"
+      "import": "./float.js",
+      "types": "./float.d.ts"
     }
   },
   "imports": {
-    "#float/*": "./float/*",
-    "#rational/*": "./rational/*",
+    "#src/*": "./*",
     "#test/*": "./test/*"
   },
   "scripts": {

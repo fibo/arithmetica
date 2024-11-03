@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { mul } from '#rational/operators.js'
+import { mul } from '#src/rational.js'
 import { mulFloatTest } from '#test/float/mul.js'
 
 const mulRationalTest = {
@@ -24,7 +24,7 @@ const mulRationalTest = {
 		{ input: { a: '0.12_34', b: '1' }, output: '0.12_34' },
 		{ input: { a: '1', b: '0.12_34' }, output: '0.12_34' },
 		{ input: { a: '-0.12_34', b: '1' }, output: '-0.12_34' },
-		{ input: { a: '1', b: '-0.12_34' }, output: '-0.12_34' }
+		{ input: { a: '1', b: '-0.12_34' }, output: '-0.12_34' },
 	]
 }
 

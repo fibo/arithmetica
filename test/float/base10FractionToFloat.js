@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { base10FractionToFloat } from '#float/utils.js'
+import { base10FractionToFloat } from '#src/float.js'
 
 const base10FractionToFloatTest = {
 	message: 'converts `bigInt` and `denominatorBase10Exponent` to Float',

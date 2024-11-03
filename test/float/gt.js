@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { gt } from '#float/operators.js'
+import { gt } from '#src/float.js'
 
 export const gtFloatTest = {
 	message: "implements Float 'greater then' operator",

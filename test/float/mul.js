@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { mul } from '#float/operators.js'
+import { mul } from '#src/float.js'
 
 export const mulFloatTest = {
 	message: 'implements Float multiplication operator',

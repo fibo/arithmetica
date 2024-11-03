@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { inv } from '#rational/operators.js'
+import { inv } from '#src/rational.js'
 import { invFloatTest, invFloatThrowsRangeErrorTest } from '#test/float/inv.js'
 
 const invRationalTest = {

@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { coerceToFloat } from '#float/Float.js'
+import { coerceToFloat } from '#src/float.js'
 
 export const coerceToFloatThrowsErrorTest = {
 	message: 'throws if cannot convert to Float',

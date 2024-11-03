@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { removeRightPaddedZerosFromNonRepeatingDecimal } from '#float/utils.js'
+import { removeRightPaddedZerosFromNonRepeatingDecimal } from '#src/float.js'
 
 const removeRightPaddedZerosFromNonRepeatingDecimalTest = {
 	message: 'removes right padded zeros',

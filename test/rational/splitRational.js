@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { splitRational } from '#rational/utils.js'
+import { splitRational } from '#src/rational.js'
 
 const splitRationalTest = {
 	message: 'returns integer, decimalFixedPart and decimalRepeatingPart',

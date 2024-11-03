@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { isRational } from '#rational/Rational.js'
+import { isRational } from '#src/rational.js'
 import {
 	canHaveDecimalSeparatorTest as floatCanHaveDecimalSeparatorTest,
 	canHaveMinusSignOnlyAtBeginningTest as floatCanHaveMinusSignOnlyAtBeginningTest,

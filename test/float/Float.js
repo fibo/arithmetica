@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { isFloat } from '#float/Float.js'
+import { isFloat } from '#src/float.js'
 
 export const isStringTest = {
 	message: 'is a string',

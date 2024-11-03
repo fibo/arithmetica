@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert'
 import { describe, test } from 'node:test'
-import { inv } from '#float/operators.js'
+import { inv } from '#src/float.js'
 
 export const invFloatThrowsRangeErrorTest = {
 	message: "throws if input is '0'",

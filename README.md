@@ -286,7 +286,7 @@ coerceToFloat(-1.23); // '-1.23'
 
 > Converts a `Float` to a `number`.
 
-`floatToNumber(floatStr: Float, mantissaLength?: number): number`
+`floatToNumber(floatStr: Float, mantissaLen?: number): number`
 
 ```js
 import { floatToNumber } from 'arithmetica/float';
@@ -312,9 +312,9 @@ coerceToRational(-1n); // '-1'
 
 > Converts a `Rational` to a `number`.
 
-`rationalToNumber(rational: Rational, mantissaLength?: number): number`
+`rationalToNumber(rational: Rational, mantissaLen?: number): number`
 
-Notice that `mantissaLength` argument is optional:
+Notice that `mantissaLen` argument is optional:
 it set the number of digits of the decimal part, max is 16.
 Output is rounded.
 
