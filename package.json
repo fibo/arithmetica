@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "is an implementation of arithmetic operators for Rational numbers",
   "type": "module",
+	"types": "rational.d.ts",
   "exports": {
     ".": {
       "import": "./rational.js",
