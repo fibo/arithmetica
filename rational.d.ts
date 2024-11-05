@@ -1,9 +1,6 @@
 /** A `Rational` includes every `Float` plus *repeating decimals* that are decimal representation of a number whose digits are **periodic**. */
 export type Rational = string;
 
-/** Coerces to `Rational`. */
-export declare const coerceToRational: (arg: unknown) => Rational;
-
 /** Check that given argument is a `Rational`. */
 export declare const isRational: (arg: unknown) => arg is Rational;
 
@@ -11,28 +8,28 @@ export declare const isRational: (arg: unknown) => arg is Rational;
 export declare const rationalToNumber: (rational: Rational, mantissaLen?: number) => number;
 
 /** Equality. */
-export declare const eq: (a: Rational, b: Rational) => boolean;
+export declare function eq(a: Rational | number | bigint, b: Rational | number | bigint): boolean;
 
 /** Negation. */
-export declare const neg: (a: Rational) => Rational;
+export declare function neg(a: Rational | number | bigint): Rational;
 
 /** Inversion. */
-export declare const inv: (a: Rational) => Rational;
+export declare function inv(a: Rational | number | bigint): Rational;
 
 /** Addition. */
-export declare const add: (a: Rational, b: Rational) => Rational;
+export declare function add(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Subtraction. */
-export declare const sub: (a: Rational, b: Rational) => Rational;
+export declare function sub(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Multiplication. */
-export declare const mul: (a: Rational, b: Rational) => Rational;
+export declare function mul(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Division. */
-export declare const div: (a: Rational, b: Rational) => Rational;
+export declare function div(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Less than. */
-export declare const lt: (a: Rational, b: Rational) => boolean;
+export declare function lt(a: Rational | number | bigint, b: Rational | number | bigint): boolean;
 
 /** Greater than. */
-export declare const gt: (a: Rational, b: Rational) => boolean;
+export declare function gt(a: Rational | number | bigint, b: Rational | number | bigint): boolean;

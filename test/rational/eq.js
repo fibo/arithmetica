@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { eq } from '#src/rational.js'
 import { eqFloatTest } from '#test/float/eq.js'
@@ -21,13 +21,13 @@ const eqRationalTest = {
 describe('eq', () => {
 	test(eqRationalTest.message, () => {
 		eqRationalTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(eq(a, b), output)
+			strict.equal(eq(a, b), output)
 		})
 	})
 
 	test(eqFloatTest.message, () => {
 		eqFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(eq(a, b), output)
+			strict.equal(eq(a, b), output)
 		})
 	})
 })

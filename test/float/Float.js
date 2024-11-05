@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { isFloat } from '#src/float.js'
 
@@ -90,49 +90,49 @@ export const canOmitIntegerPartTest = {
 describe('Float', () => {
 	test(isStringTest.message, () => {
 		isStringTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(canHaveDecimalSeparatorTest.message, () => {
 		canHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(cannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
 		cannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(canHaveDecimalSeparatorTest.message, () => {
 		canHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(canHaveMinusSignOnlyAtBeginningTest.message, () => {
 		canHaveMinusSignOnlyAtBeginningTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(cannotHaveRightPaddedZerosTest.message, () => {
 		cannotHaveRightPaddedZerosTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(mustHaveNumberAfterMinusSignTest.message, () => {
 		mustHaveNumberAfterMinusSignTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 
 	test(cannotBeMinusZeroTest.message, () => {
 		cannotBeMinusZeroTest.data.forEach(({ input, output }) => {
-			assert.equal(isFloat(input), output)
+			strict.equal(isFloat(input), output)
 		})
 	})
 })

@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { inv } from '#src/float.js'
 
@@ -20,13 +20,13 @@ export const invFloatTest = {
 describe('inv', () => {
 	test(invFloatThrowsRangeErrorTest.message, () => {
 		invFloatThrowsRangeErrorTest.data.forEach(({ input, error }) => {
-			assert.throws(() => { inv(input) }, error)
+			strict.throws(() => { inv(input) }, error)
 		})
 	})
 
 	test(invFloatTest.message, () => {
 		invFloatTest.data.forEach(({ input, output }) => {
-			assert.equal(inv(input), output)
+			strict.equal(inv(input), output)
 		})
 	})
 })

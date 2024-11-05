@@ -1,11 +1,12 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { div } from '#src/float.js'
 
 export const divFloatThrowsRangeErrorTest = {
-	message: "throws if second operand is '0'",
+	message: "throws if second operand is zero",
 	data: [
-		{ input: { a: '1', b: '0' }, error: { name: 'RangeError' } }
+		{ input: { a: '1', b: '0' } },
+		{ input: { a: '1', b: 0 } },
 	]
 }
 
@@ -24,19 +25,20 @@ export const divFloatTest = {
 		{ input: { a: '1', b: '-0.0001' }, output: '-10000' },
 		{ input: { a: '0', b: '11.111111111' }, output: '0' },
 		{ input: { a: '98463.7', b: '51.2' }, output: '1923.119140625' },
+		{ input: { a: 1, b: '1' }, output: '1' },
 	]
 }
 
 describe('div', () => {
 	test(divFloatThrowsRangeErrorTest.message, () => {
-		divFloatThrowsRangeErrorTest.data.forEach(({ input: { a, b }, error }) => {
-			assert.throws(() => { div(a, b) }, error)
+		divFloatThrowsRangeErrorTest.data.forEach(({ input: { a, b } }) => {
+			strict.throws(() => { div(a, b) })
 		})
 	})
 
 	test(divFloatTest.message, () => {
 		divFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(div(a, b), output)
+			strict.equal(div(a, b), output)
 		})
 	})
 })

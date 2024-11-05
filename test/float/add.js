@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { add } from '#src/float.js'
 
@@ -20,6 +20,7 @@ export const addFloatTest = {
 		{ input: { a: '6', b: '3.86' }, output: '9.86' },
 		{ input: { a: '0', b: '-8.59' }, output: '-8.59' },
 		{ input: { a: '-1', b: '-505' }, output: '-506' },
+		{ input: { a: 1, b: 2 }, output: '3' },
 		{
 			input: { a: '0.0000023432495704937', b: '-0.0000023432495704937' },
 			output: '0'
@@ -41,7 +42,7 @@ export const addFloatTest = {
 describe('add', () => {
 	test(addFloatTest.message, () => {
 		addFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(add(a, b), output)
+			strict.equal(add(a, b), output)
 		})
 	})
 })

@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { isRational } from '#src/rational.js'
 import {
@@ -26,55 +26,55 @@ const canHaveDecimalRepeatingPartTest = {
 describe('Rational', () => {
 	test(floatIsStringTest.message, () => {
 		floatIsStringTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatCanHaveDecimalSeparatorTest.message, () => {
 		floatCanHaveDecimalSeparatorTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatCannotHaveMoreThanOneDecimalSeparatorTest.message, () => {
 		floatCannotHaveMoreThanOneDecimalSeparatorTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatCanHaveMinusSignOnlyAtBeginningTest.message, () => {
 		floatCanHaveMinusSignOnlyAtBeginningTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatCanOmitIntegerPartTest.message, () => {
 		floatCanOmitIntegerPartTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatCannotHaveRightPaddedZerosTest.message, () => {
 		floatCannotHaveRightPaddedZerosTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatMustHaveNumberAfterMinusSignTest.message, () => {
 		floatMustHaveNumberAfterMinusSignTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(floatCannotBeMinusZeroTest.message, () => {
 		floatCannotBeMinusZeroTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 
 	test(canHaveDecimalRepeatingPartTest.message, () => {
 		canHaveDecimalRepeatingPartTest.data.forEach(({ input, output }) => {
-			assert.equal(isRational(input), output)
+			strict.equal(isRational(input), output)
 		})
 	})
 })

@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { sub } from '#src/rational.js'
 import { subFloatTest } from '#test/float/sub.js'
@@ -14,13 +14,13 @@ const subRationalTest = {
 describe('sub', () => {
 	test(subRationalTest.message, () => {
 		subRationalTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(sub(a, b), output)
+			strict.equal(sub(a, b), output)
 		})
 	})
 
 	test(subFloatTest.message, () => {
 		subFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(sub(a, b), output)
+			strict.equal(sub(a, b), output)
 		})
 	})
 })

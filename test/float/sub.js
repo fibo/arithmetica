@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { sub } from '#src/float.js'
 
@@ -49,7 +49,7 @@ export const subFloatTest = {
 describe('sub', () => {
 	test(subFloatTest.message, () => {
 		subFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(sub(a, b), output)
+			strict.equal(sub(a, b), output)
 		})
 	})
 })

@@ -1,38 +1,29 @@
 /** A `Float` is a string that expresses a decimal representation of a number. */
 export type Float = string;
 
-/** Coerces to `Float`. */
-export declare const coerceToFloat: (arg: unknown) => Float;
-
 /** Check that given argument is a `Float`. */
-export declare const isFloat: (arg: unknown) => arg is Float;
+export declare function isFloat(arg: unknown): arg is Float;
 
 /** Converts a `Float` to a `Number`. */
-export declare const floatToNumber: (floatStr: Float, mantissaLen: number) => number;
+export declare function floatToNumber(arg: Float, mantissaLen: number): number;
 
 /** Equality. */
-export declare const eq: (a: Float, b: Float) => boolean;
+export declare function eq(a: Float | number | bigint, b: Float | number | bigint): boolean;
 
 /** Negation. */
-export declare const neg: (a: Float) => Float;
+export declare function neg(a: Float | number | bigint): Float;
 
 /** Inversion. */
-export declare const inv: (a: Float) => Float;
+export declare function inv(a: Float | number | bigint): Float;
 
 /** Addition. */
-export declare const add: (a: Float, b: Float) => Float;
+export declare function add(a: Float | number | bigint, b: Float | number | bigint): Float;
 
 /** Subtraction. */
-export declare const sub: (a: Float, b: Float) => Float;
+export declare function sub(a: Float | number | bigint, b: Float | number | bigint): Float;
 
 /** Multiplication. */
-export declare const mul: (a: Float, b: Float) => Float;
+export declare function mul(a: Float | number | bigint, b: Float | number | bigint): Float;
 
 /** Division. */
-export declare const div: (a: Float, b: Float) => Float;
-
-/** Less than. */
-export declare const lt: (a: Float, b: Float) => boolean;
-
-/** Greater than. */
-export declare const gt: (a: Float, b: Float) => boolean;
+export declare function div(a: Float | number | bigint, b: Float | number | bigint): Float;

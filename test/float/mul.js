@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { mul } from '#src/float.js'
 
@@ -20,6 +20,7 @@ export const mulFloatTest = {
 		{ input: { a: '1.2', b: '2.34' }, output: '2.808' },
 		{ input: { a: '1.5', b: '1.5' }, output: '2.25' },
 		{ input: { a: '1.0', b: '4' }, output: '4' },
+		{ input: { a: 2, b: '3' }, output: '6' },
 		{
 			input: { a: '0.0000714939', b: '1425786' },
 			output: '101.9350017054'
@@ -58,7 +59,7 @@ export const mulFloatTest = {
 describe('mul', () => {
 	test(mulFloatTest.message, () => {
 		mulFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(mul(a, b), output)
+			strict.equal(mul(a, b), output)
 		})
 	})
 })

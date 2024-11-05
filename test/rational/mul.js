@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { mul } from '#src/rational.js'
 import { mulFloatTest } from '#test/float/mul.js'
@@ -31,13 +31,13 @@ const mulRationalTest = {
 describe('mul', () => {
 	test(mulRationalTest.message, () => {
 		mulRationalTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(mul(a, b), output)
+			strict.equal(mul(a, b), output)
 		})
 	})
 
 	test(mulFloatTest.message, () => {
 		mulFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			assert.equal(mul(a, b), output)
+			strict.equal(mul(a, b), output)
 		})
 	})
 })

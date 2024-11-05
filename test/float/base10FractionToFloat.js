@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { base10FractionToFloat } from '#src/float.js'
 
@@ -63,7 +63,7 @@ const base10FractionToFloatTest = {
 describe('base10FractionToFloat', () => {
 	test(base10FractionToFloatTest.message, () => {
 		base10FractionToFloatTest.data.forEach(({ input: { bigInt, denominatorBase10Exponent }, output }) => {
-			assert.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output)
+			strict.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output)
 		})
 	})
 })

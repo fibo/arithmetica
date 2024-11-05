@@ -146,7 +146,7 @@ Every operator imported from `arithmetica/float` has the same signature as its h
 
 > Implements _equality_ operator.
 
-`eq(a: Rational, b: Rational): boolean`
+`eq(a: Rational | number | bigint, b: Rational | number | bigint): boolean`
 
 ```js
 import { eq } from 'arithmetica';
@@ -159,7 +159,7 @@ eq('42', '42.0'); // true
 
 > Implements _addition_ operator.
 
-`add(a: Rational, b: Rational): Rational`
+`add(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
 
 ```js
 import { add } from 'arithmetica';
@@ -173,7 +173,7 @@ add('0._1', '0._8'); // '1'
 
 > Implements _subtraction_ operator.
 
-`sub(a: Rational, b: Rational): Rational`
+`sub(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
 
 ```js
 import { sub } from 'arithmetica';
@@ -187,7 +187,7 @@ sub('1', '0._1'); // '0._8'
 
 > Implements _negation_ operator.
 
-`neg(a: Rational): Rational`
+`neg(a: Rational | number | bigint): Rational`
 
 ```js
 import { neg } from 'arithmetica';
@@ -200,7 +200,7 @@ neg('-42'); // '42'
 
 > Implements _multiplication_ operator.
 
-`mul(a: Rational, b: Rational): Rational`
+`mul(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
 
 ```js
 import { mul } from 'arithmetica';
@@ -213,9 +213,9 @@ mul('0._3', '0.3'); // '0.1'
 
 > Implements _division_ operator.
 
-`div(a: Rational, b: Rational): Rational`
+`div(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
 
-It throws `RangeError` if denominator is zero.
+It throws an error if denominator is zero.
 
 ```js
 import { div } from 'arithmetica';
@@ -225,7 +225,7 @@ div('-10', '2'); // '-5'
 try {
   div('2', '0');
 } catch (err) {
-  console.error(err); // RangeError: Division by zero
+  console.error(err); // Error: Division by zero
 }
 ```
 
@@ -233,7 +233,7 @@ try {
 
 > Implements _inversion_ operator.
 
-`inv(a: Rational): Rational`
+`inv(a: Rational | number | bigint): Rational`
 
 ```js
 import { inv } from 'arithmetica';
@@ -246,7 +246,7 @@ inv('1._1'); // '9'
 
 > Implements _less then_ operator.
 
-`lt(a: Rational, b: Rational): boolean`
+`lt(a: Rational | number | bigint, b: Rational | number | bigint): boolean`
 
 ```js
 import { lt } from 'arithmetica';
@@ -254,11 +254,13 @@ import { lt } from 'arithmetica';
 lt('-2', '1'); // true
 ```
 
+Notice that `lt` is not implemented by `arithmetica/float`: use the `<` operator.
+
 ### gt
 
 > Implements _greater then_ operator.
 
-`gt(a: Rational, b: Rational): boolean`
+`gt(a: Rational | number | bigint, b: Rational | number | bigint): boolean`
 
 ```js
 import { gt } from 'arithmetica';
@@ -267,20 +269,9 @@ gt('-2', '1'); // false
 gt('42', '24'); // true
 ```
 
+Notice that `gt` is not implemented by `arithmetica/float`: use the `>` operator.
+
 ## Utils
-
-### coerceToFloat
-
-> Coerces to `Float`.
-
-`coerceToFloat(arg: unknown): Float`
-
-```js
-import { coerceToFloat } from 'arithmetica/float';
-
-coerceToFloat(0); // '0'
-coerceToFloat(-1.23); // '-1.23'
-```
 
 ### floatToNumber
 
@@ -293,19 +284,6 @@ import { floatToNumber } from 'arithmetica/float';
 
 floatToNumber('42.01', 0); // 42
 floatToNumber('1234.56789', 2); // 1234.57
-```
-
-### coerceToRational
-
-> Coerces to `Rational`.
-
-`coerceToRational(arg: unknown): Rational`
-
-```js
-import { coerceToRational } from 'arithmetica';
-
-coerceToRational(42); // '42'
-coerceToRational(-1n); // '-1'
 ```
 
 ### rationalToNumber

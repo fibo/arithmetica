@@ -1,11 +1,7 @@
-import {
-	coerceToFloat, floatToBase10Fraction, isFloat,
-    add as addFloat, sub as subFloat, mul as mulFloat, div as divFloat, lt as ltFloat, gt as gtFloat
-} from './float.js'
+import { isFloat, add as addFloat, sub as subFloat, mul as mulFloat, div as divFloat } from './float.js'
+export { floatToNumber, isFloat, neg } from './float.js'
 
-export { coerceToFloat, floatToNumber, isFloat, neg } from './float.js'
-
-export const fractionToRational = (numerator, denominator) => {
+export function fractionToRational(numerator, denominator) {
 	if (numerator === 0n) return '0'
 	let reminder = numerator % denominator
 	if (reminder === 0n) return String(numerator / denominator)
@@ -35,27 +31,27 @@ export const fractionToRational = (numerator, denominator) => {
 	}
 }
 
-export const splitRational = (rational) => {
-	let [integer, mantissa] = rational.split('.')
+export function splitRational(arg) {
+	if (typeof arg != 'string') arg = String(arg)
+	let [integer, mantissa] = arg.split('.')
 	if (mantissa === undefined) return [integer, '', '']
 	let [decimalFixedPart, decimalRepeatingPart] = mantissa.split('_')
 	return [integer, decimalFixedPart ?? '', decimalRepeatingPart ?? '']
 }
 
-export const splittedRationalToFraction = (integer, decimalFixedPart, decimalRepeatingPart) => {
-	if (decimalRepeatingPart) {
-		let numerator = BigInt(integer + decimalFixedPart + decimalRepeatingPart) - BigInt(integer + decimalFixedPart)
-		let denominator = BigInt('9'.repeat(decimalRepeatingPart.length) + '0'.repeat(decimalFixedPart.length))
-		return [numerator, denominator]
-	}
-	if (decimalFixedPart) {
-		let [bigInt, denominatorBase10Exponent] = floatToBase10Fraction(integer + '.' + decimalFixedPart)
-		return [bigInt, 10n ** denominatorBase10Exponent]
-	}
+export function getFraction(integer, decimalFixedPart, decimalRepeatingPart) {
+	if (decimalRepeatingPart) return [
+		BigInt(integer + decimalFixedPart + decimalRepeatingPart) - BigInt(integer + decimalFixedPart),
+		BigInt('9'.repeat(decimalRepeatingPart.length) + '0'.repeat(decimalFixedPart.length))
+	]
+	if (decimalFixedPart) return [
+		BigInt(integer + decimalFixedPart),
+		10n ** BigInt(decimalFixedPart.length)
+	]
 	return [BigInt(integer), 1n]
 }
 
-export const isRational = (arg) => {
+export function isRational(arg) {
 	if (typeof arg !== 'string') return false
 	let [_, __, decimalRepeatingPart] = splitRational(arg)
 	if (decimalRepeatingPart === '') return isFloat(arg)
@@ -67,7 +63,7 @@ export const isRational = (arg) => {
 	}
 }
 
-export const rationalToNumber = (rational, mantissaLen = 16) => {
+export function rationalToNumber(rational, mantissaLen = 16) {
 	let [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(rational)
 	let decimalPart = decimalFixedPart
 	if (decimalRepeatingPart !== '')
@@ -78,8 +74,6 @@ export const rationalToNumber = (rational, mantissaLen = 16) => {
 	return Number(Number(parseFloat(integer + '.' + decimalPart)).toFixed(mantissaLen))
 }
 
-export const coerceToRational = (arg) => (isRational(arg) ? arg : coerceToFloat(arg))
-
 // Operators
 ////////////
 
@@ -87,78 +81,66 @@ export const eq = (a, b) => (a === b ? true : sub(a, b) === '0')
 
 export const inv = (a) => div('1', a)
 
-export const add = (a, b) => {
+export function add(a, b) {
 	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a)
 	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b)
 
 	if (decimalRepeatingPartA === '' && decimalRepeatingPartB === '') return addFloat(a, b)
 
-	const [numeratorA, denominatorA] = splittedRationalToFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
-	const [numeratorB, denominatorB] = splittedRationalToFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
+	const [numeratorA, denominatorA] = getFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
+	const [numeratorB, denominatorB] = getFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
 
 	return fractionToRational(numeratorA * denominatorB + numeratorB * denominatorA, denominatorA * denominatorB)
 }
 
-export const sub = (a, b) => {
+export function sub(a, b) {
 	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a)
 	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b)
 
 	if (decimalRepeatingPartA === '' && decimalRepeatingPartB === '') return subFloat(a, b)
 
-	const [numeratorA, denominatorA] = splittedRationalToFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
-	const [numeratorB, denominatorB] = splittedRationalToFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
+	const [numeratorA, denominatorA] = getFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
+	const [numeratorB, denominatorB] = getFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
 
 	return fractionToRational(numeratorA * denominatorB - numeratorB * denominatorA, denominatorA * denominatorB)
 }
 
-export const mul = (a, b) => {
+export function mul(a, b) {
 	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a)
 	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b)
 
 	if (decimalRepeatingPartA === '' && decimalRepeatingPartB === '') return mulFloat(a, b)
 
-	const [numeratorA, denominatorA] = splittedRationalToFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
-	const [numeratorB, denominatorB] = splittedRationalToFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
+	const [numeratorA, denominatorA] = getFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
+	const [numeratorB, denominatorB] = getFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
 
 	return fractionToRational(numeratorA * numeratorB, denominatorA * denominatorB)
 }
 
-export const div = (a, b) => {
+export function div(a, b) {
 	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a)
 	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b)
 
 	if (decimalRepeatingPartA === '' && decimalRepeatingPartB === '') return divFloat(a, b)
 
-	const [numeratorA, denominatorA] = splittedRationalToFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
-	const [numeratorB, denominatorB] = splittedRationalToFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
-
-	if (denominatorA === denominatorB) return fractionToRational(numeratorA, numeratorB)
-
-	if (numeratorA === 1n && denominatorA === 1n) return fractionToRational(denominatorB, numeratorB)
+	const [numeratorA, denominatorA] = getFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
+	const [numeratorB, denominatorB] = getFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
 
 	return fractionToRational(numeratorA * denominatorB, denominatorA * numeratorB)
 }
 
-export const lt = (a, b) => {
-	if (isFloat(a) && isFloat(b)) return ltFloat(a, b)
-
+export function lt(a, b) {
 	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a)
 	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b)
-
-	const [numeratorA, denominatorA] = splittedRationalToFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
-	const [numeratorB, denominatorB] = splittedRationalToFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
-
+	const [numeratorA, denominatorA] = getFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
+	const [numeratorB, denominatorB] = getFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
 	return numeratorA * denominatorB < numeratorB * denominatorA
 }
 
-export const gt = (a, b) => {
-	if (isFloat(a) && isFloat(b)) return gtFloat(a, b)
-
+export function gt(a, b) {
 	const [integerA, decimalFixedPartA, decimalRepeatingPartA] = splitRational(a)
 	const [integerB, decimalFixedPartB, decimalRepeatingPartB] = splitRational(b)
-
-	const [numeratorA, denominatorA] = splittedRationalToFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
-	const [numeratorB, denominatorB] = splittedRationalToFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
-
+	const [numeratorA, denominatorA] = getFraction(integerA, decimalFixedPartA, decimalRepeatingPartA)
+	const [numeratorB, denominatorB] = getFraction(integerB, decimalFixedPartB, decimalRepeatingPartB)
 	return numeratorA * denominatorB > numeratorB * denominatorA
 }

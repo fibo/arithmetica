@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { quotientToFloat } from '#src/float.js'
 
@@ -54,13 +54,13 @@ const quotientToFloatTest = {
 describe('quotientToFloat', () => {
 	test(quotientToFloatThrowsTest.message, () => {
 		quotientToFloatThrowsTest.data.forEach(({ input: { a, b }, error }) => {
-			assert.throws(() => { quotientToFloat(a, b) }, error)
+			strict.throws(() => { quotientToFloat(a, b) }, error)
 		})
 	})
 
 	test(quotientToFloatTest.message, () => {
 		quotientToFloatTest.data.forEach(({ input: { integerA, integerB }, output }) => {
-			assert.equal(quotientToFloat(integerA, integerB), output)
+			strict.equal(quotientToFloat(integerA, integerB), output)
 		})
 	})
 })

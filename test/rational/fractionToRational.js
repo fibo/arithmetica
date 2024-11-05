@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { test } from 'node:test'
 import { fractionToRational } from '#src/rational.js'
 
@@ -18,6 +18,6 @@ const testData = [
 test('fractionToRational', () => {
 	testData.forEach(({ input: { numerator, denominator }, output }) => {
 		const rational = fractionToRational(numerator, denominator)
-		assert.equal(rational, output)
+		strict.equal(rational, output)
 	})
 })

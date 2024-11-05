@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { rationalToNumber } from '#src/rational.js'
 import { floatToNumberTest } from '#test/float/floatToNumber.js'
@@ -31,19 +31,19 @@ const rationalToNumberMantissaLengthIsOptionalTest = {
 describe('rationalToNumber', () => {
 	test(floatToNumberTest.message, () => {
 		floatToNumberTest.data.forEach(({ input: { floatStr, mantissaLength }, output }) => {
-			assert.equal(rationalToNumber(floatStr, mantissaLength), output)
+			strict.equal(rationalToNumber(floatStr, mantissaLength), output)
 		})
 	})
 
 	test(rationalToNumberTest.message, () => {
 		rationalToNumberTest.data.forEach(({ input: { rational, mantissaLength }, output }) => {
-			assert.equal(rationalToNumber(rational, mantissaLength), output)
+			strict.equal(rationalToNumber(rational, mantissaLength), output)
 		})
 	})
 
 	test(rationalToNumberMantissaLengthIsOptionalTest.message, () => {
 		rationalToNumberMantissaLengthIsOptionalTest.data.forEach(({ input, output }) => {
-			assert.equal(rationalToNumber(input, 8), output)
+			strict.equal(rationalToNumber(input, 8), output)
 		})
 	})
 })

@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import {
 	// operators
@@ -6,28 +6,27 @@ import {
 	// type-guards
 	isRational,
 	// utils
-	coerceToRational, rationalToNumber
+	rationalToNumber
 } from 'arithmetica'
 
-describe('arithmetica index', () => {
+describe('arithmetica default export', () => {
 	test('exports operators', () => {
-		assert.ok(typeof eq === 'function')
-		assert.ok(typeof neg === 'function')
-		assert.ok(typeof inv === 'function')
-		assert.ok(typeof add === 'function')
-		assert.ok(typeof div === 'function')
-		assert.ok(typeof mul === 'function')
-		assert.ok(typeof sub === 'function')
-		assert.ok(typeof lt === 'function')
-		assert.ok(typeof gt === 'function')
+		strict.ok(typeof eq === 'function')
+		strict.ok(typeof neg === 'function')
+		strict.ok(typeof inv === 'function')
+		strict.ok(typeof add === 'function')
+		strict.ok(typeof div === 'function')
+		strict.ok(typeof mul === 'function')
+		strict.ok(typeof sub === 'function')
+		strict.ok(typeof lt === 'function')
+		strict.ok(typeof gt === 'function')
 	})
 
 	test('exports type-guards', () => {
-		assert.ok(typeof isRational === 'function')
+		strict.ok(typeof isRational === 'function')
 	})
 
 	test('exports utils', () => {
-		assert.ok(typeof coerceToRational === 'function')
-		assert.ok(typeof rationalToNumber === 'function')
+		strict.ok(typeof rationalToNumber === 'function')
 	})
 })

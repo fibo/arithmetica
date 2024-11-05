@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { splitRational } from '#src/rational.js'
 
@@ -28,9 +28,9 @@ describe('splitRational', () => {
 	test(splitRationalTest.message, () => {
 		splitRationalTest.data.forEach(({ input, output }) => {
 			const [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(input)
-			assert.equal(integer, output.integer)
-			assert.equal(decimalFixedPart, output.decimalFixedPart)
-			assert.equal(decimalRepeatingPart, output.decimalRepeatingPart)
+			strict.equal(integer, output.integer)
+			strict.equal(decimalFixedPart, output.decimalFixedPart)
+			strict.equal(decimalRepeatingPart, output.decimalRepeatingPart)
 		})
 	})
 })

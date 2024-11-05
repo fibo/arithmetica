@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { floatToNumber } from '#src/float.js'
 
@@ -31,7 +31,7 @@ export const floatToNumberTest = {
 describe('floatToNumber', () => {
 	test(floatToNumberTest.message, () => {
 		floatToNumberTest.data.forEach(({ input: { floatStr, mantissaLength }, output }) => {
-			assert.equal(floatToNumber(floatStr, mantissaLength), output)
+			strict.equal(floatToNumber(floatStr, mantissaLength), output)
 		})
 	})
 })

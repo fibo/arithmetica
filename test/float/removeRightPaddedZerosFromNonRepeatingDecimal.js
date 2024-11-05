@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { removeRightPaddedZerosFromNonRepeatingDecimal } from '#src/float.js'
 
@@ -17,7 +17,7 @@ const removeRightPaddedZerosFromNonRepeatingDecimalTest = {
 describe('removeRightPaddedZerosFromNonRepeatingDecimal', () => {
 	test(removeRightPaddedZerosFromNonRepeatingDecimalTest.message, () => {
 		removeRightPaddedZerosFromNonRepeatingDecimalTest.data.forEach(({ input, output }) => {
-			assert.equal(removeRightPaddedZerosFromNonRepeatingDecimal(input), output)
+			strict.equal(removeRightPaddedZerosFromNonRepeatingDecimal(input), output)
 		})
 	})
 })

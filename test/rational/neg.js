@@ -1,4 +1,4 @@
-import { strict as assert } from 'node:assert'
+import { strict } from 'node:assert'
 import { describe, test } from 'node:test'
 import { neg } from '#src/rational.js'
 import { negFloatTest } from '#test/float/neg.js'
@@ -14,13 +14,13 @@ const negRationalTest = {
 describe('neg', () => {
 	test(negRationalTest.message, () => {
 		negRationalTest.data.forEach(({ input, output }) => {
-			assert.equal(neg(input), output)
+			strict.equal(neg(input), output)
 		})
 	})
 
 	test(negFloatTest.message, () => {
 		negFloatTest.data.forEach(({ input, output }) => {
-			assert.equal(neg(input), output)
+			strict.equal(neg(input), output)
 		})
 	})
 })

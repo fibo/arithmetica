@@ -1,4 +1,4 @@
-export const isFloat = (arg) => {
+export function isFloat (arg) {
 	if (typeof arg !== 'string') return false
 
 	let letter, hasDecimalSeparator = false
@@ -32,47 +32,32 @@ export const isFloat = (arg) => {
 
 export const floatToNumber = (floatStr, mantissaLen) => Number(Number(parseFloat(floatStr)).toFixed(mantissaLen))
 
-export const coerceToFloat = (arg) => {
-	let value = arg
-	if (isFloat(value)) return value
-	if (arg !== null && typeof arg === 'object' && typeof arg.valueOf === 'function') value = arg.valueOf()
-	if (typeof value === 'bigint') return value.toString()
-	if (typeof value === 'number' && !isNaN(value) && Number.isFinite(value)) return value.toString()
-	throw new Error('Cannot coerce')
-}
-
-export const base10FractionToFloat = (bigInt, denominatorBase10Exponent) => {
+export function base10FractionToFloat(bigInt, denominatorBase10Exponent) {
 	const bigIntStr = String(bigInt)
 	if (bigIntStr === '0') return '0'
 	const bigIntStrLen = BigInt(bigIntStr.length)
 	if (denominatorBase10Exponent === 0n) return bigIntStr
 	if (bigInt < 0n) {
 		// Consider leading minus sign, for example `bigIntStrLen - 1n`.
-		if (bigIntStrLen - 1n === denominatorBase10Exponent) {
-			return '-0.' + bigIntStr.slice(1)
-		} else if (bigIntStrLen - 1n < denominatorBase10Exponent) {
-			return removeRightPaddedZerosFromNonRepeatingDecimal('-0.' + '0'.repeat(Number(denominatorBase10Exponent - bigIntStrLen + 1n)) + bigIntStr.slice(1))
-		} else {
-			return removeRightPaddedZerosFromNonRepeatingDecimal(
-				'-' + bigIntStr.slice(1, Number(bigIntStrLen - denominatorBase10Exponent)) +
-				'.' + bigIntStr.slice(Number(bigIntStrLen - denominatorBase10Exponent))
-			)
-		}
-	} else {
-		if (bigIntStrLen === denominatorBase10Exponent) {
-			return '0.' + bigIntStr
-		} else if (bigIntStrLen < denominatorBase10Exponent) {
-			return removeRightPaddedZerosFromNonRepeatingDecimal('0.' + '0'.repeat(Number(denominatorBase10Exponent - bigIntStrLen)) + bigIntStr)
-		} else {
-			return removeRightPaddedZerosFromNonRepeatingDecimal(
-				bigIntStr.slice(0, Number(bigIntStrLen - denominatorBase10Exponent)) +
-				'.' + bigIntStr.slice(Number(bigIntStrLen - denominatorBase10Exponent))
-			)
-		}
+		if (bigIntStrLen - 1n === denominatorBase10Exponent) return '-0.' + bigIntStr.slice(1)
+		if (bigIntStrLen - 1n < denominatorBase10Exponent) return removeRightPaddedZerosFromNonRepeatingDecimal(
+			'-0.' + '0'.repeat(Number(denominatorBase10Exponent - bigIntStrLen + 1n)) + bigIntStr.slice(1)
+		)
+		return removeRightPaddedZerosFromNonRepeatingDecimal(
+			'-' + bigIntStr.slice(1, Number(bigIntStrLen - denominatorBase10Exponent)) +
+			'.' + bigIntStr.slice(Number(bigIntStrLen - denominatorBase10Exponent))
+		)
 	}
+	if (bigIntStrLen === denominatorBase10Exponent) return '0.' + bigIntStr
+	if (bigIntStrLen < denominatorBase10Exponent)
+		return removeRightPaddedZerosFromNonRepeatingDecimal('0.' + '0'.repeat(Number(denominatorBase10Exponent - bigIntStrLen)) + bigIntStr)
+	return removeRightPaddedZerosFromNonRepeatingDecimal(
+		bigIntStr.slice(0, Number(bigIntStrLen - denominatorBase10Exponent)) +
+		'.' + bigIntStr.slice(Number(bigIntStrLen - denominatorBase10Exponent))
+	)
 }
 
-export const quotientToFloat = (integerA, integerB) => {
+export function quotientToFloat(integerA, integerB) {
 	let reminder = integerA % integerB
 	if (reminder === 0n) return String(integerA / integerB)
 	let numerator, decimalPart = ''
@@ -84,15 +69,16 @@ export const quotientToFloat = (integerA, integerB) => {
 	return String(integerA / integerB) + '.' + decimalPart
 }
 
-export const floatToBase10Fraction = (floatStr) => {
-	let [integer, mantissa] = floatStr.split('.')
+export function base10Fraction (arg) {
+	if (typeof arg != 'string') arg = String(arg)
+	let [integer, mantissa] = arg.split('.')
 	if (mantissa === undefined) return [BigInt(integer), 0n]
 	return [BigInt(integer + mantissa), BigInt(mantissa.length)]
 }
 
 // This function is used only for numbers with mantissa.
 // Cases when `bigIntStr` is `'0'` or any other integer are not handled.
-export const removeRightPaddedZerosFromNonRepeatingDecimal = (bigIntStr) => {
+export function removeRightPaddedZerosFromNonRepeatingDecimal(bigIntStr) {
 	let letter, i = bigIntStr.length - 1
 	while (true) {
 		letter = bigIntStr.charAt(i)
@@ -110,59 +96,64 @@ export const removeRightPaddedZerosFromNonRepeatingDecimal = (bigIntStr) => {
 // Operators
 ////////////
 
-export const eq = (a, b) => (a === b ? true : sub(a, b) === '0')
+export const eq = (a, b) => (a == b ? true : sub(a, b) === '0')
 
-export const neg = (a) => (a.charAt(0) === '-' ? a.slice(1) : '-' + a)
+export function neg (a) {
+	if (typeof a != 'string') return a ? -a : a
+	if (a == '0') return a
+	if (a.charAt(0) == '-') return a.slice(1)
+	return '-' + a
+}
 
 export const inv = (a) => div('1', a)
 
-export const add = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a)
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b)
+export function add(a, b) {
+	const [integerA, denominatorBase10ExponentA] = base10Fraction(a)
+	const [integerB, denominatorBase10ExponentB] = base10Fraction(b)
 
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) return base10FractionToFloat(integerA + integerB, denominatorBase10ExponentA)
+	if (denominatorBase10ExponentA === denominatorBase10ExponentB)
+		return base10FractionToFloat(integerA + integerB, denominatorBase10ExponentA)
 
 	return denominatorBase10ExponentA < denominatorBase10ExponentB
 		? base10FractionToFloat(integerA * 10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA) + integerB, denominatorBase10ExponentB)
 		: base10FractionToFloat(integerA + integerB * 10n ** (denominatorBase10ExponentA - denominatorBase10ExponentB), denominatorBase10ExponentA)
 }
 
-export const sub = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a)
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b)
+export function sub(a, b) {
+	const [integerA, denominatorBase10ExponentA] = base10Fraction(a)
+	const [integerB, denominatorBase10ExponentB] = base10Fraction(b)
 
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) return base10FractionToFloat(integerA - integerB, denominatorBase10ExponentA)
+	if (denominatorBase10ExponentA === denominatorBase10ExponentB)
+		return base10FractionToFloat(integerA - integerB, denominatorBase10ExponentA)
 
 	return denominatorBase10ExponentA < denominatorBase10ExponentB
 		? base10FractionToFloat(integerA * 10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA) - integerB, denominatorBase10ExponentB)
 		: base10FractionToFloat(integerA - integerB * 10n ** (denominatorBase10ExponentA - denominatorBase10ExponentB), denominatorBase10ExponentA)
 }
 
-export const mul = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a)
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b)
+export function mul(a, b) {
+	const [integerA, denominatorBase10ExponentA] = base10Fraction(a)
+	const [integerB, denominatorBase10ExponentB] = base10Fraction(b)
 	return base10FractionToFloat(integerA * integerB, denominatorBase10ExponentA + denominatorBase10ExponentB)
 }
 
-export const div = (a, b) => {
-	const [integerA, denominatorBase10ExponentA] = floatToBase10Fraction(a)
-	const [integerB, denominatorBase10ExponentB] = floatToBase10Fraction(b)
+export function div(a, b) {
+	const [integerA, denominatorBase10ExponentA] = base10Fraction(a)
+	const [integerB, denominatorBase10ExponentB] = base10Fraction(b)
 
 	const reminder = integerA % integerB
 
-	if (denominatorBase10ExponentA === denominatorBase10ExponentB) return reminder === 0n ? String(integerA / integerB) : quotientToFloat(integerA, integerB)
+	if (denominatorBase10ExponentA === denominatorBase10ExponentB)
+		return reminder === 0n ? String(integerA / integerB) : quotientToFloat(integerA, integerB)
 
 	if (denominatorBase10ExponentA < denominatorBase10ExponentB)
 		return reminder === 0n
 			? String((10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA) * integerA) / integerB)
 			: mul(quotientToFloat(integerA, integerB), String(10n ** (denominatorBase10ExponentB - denominatorBase10ExponentA)))
 
-	if (reminder === 0n) return base10FractionToFloat(integerA / integerB, denominatorBase10ExponentA - denominatorBase10ExponentB)
+	if (reminder === 0n)
+		return base10FractionToFloat(integerA / integerB, denominatorBase10ExponentA - denominatorBase10ExponentB)
 
-	const [integer, denominatorBase10Exponent] = floatToBase10Fraction(quotientToFloat(integerA, integerB))
+	const [integer, denominatorBase10Exponent] = base10Fraction(quotientToFloat(integerA, integerB))
 	return base10FractionToFloat(integer, denominatorBase10Exponent + denominatorBase10ExponentA - denominatorBase10ExponentB)
 }
-
-export const lt = (a, b) => a < b
-
-export const gt = (a, b) => a > b
