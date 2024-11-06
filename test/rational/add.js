@@ -1,26 +1,15 @@
 import { strict } from 'node:assert'
-import { describe, test } from 'node:test'
+import { test } from 'node:test'
 import { add } from '#src/rational.js'
-import { addFloatTest } from '#test/float/add.js'
+import { addFloatTestData } from '#test/float/add.js'
 
-const addRationalTest = {
-	message: 'implements Rational addition',
-	data: [
+test('Rational addition', () => {
+	[
 		{ input: { a: '0._1', b: '0._8' }, output: '1' },
 		{ input: { a: '0._1', b: '0._1' }, output: '0._2' },
-	]
-}
-
-describe('add', () => {
-	test(addRationalTest.message, () => {
-		addRationalTest.data.forEach(({ input: { a, b }, output }) => {
-			strict.equal(add(a, b), output)
-		})
-	})
-
-	test(addFloatTest.message, () => {
-		addFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			strict.equal(add(a, b), output)
-		})
+		{ input: { a: '0._3', b: 1 }, output: '1._3' },
+		...addFloatTestData
+	].forEach(({ input: { a, b }, output }) => {
+		strict.equal(add(a, b), output)
 	})
 })

@@ -48,10 +48,10 @@ No dependencies are used at all.
 ```js
 import { add } from 'arithmetica';
 
-add('1', '2'); // '3'
+add(1, 2n); // '3'
 
 // Here 0._3 represents 0.3333333333333333...
-add('0._3', '1')); // '1._3'
+add('0._3', 1)); // '1._3'
 ```
 
 **NOTA BENE**: there is no runtime check on types! Consumers are responsible to feed inputs

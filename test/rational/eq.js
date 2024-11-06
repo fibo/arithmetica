@@ -1,11 +1,10 @@
 import { strict } from 'node:assert'
-import { describe, test } from 'node:test'
+import { test } from 'node:test'
 import { eq } from '#src/rational.js'
-import { eqFloatTest } from '#test/float/eq.js'
+import { eqFloatTestData } from '#test/float/eq.js'
 
-const eqRationalTest = {
-	message: 'implements Rational equality',
-	data: [
+test('Rational equality', () => {
+	[
 		{ input: { a: '1', b: '0._9' }, output: true },
 		{ input: { a: '1', b: '0' }, output: false },
 		{ input: { a: '-2', b: '-1._9' }, output: true },
@@ -14,20 +13,9 @@ const eqRationalTest = {
 		{ input: { a: '1', b: '1.0' }, output: true },
 		{ input: { a: '2', b: '1.0' }, output: false },
 		{ input: { a: '-1', b: '-1.0' }, output: true },
-		{ input: { a: '-1.000', b: '-1.0' }, output: true }
-	]
-}
-
-describe('eq', () => {
-	test(eqRationalTest.message, () => {
-		eqRationalTest.data.forEach(({ input: { a, b }, output }) => {
-			strict.equal(eq(a, b), output)
-		})
-	})
-
-	test(eqFloatTest.message, () => {
-		eqFloatTest.data.forEach(({ input: { a, b }, output }) => {
-			strict.equal(eq(a, b), output)
-		})
+		{ input: { a: '-1.000', b: '-1.0' }, output: true },
+		...eqFloatTestData
+	].forEach(({ input: { a, b }, output }) => {
+		strict.equal(eq(a, b), output)
 	})
 })

@@ -1,31 +1,19 @@
 import { strict } from 'node:assert'
-import { describe, test } from 'node:test'
+import { test } from 'node:test'
 import { inv } from '#src/rational.js'
-import { invFloatTest, invFloatThrowsRangeErrorTest } from '#test/float/inv.js'
+import { invFloatTestData, invFloatThrowsErrorTestData } from '#test/float/inv.js'
 
-const invRationalTest = {
-	message: 'implements Rational inversion',
-	data: [
-		{ input: '1._1', output: '0.9' }
-	]
-}
-
-describe('inv', () => {
-	test(invRationalTest.message, () => {
-		invRationalTest.data.forEach(({ input, output }) => {
-			strict.equal(inv(input), output)
-		})
+test('Rational inversion', () => {
+	[
+		{ input: '1._1', output: '0.9' },
+		...invFloatTestData
+	].forEach(({ input, output }) => {
+		strict.equal(inv(input), output)
 	})
+})
 
-	test(invFloatThrowsRangeErrorTest.message, () => {
-		invFloatThrowsRangeErrorTest.data.forEach(({ input, error }) => {
-			strict.throws(() => { inv(input) }, error)
-		})
-	})
-
-	test(invFloatTest.message, () => {
-		invFloatTest.data.forEach(({ input, output }) => {
-			strict.equal(inv(input), output)
-		})
+test('Rational inversion throws if input is zero', () => {
+	invFloatThrowsErrorTestData.forEach(({ input, error }) => {
+		strict.throws(() => { inv(input) }, error)
 	})
 })

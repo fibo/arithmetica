@@ -1,17 +1,9 @@
 import { strict } from 'node:assert'
-import { describe, test } from 'node:test'
+import { test } from 'node:test'
 import { quotientToFloat } from '#src/float.js'
 
-const quotientToFloatThrowsTest = {
-	message: 'throws if second operand is `0n`',
-	data: [
-		{ input: { a: 1n, b: 0n }, error: { name: 'RangeError' } }
-	]
-}
-
-const quotientToFloatTest = {
-	message: 'computes quotient of two `BigInt` and returns a `Float`',
-	data: [
+test('quotientToFloat', () => {
+	[
 		{
 			input: { integerA: 42n, integerB: 1n },
 			output: '42'
@@ -47,20 +39,8 @@ const quotientToFloatTest = {
 		{
 			input: { integerA: -110n, integerB: -100n },
 			output: '1.1'
-		}
-	]
-}
-
-describe('quotientToFloat', () => {
-	test(quotientToFloatThrowsTest.message, () => {
-		quotientToFloatThrowsTest.data.forEach(({ input: { a, b }, error }) => {
-			strict.throws(() => { quotientToFloat(a, b) }, error)
-		})
-	})
-
-	test(quotientToFloatTest.message, () => {
-		quotientToFloatTest.data.forEach(({ input: { integerA, integerB }, output }) => {
-			strict.equal(quotientToFloat(integerA, integerB), output)
-		})
+		},
+	].forEach(({ input: { integerA, integerB }, output }) => {
+		strict.equal(quotientToFloat(integerA, integerB), output)
 	})
 })

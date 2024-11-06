@@ -8,28 +8,28 @@ export declare const isRational: (arg: unknown) => arg is Rational;
 export declare const rationalToNumber: (rational: Rational, mantissaLen?: number) => number;
 
 /** Equality. */
-export declare function eq(a: Rational, b: Rational): boolean;
+export declare function eq(a: Rational | number | bigint, b: Rational | number | bigint): boolean;
 
 /** Negation. */
-export declare function neg(a: Rational): Rational;
+export declare function neg(a: Rational | number | bigint): Rational;
 
 /** Inversion. */
-export declare function inv(a: Rational): Rational;
+export declare function inv(a: Rational | number | bigint): Rational;
 
 /** Addition. */
-export declare function add(a: Rational, b: Rational): Rational;
+export declare function add(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Subtraction. */
-export declare function sub(a: Rational, b: Rational): Rational;
+export declare function sub(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Multiplication. */
-export declare function mul(a: Rational, b: Rational): Rational;
+export declare function mul(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Division. */
-export declare function div(a: Rational, b: Rational): Rational;
+export declare function div(a: Rational | number | bigint, b: Rational | number | bigint): Rational;
 
 /** Less than. */
-export declare function lt(a: Rational, b: Rational): boolean;
+export declare function lt(a: Rational | number | bigint, b: Rational | number | bigint): boolean;
 
 /** Greater than. */
-export declare function gt(a: Rational, b: Rational): boolean;
+export declare function gt(a: Rational | number | bigint, b: Rational | number | bigint): boolean;

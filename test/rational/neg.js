@@ -1,26 +1,14 @@
 import { strict } from 'node:assert'
-import { describe, test } from 'node:test'
+import { test } from 'node:test'
 import { neg } from '#src/rational.js'
-import { negFloatTest } from '#test/float/neg.js'
+import { negFloatTestData } from '#test/float/neg.js'
 
-const negRationalTest = {
-	message: 'implements Rational negation',
-	data: [
+test('Rational negation', () => {
+	[
 		{ input: '0.12_34', output: '-0.12_34' },
-		{ input: '-0.12_34', output: '0.12_34' }
-	]
-}
-
-describe('neg', () => {
-	test(negRationalTest.message, () => {
-		negRationalTest.data.forEach(({ input, output }) => {
-			strict.equal(neg(input), output)
-		})
-	})
-
-	test(negFloatTest.message, () => {
-		negFloatTest.data.forEach(({ input, output }) => {
-			strict.equal(neg(input), output)
-		})
+		{ input: '-0.12_34', output: '0.12_34' },
+		...negFloatTestData
+	].forEach(({ input, output }) => {
+		strict.equal(neg(input), output)
 	})
 })
