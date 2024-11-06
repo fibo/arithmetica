@@ -20,7 +20,7 @@ test('splitRational', () => {
 			input: '-1.2_3',
 			output: { integer: '-1', decimalFixedPart: '2', decimalRepeatingPart: '3' }
 		}
-	].data.forEach(({ input, output }) => {
+	].forEach(({ input, output }) => {
 		const [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(input)
 		strict.equal(integer, output.integer)
 		strict.equal(decimalFixedPart, output.decimalFixedPart)

@@ -52,9 +52,8 @@ export function getFraction(integer, decimalFixedPart, decimalRepeatingPart) {
 }
 
 export function isRational(arg) {
-	if (typeof arg !== 'string') return false
-	let [_, __, decimalRepeatingPart] = splitRational(arg)
-	if (decimalRepeatingPart === '') return isFloat(arg)
+	const decimalRepeatingPart = splitRational(arg)[2]
+	if (!decimalRepeatingPart) return isFloat(arg)
 	try {
 		if (BigInt(decimalRepeatingPart) < 0) return false
 		return true
@@ -66,7 +65,7 @@ export function isRational(arg) {
 export function rationalToNumber(rational, mantissaLen = 16) {
 	let [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(rational)
 	let decimalPart = decimalFixedPart
-	if (decimalRepeatingPart !== '')
+	if (decimalRepeatingPart)
 		while (true) {
 			decimalPart += decimalRepeatingPart
 			if (decimalPart.length >= mantissaLen) break

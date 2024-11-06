@@ -8,22 +8,22 @@ export declare function isFloat(arg: unknown): arg is Float;
 export declare function floatToNumber(arg: Float, mantissaLen: number): number;
 
 /** Equality. */
-export declare function eq(a: Float | number | bigint, b: Float | number | bigint): boolean;
+export declare function eq(a: Float, b: Float): boolean;
 
 /** Negation. */
-export declare function neg(a: Float | number | bigint): Float;
+export declare function neg(a: Float): Float;
 
 /** Inversion. */
-export declare function inv(a: Float | number | bigint): Float;
+export declare function inv(a: Float): Float;
 
 /** Addition. */
-export declare function add(a: Float | number | bigint, b: Float | number | bigint): Float;
+export declare function add(a: Float, b: Float): Float;
 
 /** Subtraction. */
-export declare function sub(a: Float | number | bigint, b: Float | number | bigint): Float;
+export declare function sub(a: Float, b: Float): Float;
 
 /** Multiplication. */
-export declare function mul(a: Float | number | bigint, b: Float | number | bigint): Float;
+export declare function mul(a: Float, b: Float): Float;
 
 /** Division. */
-export declare function div(a: Float | number | bigint, b: Float | number | bigint): Float;
+export declare function div(a: Float, b: Float): Float;

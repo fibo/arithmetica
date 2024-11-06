@@ -71,8 +71,12 @@ The size of a bundle minified with _esbuild_ including only `arithmetica/float` 
 
 ### Float
 
-A `Float` is a string that expresses a decimal representation of a number.
+A `Float` can be:
+- a number, must be finite (`Infinity` is not a `Float`)
+- a bigint
+- a string that expresses a decimal representation of a number
 
+In case it is a string:
 - Decimal separator is `.` character.
 - Exponential notation is not allowed.
 - Integer part can be omitted.

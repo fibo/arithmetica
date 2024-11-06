@@ -1,5 +1,7 @@
 export function isFloat (arg) {
-	if (typeof arg !== 'string') return false
+	if (typeof arg == 'number' && !isNaN(arg) && Number.isFinite(arg)) return true
+	if (typeof arg == 'bigint') return true
+	if (typeof arg != 'string') return false
 
 	let letter, hasDecimalSeparator = false
 
