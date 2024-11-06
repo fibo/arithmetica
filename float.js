@@ -30,8 +30,6 @@ export function isFloat (arg) {
 	return true
 }
 
-export const floatToNumber = (floatStr, mantissaLen) => Number(Number(parseFloat(floatStr)).toFixed(mantissaLen))
-
 export function base10FractionToFloat(bigInt, denominatorBase10Exponent) {
 	const bigIntStr = String(bigInt)
 	if (bigIntStr === '0') return '0'

@@ -27,7 +27,6 @@ It includes also [repeating decimals](https://en.wikipedia.org/wiki/Repeating_de
   - [gt](#gt): greater than
 - Utils:
   - [coerceToFloat](#coercetofloat)
-  - [floatToNumber](#floattonumber)
   - [coerceToRational](#coercetorational)
   - [rationalToNumber](#rationaltonumber)
 - [License](#license)
@@ -101,13 +100,13 @@ A _repeating decimal_ is represented by a string like:
 
 `isFloat(arg: unknown): arg is Float`
 
-Use `isFloat` type-guard to check if some data belongs to `Float` type.
+Use `isFloat` type-guard to check if some value belongs to `Float` type.
 
 ```ts
 import { Float, isFloat, sub } from 'arithmetica/float';
 
-function minusOne (a: string): Float {
-  if (isFloat(a)) return sub(a, '1');
+function minusOne (a: string | number | bigint): Float {
+  if (isFloat(String(a))) return sub(a, '1');
   throw new TypeError(`Argument is not a Float ${a}`);
 }
 ```
@@ -132,8 +131,8 @@ Use `isRational` type-guard to check if some data belongs to `Rational` type.
 ```ts
 import { Rational, isRational, add } from 'arithmetica';
 
-function plusOneThird (a: string): Rational {
-  if (isRational(a)) return add(a, '0._3');
+function plusOneThird (a: string | number | bigint): Rational {
+  if (isRational(String(a))) return add(a, '0._3');
   throw new TypeError(`Argument is not a Rational ${a}`);
 }
 ```
@@ -272,19 +271,6 @@ gt('42', '24'); // true
 Notice that `gt` is not implemented by `arithmetica/float`: use the `>` operator.
 
 ## Utils
-
-### floatToNumber
-
-> Converts a `Float` to a `number`.
-
-`floatToNumber(floatStr: Float, mantissaLen?: number): number`
-
-```js
-import { floatToNumber } from 'arithmetica/float';
-
-floatToNumber('42.01', 0); // 42
-floatToNumber('1234.56789', 2); // 1234.57
-```
 
 ### rationalToNumber
 

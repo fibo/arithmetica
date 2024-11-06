@@ -1,5 +1,5 @@
 import { isFloat, add as addFloat, sub as subFloat, mul as mulFloat, div as divFloat } from './float.js'
-export { floatToNumber, isFloat, neg } from './float.js'
+export { isFloat, neg } from './float.js'
 
 export function fractionToRational(numerator, denominator) {
 	if (numerator === 0n) return '0'
