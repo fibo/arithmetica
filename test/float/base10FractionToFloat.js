@@ -1,10 +1,9 @@
 import { strict } from 'node:assert'
-import { describe, test } from 'node:test'
+import { test } from 'node:test'
 import { base10FractionToFloat } from '#src/float.js'
 
-const base10FractionToFloatTest = {
-	message: 'converts `bigInt` and `denominatorBase10Exponent` to Float',
-	data: [
+test('base10FractionToFloat', () => {
+	[
 		{
 			input: { bigInt: 42n, denominatorBase10Exponent: 0n },
 			output: '42'
@@ -57,13 +56,7 @@ const base10FractionToFloatTest = {
 			input: { bigInt: -211887249607760n, denominatorBase10Exponent: 17n },
 			output: '-0.0021188724960776'
 		}
-	]
-}
-
-describe('base10FractionToFloat', () => {
-	test(base10FractionToFloatTest.message, () => {
-		base10FractionToFloatTest.data.forEach(({ input: { bigInt, denominatorBase10Exponent }, output }) => {
-			strict.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output)
-		})
+	].forEach(({ input: { bigInt, denominatorBase10Exponent }, output }) => {
+		strict.equal(base10FractionToFloat(bigInt, denominatorBase10Exponent), output)
 	})
 })

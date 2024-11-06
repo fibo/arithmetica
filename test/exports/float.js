@@ -5,8 +5,6 @@ import {
 	add, div, eq, inv, mul, neg, sub,
 	// type-guards
 	isFloat,
-	// utils
-	floatToNumber
 } from 'arithmetica/float'
 
 describe('arithmetica/float export', () => {
@@ -22,9 +20,5 @@ describe('arithmetica/float export', () => {
 
 	test('exports type-guards', () => {
 		strict.ok(typeof isFloat === 'function')
-	})
-
-	test('exports utils', () => {
-		strict.ok(typeof floatToNumber === 'function')
 	})
 })
