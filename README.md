@@ -1,6 +1,6 @@
 # arithmetica
 
-> is an implementation of arithmetic operators for Rational numbers
+> is an implementation of arithmetic operators for Float and Rational numbers
 
 A [Rational](https://en.wikipedia.org/wiki/Rational_number) is a number that can be expressed as a fraction of two integers.
 It includes also [repeating decimals](https://en.wikipedia.org/wiki/Repeating_decimal) hence is a super-set of floating point numbers.
@@ -46,26 +46,26 @@ No dependencies are used at all.
 ## Usage
 
 ```js
-import { add } from 'arithmetica';
+import { add } from 'arithmetica/float.js';
+
+add('0.1', '0.2'); // '0.3'
+```
+
+The size of a bundle minified with _esbuild_ including only `arithmetica/float.js` is **1.9kb**.
+
+**NOTA BENE**: there is no runtime check on types! Consumers are responsible to feed inputs
+that are actual `Rational` types, for instance using [`isRational` type-guard](#isrational).
+
+If you need _repeating decimals_ you can import only floating point operators with something like
+
+```js
+import { add } from 'arithmetica/rational.js';
 
 add(1, 2n); // '3'
 
 // Here 0._3 represents 0.3333333333333333...
 add('0._3', 1)); // '1._3'
 ```
-
-**NOTA BENE**: there is no runtime check on types! Consumers are responsible to feed inputs
-that are actual `Rational` types, for instance using [`isRational` type-guard](#isrational).
-
-If you do not need _repeating decimals_ you can import only floating point operators with something like
-
-```js
-import { add } from 'arithmetica/float';
-
-add('0.1', '0.2'); // '0.3'
-```
-
-The size of a bundle minified with _esbuild_ including only `arithmetica/float` is 1.9kb only.
 
 ## Types
 
@@ -107,7 +107,7 @@ A _repeating decimal_ is represented by a string like:
 Use `isFloat` type-guard to check if some value belongs to `Float` type.
 
 ```ts
-import { Float, isFloat, sub } from 'arithmetica/float';
+import { Float, isFloat, sub } from 'arithmetica/float.js';
 
 function minusOne (a: string | number | bigint): Float {
   if (isFloat(String(a))) return sub(a, '1');
@@ -118,7 +118,7 @@ function minusOne (a: string | number | bigint): Float {
 Of course it can be used also on an ECMAScript runtime.
 
 ```js
-import { isFloat, mul } from 'arithmetica/float';
+import { isFloat, mul } from 'arithmetica/float.js';
 
 function timesTen (a) {
   if (isFloat(a)) return mul(a, '10');
@@ -133,7 +133,7 @@ function timesTen (a) {
 Use `isRational` type-guard to check if some data belongs to `Rational` type.
 
 ```ts
-import { Rational, isRational, add } from 'arithmetica';
+import { Rational, isRational, add } from 'arithmetica/rational.js';
 
 function plusOneThird (a: string | number | bigint): Rational {
   if (isRational(String(a))) return add(a, '0._3');
@@ -143,57 +143,45 @@ function plusOneThird (a: string | number | bigint): Rational {
 
 ## Operators
 
-Every operator imported from `arithmetica/float` has the same signature as its homonym operator imported from `arithmetica`, but of course with type `Float` instead of a `Rational` in its signature.
+Every operator exported by `arithmetica/float.js` has the same signature as its homonym operator provided by `arithmetica/rational.js`, but of course with type `Rational` instead of a `Float` in its signature.
 
 ### eq
 
 > Implements _equality_ operator.
 
-`eq(a: Rational | number | bigint, b: Rational | number | bigint): boolean`
-
 ```js
-import { eq } from 'arithmetica';
+import { eq } from 'arithmetica/float.js';
 
 eq('1', '2'); // false
-eq('42', '42.0'); // true
+eq(42, '42.0'); // true
 ```
 
 ### add
 
 > Implements _addition_ operator.
 
-`add(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
-
 ```js
-import { add } from 'arithmetica';
+import { add } from 'arithmetica/float.js';
 
 add('1', '2'); // '3'
-add('0._1', '0._1'); // '0._2' i.e. 0.2222222...
-add('0._1', '0._8'); // '1'
 ```
 
 ### sub
 
 > Implements _subtraction_ operator.
 
-`sub(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
-
 ```js
-import { sub } from 'arithmetica';
+import { sub } from 'arithmetica/float.js';
 
 sub('1', '2'); // '-1'
-sub('0._1', '0._1'); // '0'
-sub('1', '0._1'); // '0._8'
 ```
 
 ### neg
 
 > Implements _negation_ operator.
 
-`neg(a: Rational | number | bigint): Rational`
-
 ```js
-import { neg } from 'arithmetica';
+import { neg } from 'arithmetica/float.js';
 
 neg('1'); // '-1'
 neg('-42'); // '42'
@@ -203,25 +191,20 @@ neg('-42'); // '42'
 
 > Implements _multiplication_ operator.
 
-`mul(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
-
 ```js
 import { mul } from 'arithmetica';
 
 mul('2', '-3'); // '-6'
-mul('0._3', '0.3'); // '0.1'
 ```
 
 ### div
 
 > Implements _division_ operator.
 
-`div(a: Rational | number | bigint, b: Rational | number | bigint): Rational`
-
 It throws an error if denominator is zero.
 
 ```js
-import { div } from 'arithmetica';
+import { div } from 'arithmetica/float.js';
 
 div('-10', '2'); // '-5'
 
@@ -236,43 +219,35 @@ try {
 
 > Implements _inversion_ operator.
 
-`inv(a: Rational | number | bigint): Rational`
-
 ```js
-import { inv } from 'arithmetica';
+import { inv } from 'arithmetica/float.js';
 
 inv('2'); // '0.5'
-inv('1._1'); // '9'
 ```
 
 ### lt
 
 > Implements _less then_ operator.
 
-`lt(a: Rational | number | bigint, b: Rational | number | bigint): boolean`
+Notice that `lt` is not implemented by `arithmetica/float.js`: use the `<` operator.
 
 ```js
-import { lt } from 'arithmetica';
+import { lt } from 'arithmetica/rational.js';
 
 lt('-2', '1'); // true
 ```
-
-Notice that `lt` is not implemented by `arithmetica/float`: use the `<` operator.
 
 ### gt
 
 > Implements _greater then_ operator.
 
-`gt(a: Rational | number | bigint, b: Rational | number | bigint): boolean`
+Notice that `gt` is not implemented by `arithmetica/float.js`: use the `>` operator.
 
 ```js
-import { gt } from 'arithmetica';
+import { gt } from 'arithmetica/rational.js';
 
 gt('-2', '1'); // false
-gt('42', '24'); // true
 ```
-
-Notice that `gt` is not implemented by `arithmetica/float`: use the `>` operator.
 
 ## Utils
 

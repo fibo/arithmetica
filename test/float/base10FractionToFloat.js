@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { base10FractionToFloat } from '#src/float.js'
+import { base10FractionToFloat } from 'arithmetica/float.js'
 
 test('base10FractionToFloat', () => {
 	[

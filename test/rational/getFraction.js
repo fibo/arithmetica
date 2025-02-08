@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { getFraction } from '#src/rational.js'
+import { getFraction } from 'arithmetica/rational.js'
 
 test('getFraction', () => {
 	[

@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { quotientToFloat } from '#src/float.js'
+import { quotientToFloat } from 'arithmetica/float.js'
 
 test('quotientToFloat', () => {
 	[

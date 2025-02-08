@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { inv } from '#src/rational.js'
+import { inv } from 'arithmetica/rational.js'
 import { invFloatTestData, invFloatThrowsErrorTestData } from '#test/float/inv.js'
 
 test('Rational inversion', () => {

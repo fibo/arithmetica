@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { fractionToRational } from '#src/rational.js'
+import { fractionToRational } from 'arithmetica/rational.js'
 
 test('fractionToRational', () => {
 	[

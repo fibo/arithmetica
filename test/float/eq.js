@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { eq } from '#src/float.js'
+import { eq } from 'arithmetica/float.js'
 
 export const eqFloatTestData = [
 	{ input: { a: '1', b: '1' }, output: true },

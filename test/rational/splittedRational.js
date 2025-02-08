@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { splitRational } from '#src/rational.js'
+import { splitRational } from 'arithmetica/rational.js'
 
 test('splitRational', () => {
 	[

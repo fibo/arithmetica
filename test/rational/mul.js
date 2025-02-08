@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { mul } from '#src/rational.js'
+import { mul } from 'arithmetica/rational.js'
 import { mulFloatTestData } from '#test/float/mul.js'
 
 test('Rational multiplication', () => {

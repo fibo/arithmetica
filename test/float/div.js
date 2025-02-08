@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { div } from '#src/float.js'
+import { div } from 'arithmetica/float.js'
 
 export const divFloatTestData = [
 	{ input: { a: '1', b: '1' }, output: '1' },

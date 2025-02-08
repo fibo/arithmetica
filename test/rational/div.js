@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { div } from '#src/rational.js'
+import { div } from 'arithmetica/rational.js'
 import { divFloatTestData, divFloatThrowsErrorTestData } from '#test/float/div.js'
 
 test('Rational division', () => {

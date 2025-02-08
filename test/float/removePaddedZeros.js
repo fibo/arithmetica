@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { removePaddedZeros } from '#src/float.js'
+import { removePaddedZeros } from 'arithmetica/float.js'
 
 test('removePaddedZeros', () => {
 	[

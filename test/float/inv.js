@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { inv } from '#src/float.js'
+import { inv } from 'arithmetica/float.js'
 
 export const invFloatTestData = [
 	{ input: '1', output: '1' },

@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { neg } from '#src/float.js'
+import { neg } from 'arithmetica/float.js'
 
 export const negFloatTestData = [
 	{ input: '1', output: '-1' },

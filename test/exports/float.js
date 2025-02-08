@@ -5,9 +5,9 @@ import {
 	add, div, eq, inv, mul, neg, sub,
 	// type-guards
 	isFloat,
-} from 'arithmetica/float'
+} from 'arithmetica/float.js'
 
-describe('arithmetica/float export', () => {
+describe('arithmetica/float.js export', () => {
 	test('exports operators', () => {
 		strict.ok(typeof eq === 'function')
 		strict.ok(typeof neg === 'function')

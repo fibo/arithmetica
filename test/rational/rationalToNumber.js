@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { rationalToNumber } from '#src/rational.js'
+import { rationalToNumber } from 'arithmetica/rational.js'
 
 test('rationalToNumber', () => {
 	[

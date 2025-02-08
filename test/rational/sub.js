@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { sub } from '#src/rational.js'
+import { sub } from 'arithmetica/rational.js'
 import { subFloatTestData } from '#test/float/sub.js'
 
 	test('Rational subtraction', () => {

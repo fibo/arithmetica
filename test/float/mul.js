@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { mul } from '#src/float.js'
+import { mul } from 'arithmetica/float.js'
 
 export const mulFloatTestData = [
 	{ input: { a: '1', b: '1' }, output: '1' },

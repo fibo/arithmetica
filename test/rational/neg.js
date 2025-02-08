@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { neg } from '#src/rational.js'
+import { neg } from 'arithmetica/rational.js'
 import { negFloatTestData } from '#test/float/neg.js'
 
 test('Rational negation', () => {

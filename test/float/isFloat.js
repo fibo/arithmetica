@@ -1,6 +1,6 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { isFloat } from '#src/float.js'
+import { isFloat } from 'arithmetica/float.js'
 
 export const isFloatTestData = [
 	{ input: undefined, output: false },

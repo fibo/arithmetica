@@ -1,25 +1,23 @@
 {
   "name": "arithmetica",
   "version": "1.0.1",
-  "description": "is an implementation of arithmetic operators for Rational numbers",
+  "description": "is an implementation of arithmetic operators for Float and Rational numbers",
   "type": "module",
-	"types": "rational.d.ts",
   "exports": {
-    ".": {
+    "./rational.js": {
       "import": "./rational.js",
       "types": "./rational.d.ts"
     },
-    "./float": {
+    "./float.js": {
       "import": "./float.js",
       "types": "./float.d.ts"
     }
   },
   "imports": {
-    "#src/*": "./*",
     "#test/*": "./test/*"
   },
   "scripts": {
-    "test": "NODE_PATH=. node --test"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",

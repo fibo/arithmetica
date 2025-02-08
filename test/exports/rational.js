@@ -7,9 +7,9 @@ import {
 	isRational,
 	// utils
 	rationalToNumber
-} from 'arithmetica'
+} from 'arithmetica/rational.js'
 
-describe('arithmetica default export', () => {
+describe('arithmetica/rational.js export', () => {
 	test('exports operators', () => {
 		strict.ok(typeof eq === 'function')
 		strict.ok(typeof neg === 'function')
