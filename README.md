@@ -192,7 +192,7 @@ neg('-42'); // '42'
 > Implements _multiplication_ operator.
 
 ```js
-import { mul } from 'arithmetica';
+import { mul } from 'arithmetica/float.js';
 
 mul('2', '-3'); // '-6'
 ```
@@ -262,7 +262,7 @@ it set the number of digits of the decimal part, max is 16.
 Output is rounded.
 
 ```js
-import { rationalToNumber } from 'arithmetica';
+import { rationalToNumber } from 'arithmetica/rational.js';
 
 rationalToNumber('0.10'); // 0.1
 rationalToNumber('0._3', 8); // 0.33333333

@@ -40,6 +40,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fibo/arithmetica/issues"
-  },
-  "homepage": "https://fibo.github.io/arithmetica"
+  }
 }
