@@ -1,9 +1,9 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { splitRational } from 'arithmetica/rational.js'
+import { splitStr } from '#src/internals.js'
 
-test('splitRational', () => {
-	[
+test('internal: `splitStr`', () => {
+	for (const { input, output } of [
 		{
 			input: '1.2_3',
 			output: { integer: '1', decimalFixedPart: '2', decimalRepeatingPart: '3' }
@@ -20,10 +20,10 @@ test('splitRational', () => {
 			input: '-1.2_3',
 			output: { integer: '-1', decimalFixedPart: '2', decimalRepeatingPart: '3' }
 		}
-	].forEach(({ input, output }) => {
-		const [integer, decimalFixedPart, decimalRepeatingPart] = splitRational(input)
+	]) {
+		const [integer, decimalFixedPart, decimalRepeatingPart] = splitStr(input)
 		strict.equal(integer, output.integer)
 		strict.equal(decimalFixedPart, output.decimalFixedPart)
 		strict.equal(decimalRepeatingPart, output.decimalRepeatingPart)
-	})
+	}
 })

@@ -1,9 +1,12 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { getFraction } from 'arithmetica/rational.js'
+import { getFraction } from '#src/internals.js'
 
-test('getFraction', () => {
-	[
+test('internal: `getFraction`', () => {
+	for (const {
+		input: { integer, decimalFixedPart, decimalRepeatingPart },
+		output
+	} of [
 		{
 			input: { integer: '2', decimalFixedPart: '', decimalRepeatingPart: '' },
 			output: { numerator: 2n, denominator: 1n }
@@ -43,9 +46,9 @@ test('getFraction', () => {
 			input: { integer: '42', decimalFixedPart: '', decimalRepeatingPart: '' },
 			output: { numerator: 42n, denominator: 1n }
 		},
-	].forEach(({ input: { integer, decimalFixedPart, decimalRepeatingPart }, output }) => {
+	]) {
 		const [numerator, denominator] = getFraction(integer, decimalFixedPart, decimalRepeatingPart)
 		strict.equal(numerator, output.numerator)
 		strict.equal(denominator, output.denominator)
-	})
+	}
 })

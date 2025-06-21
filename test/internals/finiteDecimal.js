@@ -1,9 +1,9 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { quotientToFloat } from 'arithmetica/float.js'
+import { finiteDecimal } from '#src/internals.js'
 
-test('quotientToFloat', () => {
-	[
+test('internal: `finiteDecimal`', () => {
+	for (const { input: { integerA, integerB }, output } of [
 		{
 			input: { integerA: 42n, integerB: 1n },
 			output: '42'
@@ -40,7 +40,6 @@ test('quotientToFloat', () => {
 			input: { integerA: -110n, integerB: -100n },
 			output: '1.1'
 		},
-	].forEach(({ input: { integerA, integerB }, output }) => {
-		strict.equal(quotientToFloat(integerA, integerB), output)
-	})
+	])
+		strict.equal(finiteDecimal(integerA, integerB), output)
 })

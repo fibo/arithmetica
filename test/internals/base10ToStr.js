@@ -1,9 +1,9 @@
 import { strict } from 'node:assert'
 import { test } from 'node:test'
-import { base10FractionToFloat } from 'arithmetica/float.js'
+import { base10ToStr } from '#src/internals.js'
 
-test('base10FractionToFloat', () => {
-	[
+test('internal: `base10ToStr`', () => {
+	for (const { input: { bigInt, denominatorBase10Exp }, output } of [
 		{ input: { bigInt: 42n, denominatorBase10Exp: 0n }, output: '42' },
 		{ input: { bigInt: -42n, denominatorBase10Exp: 0n }, output: '-42' },
 		{ input: { bigInt: 42n, denominatorBase10Exp: 1n }, output: '4.2' },
@@ -20,7 +20,6 @@ test('base10FractionToFloat', () => {
 			input: { bigInt: -211887249607760n, denominatorBase10Exp: 17n },
 			output: '-0.0021188724960776'
 		}
-	].forEach(({ input: { bigInt, denominatorBase10Exp }, output }) => {
-		strict.equal(base10FractionToFloat(bigInt, denominatorBase10Exp), output)
-	})
+	])
+		strict.equal(base10ToStr(bigInt, denominatorBase10Exp), output)
 })
