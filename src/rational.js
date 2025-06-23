@@ -1,17 +1,23 @@
-import { base10ToStr, coerceToStr, finiteDecimal, fractionToStr, getBase10, getFraction, isValidNum, isValidStr, splitStr } from './internals.js'
+import { base10ToStr, finiteDecimal, fractionToStr, getBase10, getFraction, isValidNum, isValidStr, splitStr } from './internals.js'
+
+ // Utils
+////////////
+
+export function coerceToRational(arg) {
+	if (isValidNum(arg) || typeof arg == 'bigint')
+		return String(arg)
+	if (typeof arg == 'string' && isValidStr(arg))
+		return arg
+	throw new TypeError(`Cannot coerce ${arg} to Rational`)
+}
 
 export function isRational(arg) {
-	if (isValidNum(arg))
-		return true
-	if (typeof arg == 'bigint')
-		return true
-	if (typeof arg == 'string')
-		return isValidStr(arg)
-	return false
+	if (typeof arg != 'string') return false
+	return isValidStr(arg)
 }
 
 export function rationalToNumber(arg, numDecimals = 16) {
-	let [int, fixed, repeating] = splitStr(coerceToStr(arg)),
+	let [int, fixed, repeating] = splitStr(coerceToRational(arg)),
 		decimal = fixed
 	if (repeating)
 		while (true) {
@@ -25,8 +31,8 @@ export function rationalToNumber(arg, numDecimals = 16) {
 ////////////
 
 export function add(a, b) {
-	let [intA, fixedA, repeatingA] = splitStr(coerceToStr(a)),
-		[intB, fixedB, repeatingB] = splitStr(coerceToStr(b))
+	let [intA, fixedA, repeatingA] = splitStr(coerceToRational(a)),
+		[intB, fixedB, repeatingB] = splitStr(coerceToRational(b))
 
 	if (!repeatingA && !repeatingB) {
 		let [intA, expA] = getBase10(a),
@@ -47,8 +53,8 @@ export function add(a, b) {
 }
 
 export function sub(a, b) {
-	let [intA, fixedA, repeatingA] = splitStr(coerceToStr(a)),
-		[intB, fixedB, repeatingB] = splitStr(coerceToStr(b))
+	let [intA, fixedA, repeatingA] = splitStr(coerceToRational(a)),
+		[intB, fixedB, repeatingB] = splitStr(coerceToRational(b))
 
 	if (!repeatingA && !repeatingB) {
 		let [intA, expA] = getBase10(a),
@@ -83,8 +89,8 @@ export function neg (a) {
 export function inv(a) { return div('1', a) }
 
 export function mul(a, b) {
-	let [intA, fixedA, repeatingA] = splitStr(coerceToStr(a)),
-		[intB, fixedB, repeatingB] = splitStr(coerceToStr(b))
+	let [intA, fixedA, repeatingA] = splitStr(coerceToRational(a)),
+		[intB, fixedB, repeatingB] = splitStr(coerceToRational(b))
 
 	if (!repeatingA && !repeatingB) {
 		let [intA, expA] = getBase10(a),
@@ -99,8 +105,8 @@ export function mul(a, b) {
 }
 
 export function div(a, b) {
-	let [intA, fixedA, repeatingA] = splitStr(coerceToStr(a)),
-		[intB, fixedB, repeatingB] = splitStr(coerceToStr(b))
+	let [intA, fixedA, repeatingA] = splitStr(coerceToRational(a)),
+		[intB, fixedB, repeatingB] = splitStr(coerceToRational(b))
 
 	if (!repeatingA && !repeatingB) {
 		let [intA, expA] = getBase10(a),
@@ -132,13 +138,13 @@ export function div(a, b) {
 }
 
 export function lt(a, b) {
-	let [numA, denA] = getFraction(...splitStr(coerceToStr(a))),
-		[numB, denB] = getFraction(...splitStr(coerceToStr(b)))
+	let [numA, denA] = getFraction(...splitStr(coerceToRational(a))),
+		[numB, denB] = getFraction(...splitStr(coerceToRational(b)))
 	return numA * denB < numB * denA
 }
 
 export function gt(a, b) {
-	let [numA, denA] = getFraction(...splitStr(coerceToStr(a))),
-		[numB, denB] = getFraction(...splitStr(coerceToStr(b)))
+	let [numA, denA] = getFraction(...splitStr(coerceToRational(a))),
+		[numB, denB] = getFraction(...splitStr(coerceToRational(b)))
 	return numA * denB > numB * denA
 }

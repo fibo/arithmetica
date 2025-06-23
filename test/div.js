@@ -25,7 +25,7 @@ test('operator: division `div`', () => {
 		strict.equal(div(a, b), output)
 })
 
-test('division throws if second operand is zero', () => {
+test('operator: `division` throws if second operand is zero', () => {
 	for (const { input: { a, b } } of [
 		{ input: { a: '1', b: '0' } },
 		{ input: { a: '1', b: 0 } },

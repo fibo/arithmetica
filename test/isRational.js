@@ -5,7 +5,7 @@ import { isRational } from 'arithmetica'
 test('type guard `isRational`', () => {
 	for (const { input, output } of [
 		{ input: undefined, output: false },
-		{ input: 42, output: true },
+		{ input: 42, output: false },
 		{ input: Infinity, output: false },
 		{ input: NaN, output: false },
 		{ input: '1', output: true },

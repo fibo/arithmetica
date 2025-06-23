@@ -1,43 +1,48 @@
 /**
- * A `Rational` is a finite number or a string that expresses a decimal representation of a number.
+ * A `Rational` is a string that expresses a decimal representation of a _Rational number_.
  *
  * @example
- * 1 2.5 42 -273
- * 10n // bigint
  * '-12' '1.2' '.5'
- * '0._3' // 1 / 3 that is 0.33333333...
+ * '0._6': the fraction 1/6, that is 0.666666666666...
+ * '1.23_456': the number 1.23456456456456...
  */
-export type Rational = string | number | bigint;
+export type Rational = string
+
+/** Types that can be coerced to a `Rational`, i.e. `string`, `number` and `bigint`. */
+export type MaybeRational = string | number | bigint
+
+/** Validate argumnt and convert to `Rational`. */
+export declare const coerceToRational: (arg: MaybeRational) => Rational;
 
 /** Type guard. Check that given argument is a `Rational`. */
 export declare const isRational: (arg: unknown) => arg is Rational;
 
-/** Convert a `Rational` to number. The `numDecimals` defaults to 16. */
-export declare const rationalToNumber: (arg: Rational, numDecimals?: number) => number;
+/** Convert a `Rational` to a number. The `numDecimals` defaults to 16. */
+export declare const rationalToNumber: (arg: string, numDecimals?: number) => number;
 
 /** Equality. */
-export declare function eq(a: Rational, b: Rational): boolean;
+export declare function eq(a: MaybeRational, b: MaybeRational): boolean;
 
 /** Negation. */
-export declare function neg(a: Rational): Rational;
+export declare function neg(a: MaybeRational): Rational;
 
 /** Inversion. */
-export declare function inv(a: Rational): Rational;
+export declare function inv(a: MaybeRational): Rational;
 
 /** Addition. */
-export declare function add(a: Rational, b: Rational): Rational;
+export declare function add(a: MaybeRational, b: MaybeRational): Rational;
 
 /** Subtraction. */
-export declare function sub(a: Rational, b: Rational): Rational;
+export declare function sub(a: MaybeRational, b: MaybeRational): Rational;
 
 /** Multiplication. */
-export declare function mul(a: Rational, b: Rational): Rational;
+export declare function mul(a: MaybeRational, b: MaybeRational): Rational;
 
 /** Division. */
-export declare function div(a: Rational, b: Rational): Rational;
+export declare function div(a: MaybeRational, b: MaybeRational): Rational;
 
 /** Less than. */
-export declare function lt(a: Rational, b: Rational): boolean;
+export declare function lt(a: MaybeRational, b: MaybeRational): boolean;
 
 /** Greater than. */
-export declare function gt(a: Rational, b: Rational): boolean;
+export declare function gt(a: MaybeRational, b: MaybeRational): boolean;

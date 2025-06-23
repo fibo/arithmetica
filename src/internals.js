@@ -1,3 +1,5 @@
+// Utils that are not exported by the package.
+
 export function getBase10 (arg) {
 	let [integer, mantissa] = `${arg}`.split('.')
 	return mantissa == undefined ?
@@ -51,14 +53,6 @@ export function isValidStr(arg) {
 		if (BigInt(fixed) < 0) return false
 		return typeof BigInt(int) == 'bigint'
 	} catch (_) { return false }
-}
-
-export function coerceToStr(arg) {
-	if (isValidNum(arg) || typeof arg == 'bigint')
-		return String(arg)
-	if (typeof arg == 'string' && isValidStr(arg))
-		return arg
-	throw new TypeError('Invalid arg: ' + arg)
 }
 
 export function fractionToStr(numerator, denominator) {

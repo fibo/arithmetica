@@ -11,7 +11,7 @@ test('operator: inversion `inv`', () => {
 		strict.equal(inv(input), output)
 })
 
-test('operator: inversion throws if input is zero', () => {
+test('operator: `inversion` throws if input is zero', () => {
 	for (const { input } of [
 		{ input: '0' },
 		{ input: 0 },

@@ -4,6 +4,7 @@ import {
 	// operators
 	add, div, eq, inv, mul, neg, sub, lt, gt,
 	// utils
+	coerceToRational,
 	isRational,
 	rationalToNumber,
 } from 'arithmetica'
@@ -21,6 +22,7 @@ test('arithmetica exports', () => {
 	strict.ok(typeof gt === 'function')
 
 	// utils
+	strict.ok(typeof coerceToRational === 'function')
 	strict.ok(typeof isRational === 'function')
 	strict.ok(typeof rationalToNumber === 'function')
 })
