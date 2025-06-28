@@ -11,14 +11,14 @@ export type Rational = string
 /** Types that can be coerced to a `Rational`, i.e. `string`, `number` and `bigint`. */
 export type MaybeRational = string | number | bigint
 
-/** Validate argumnt and convert to `Rational`. */
+/** Validates the argument and converts it to `Rational`. */
 export declare const coerceToRational: (arg: MaybeRational) => Rational;
 
-/** Type guard. Check that given argument is a `Rational`. */
+/** Type guard. Checks that the given argument is a valid `Rational`. */
 export declare const isRational: (arg: unknown) => arg is Rational;
 
 /** Convert a `Rational` to a number. The `numDecimals` defaults to 16. */
-export declare const rationalToNumber: (arg: string, numDecimals?: number) => number;
+export declare const rationalToNumber: (arg: Rational, numDecimals?: number) => number;
 
 /** Equality. */
 export declare function eq(a: MaybeRational, b: MaybeRational): boolean;
