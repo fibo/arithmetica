@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import { rationalToNumber } from 'arithmetica'
 
 test('util: `rationalToNumber`', () => {
-	[
+	for (const { input: { rational, numDecimals }, output } of [
 		{ input: { rational: '0.1', numDecimals: 1 }, output: 0.1 },
 		{ input: { rational: '0.456', numDecimals: 2 }, output: 0.46 },
 		{ input: { rational: '0._3', numDecimals: 8 }, output: 0.33333333 },
@@ -23,7 +23,6 @@ test('util: `rationalToNumber`', () => {
 		{ input: { rational: '1234.56789', numDecimals: 2 }, output: 1234.57 },
 		{ input: { rational: '-1234.56789', numDecimals: 3 }, output: -1234.568 },
 		{ input: { rational: '0.1' }, output: 0.1 }
-	].forEach(({ input: { rational, numDecimals }, output }) => {
+	])
 		strict.equal(rationalToNumber(rational, numDecimals), output)
-	})
 })
