@@ -1,6 +1,6 @@
 # arithmetica
 
-> is an implementation of arithmetic operators for Rational numbers
+> arbitrary-precision arithmetic operators for Rational numbers, supporting repeating decimals
 
 **ToC**
 
