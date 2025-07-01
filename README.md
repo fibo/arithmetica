@@ -1,13 +1,12 @@
 # arithmetica
 
-> is an implementation of arithmetic operators for Rational numbers
+> arbitrary-precision arithmetic operators for Rational numbers, supporting repeating decimals
 
 **ToC**
 
 - [Installation](#installation)
-- [Rational numbers](#rational-numbers)
-- [Types](#types)
 - [Features](#features)
+- [Types](#types)
 - [Operators](#operators)
 - [Utils](#utils)
 - [License](#license)
@@ -23,48 +22,6 @@ npm install arithmetica
 This package is implemented with ECMAScript modules. CommonJS is not supported.
 
 No dependencies are used at all.
-
-## Rational numbers
-
-In Mathematics a [Rational number](https://en.wikipedia.org/wiki/Rational_number) is a number that can be expressed as a fraction of two integers, that is `a/b` where _a_ and _b_ are integers and _b_ is not zero.
-
-A _Rational_ number can be represented by a string, for example:
-- `'1'`
-- `'-12'`
-- `'0.5'`
-
-It may have [repeating decimals](https://en.wikipedia.org/wiki/Repeating_decimal), when the number of decimal digits in the decimal representation is **infinite and periodic**. For example `1/3` is `0.33333...`.
-
-## Types
-
-The `Rational` type is a string that represents a rational number, where:
-
-  - Decimal separator is `.` character.
-  - Exponential notation is not allowed. Values like `'1e3'` or `'1.2e-3'` are not valid.
-  - Integer part can be omitted. Values like `'.5'` or `'-.5'` are valid.
-  - Strings can be arbitrary long; the only limits are your computer's memory and the BigInt implementation.
-
-Examples of (finite) rational numbers:
-  - `'1'`
-  - `'-12'`
-  - `'1.23456789'`
-
-A _repeating decimal_ is represented by a string like,
-
-```
-<Integer>.<DecimalFixedPart>_<DecimalRepeatingPart>
-```
-
-For example:
-  - `'0._6'`: the fraction 1/6, that is 0.666666666666...
-  - `'-1.23_456'`: the number -1.23456456456456...
-
-
-The `MaybeRational` type is the union of types that can be coerced to a `Rational`, i.e. `string`, `number` and `bigint`.
-
-
-The `Rational` type is used by operators as return type.
-The `MaybeRational` types is used by operators as argument.
 
 ## Features
 
@@ -92,6 +49,52 @@ import { add, div } from 'arithmetica';
 div(1, 3); // '0._3'
 add('0._3', 1); // '1._3'
 ```
+
+A _repeating decimal_ is represented by a string like,
+
+```
+<Integer>.<DecimalFixedPart>_<DecimalRepeatingPart>
+```
+
+For example:
+  - `'0._6'`: the fraction 1/6, that is 0.666666666666...
+  - `'-1.23_456'`: the number -1.23456456456456...
+
+## Types
+
+There are two types defined by `arithmetica` package:
+
+- [Rational](#rational)
+- [MaybeRational](#mayberational)
+
+### Rational
+
+The `Rational` type is used by [operators](#operators) as return type.
+
+In Mathematics a [Rational number](https://en.wikipedia.org/wiki/Rational_number) is a number that can be expressed as a fraction of two integers, that is `a/b` where _a_ and _b_ are integers and _b_ is not zero.
+
+It may have [repeating decimals](https://en.wikipedia.org/wiki/Repeating_decimal), when the number of decimal digits in the decimal representation is **infinite and periodic**. For example `1/3` is `0.33333...`.
+
+The `Rational` type is a string that represents a rational number, where:
+
+  - Decimal separator is `.` character.
+  - Exponential notation is not allowed. Values like `'1e3'` or `'1.2e-3'` are not valid.
+  - Integer part can be omitted. Values like `'.5'` or `'-.5'` are valid.
+  - Strings can be arbitrary long; the only limits are your computer's memory and the BigInt implementation.
+
+Examples of rational numbers represented as string:
+  - `'1'`
+  - `'-12'`
+  - `'1.23456789'`
+  - `'0._3`
+
+### MaybeRational
+
+The `MaybeRational` type is used by [operators](#operators) as argument. It is the union of types that can be coerced to a `Rational`, i.e.
+
+- `string`
+- `number`
+- `bigint`
 
 ## Operators
 
